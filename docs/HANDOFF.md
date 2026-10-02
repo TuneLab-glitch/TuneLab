@@ -34,6 +34,10 @@ The flattened initial upload was repaired without changing application/test byte
 
 The user approved the scoped v0.6 proposal. See V0.6-SCOPE.md; do not implement its deferred list without further scope approval. Current application is portable/ v0.6, with v0.5 calculations retained. v0.6 UAT: UAT-v0.6.html; retain the original 34-case guide for regressions.
 
-47 tests passed with the supplied private Hondata CSV, all three DOM suites passed, and local-file headless Edge interaction/storage/download checks passed. See V0.6-VERIFICATION.md. The private CSV is outside Git and deliverables. Real KTuner compatibility remains pending; do not infer it from synthetic headers. User v0.6 acceptance remains pending.
+47 tests passed with the supplied private Hondata CSV, all three DOM suites passed, and local-file headless Edge interaction/storage/download checks passed. See V0.6-VERIFICATION.md. The private CSV is outside Git and deliverables. Real KTuner compatibility remains pending; do not infer it from synthetic headers. User v0.6 acceptance of implemented release-note scenarios was signed off on 2026-10-02; see V0.6-UAT-SIGNOFF.md.
 
 Workspace JSON includes raw logs, per-log profiles, saved proposals, roles, journal, learning, settings, layout and edit undo/redo. Older projects migrate after validation; calibration confirmations clear. Browser IndexedDB still stores the library rather than a full workspace. Save/download JSON before changing origin or upgrading. Attachments are unsupported and not part of backups.
+
+## Next development round
+
+v0.6 user sign-off is recorded. See V0.7-PROPOSAL.md for navigation and single-workspace windows, shared-state acceptance requirements and suggested priorities. v0.7 remains planning; no build scope has been approved yet. Real KTuner format verification is still pending an original export.

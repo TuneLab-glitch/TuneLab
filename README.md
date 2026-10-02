@@ -55,6 +55,6 @@ npm install
 npm run test:ui
 ```
 
-46 synthetic tests and all three DOM suites pass; 47 tests pass with the supplied private Hondata fixture. Local-file headless Edge checks passed for pointer selection, edge scrolling, protection, zoom, resizing, clipboard, downloads, backup reopen and IndexedDB. User v0.6 acceptance, destination paste-back and real KTuner export checks remain pending. See **docs/V0.6-VERIFICATION.md**.
+46 synthetic tests and all three DOM suites pass; 47 tests pass with the supplied private Hondata fixture. Local-file headless Edge checks passed for pointer selection, edge scrolling, protection, zoom, resizing, clipboard, downloads, backup reopen and IndexedDB. User acceptance of implemented release-note scenarios is signed off in **docs/V0.6-UAT-SIGNOFF.md**. Real KTuner export/destination checks remain pending. See **docs/V0.6-VERIFICATION.md**.
 
 The retained **src/** and **tests/** Windows/Avalonia shell is older v0.2 code, not this interface; it was not compiled. **README-native-v0.2.md** describes that older shell.

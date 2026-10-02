@@ -1,0 +1,90 @@
+{
+  "release": "TuneLab v0.6",
+  "date": "2026-10-02",
+  "timezone": "America/New_York",
+  "build": "6892ab6e89e52fe2173b1318c1e891866abb4ee0",
+  "attribution": "User-reported sign-off in this chat",
+  "scope": "Implemented release-note scenarios; original KTuner compatibility excluded",
+  "browser": null,
+  "statement": "All of my UAT has passed based on release notes. Add my sign off to those testing scenarios.",
+  "cases": [
+    {
+      "id": "V6-SET",
+      "scenario": "Launch and centralized Settings",
+      "result": "Pass",
+      "evidence": "Aggregate user report; no individual execution transcript supplied"
+    },
+    {
+      "id": "V6-SELECT",
+      "scenario": "Rectangle/Shift selection and protected editing",
+      "result": "Pass",
+      "evidence": "Aggregate user report; no individual execution transcript supplied"
+    },
+    {
+      "id": "V6-ZOOM",
+      "scenario": "Coordinated zoom, fit width and panel layout",
+      "result": "Pass",
+      "evidence": "Aggregate user report; no individual execution transcript supplied"
+    },
+    {
+      "id": "V6-AFM",
+      "scenario": "Small AFM changes, linked plots, actual deltas and magnification",
+      "result": "Pass",
+      "evidence": "Aggregate user report; no individual execution transcript supplied"
+    },
+    {
+      "id": "V6-ROLE",
+      "scenario": "Baseline/optional validation assignment and calibration context",
+      "result": "Pass",
+      "evidence": "Aggregate user report; no individual execution transcript supplied"
+    },
+    {
+      "id": "V6-UNITS",
+      "scenario": "Display/export units and physical-value preservation",
+      "result": "Pass",
+      "evidence": "Aggregate user report; no individual execution transcript supplied"
+    },
+    {
+      "id": "V6-BACKUP",
+      "scenario": "Full workspace save/reopen, roles, history and preferences",
+      "result": "Pass",
+      "evidence": "Aggregate user report; no individual execution transcript supplied"
+    },
+    {
+      "id": "V6-MIGRATE",
+      "scenario": "Older-project migration and restore failure handling",
+      "result": "Pass",
+      "evidence": "Aggregate user report; no individual execution transcript supplied"
+    },
+    {
+      "id": "V6-FORMAT-H",
+      "scenario": "Supplied Hondata export workflow and mapping provenance",
+      "result": "Pass",
+      "evidence": "Aggregate user report; no individual execution transcript supplied"
+    },
+    {
+      "id": "V6-STORAGE",
+      "scenario": "Browser-library persistence and storage preference",
+      "result": "Pass",
+      "evidence": "Aggregate user report; no individual execution transcript supplied"
+    },
+    {
+      "id": "V6-STATUS",
+      "scenario": "Active log/calibration, units and proposal state",
+      "result": "Pass",
+      "evidence": "Aggregate user report; no individual execution transcript supplied"
+    },
+    {
+      "id": "V6-PASTE",
+      "scenario": "Destination paste regression within tested release scope",
+      "result": "Pass",
+      "evidence": "Aggregate user report; no individual execution transcript supplied"
+    },
+    {
+      "id": "V6-FORMAT-K",
+      "scenario": "Original KTuner export",
+      "result": "Not tested",
+      "evidence": "Original fixture not yet supplied; excluded from implemented-scope sign-off"
+    }
+  ]
+}

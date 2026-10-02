@@ -17,7 +17,7 @@ Approved scope: docs/V0.6-SCOPE.md. Verification: docs/V0.6-VERIFICATION.md.
 
 46 synthetic tests pass; 47 with the supplied private Hondata fixture. All three DOM suites pass. Headless Edge checks passed for local-file launch, drag/protection, zoom, native resize, clipboard, download, backup reopen and IndexedDB library restore. Hondata fixture: 116,475 frames, 105 channels, zero malformed-width rows. Raw logs are not included.
 
-Real KTuner CSV verification is pending a fixture. User v0.6 UAT and destination paste-back checks remain pending. Header aliases and metadata are evidence candidates, not verified ECU semantics. AFM retains the commanded-AFR and Fuel Status = 2 convention; unsupported status/mixture conventions require further review. Browser storage remains a library store; workspace JSON is the portable calibration backup. Personal document attachments remain deferred.
+Real KTuner CSV verification is pending a fixture. The user signed off all tested scenarios within the implemented release-note scope on 2026-10-02; see docs/V0.6-UAT-SIGNOFF.md. KTuner-specific destination checks remain pending. Header aliases and metadata are evidence candidates, not verified ECU semantics. AFM retains the commanded-AFR and Fuel Status = 2 convention; unsupported status/mixture conventions require further review. Browser storage remains a library store; workspace JSON is the portable calibration backup. Personal document attachments remain deferred.
 
 All agreed deferred features remain deferred. No AI, new coordinated alignment rules, installer, live hardware or flashing was added. Retained .NET code was not compiled.
 
