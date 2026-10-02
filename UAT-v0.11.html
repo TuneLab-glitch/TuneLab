@@ -1,0 +1,76 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>TuneLab v0.11 UAT</title><style>body{font:16px/1.6 Segoe UI,sans-serif;max-width:1000px;margin:30px auto;padding:20px;color:#233144}article{border:1px solid #cdd6df;border-radius:8px;margin:20px 0;padding:18px}textarea{width:95%;min-height:80px}label{margin-right:15px}button{padding:12px}input{padding:8px}h1{color:#c82f40}@media print{button{display:none}article{break-inside:avoid}}</style><body><h1>TuneLab v0.11 acceptance</h1><p>Save your project JSON first. Extract TuneLab-v0.11.zip into a separate folder and launch Start-TuneLab.bat. All 14 scenarios start Not tested; prior release signoffs are retained separately. Use historical logs and disposable copies of calibrations. Keep your previous project JSON and original logs. No flashing or hardware connection is needed.</p><label>Tester <input id="tester"></label><label>Browser/version <input id="browser"></label><div id="cases"></div><button id="download">Download result JSON</button><button onclick="print()">Print</button><p>Critical: incorrect physical values, lost data or protected values changed. Major: blocked workflow. Minor: presentation/explanation issue. Record expected and actual values, steps, units, file/revision and screenshots. KTuner header/import checks have been verified with the supplied export. Full Civic/KTuner analysis requires appropriate channels and reviewed semantics; that separate verification remains pending.</p><script>
+const cases=[
+  [
+    "V11-TABLES",
+    "Tables Without a Log",
+    "Import your real gear calibration and alter one value in a disposable project. Save JSON, close/reopen the same extracted app folder, and visit Boost by Gear before selecting a log. Values and units should appear unchanged. Also open the saved JSON in a new extracted folder without a log. With no prior table, expect an explicit import prompt, not factory values. Retest the original V10-TABLES finding."
+  ],
+  [
+    "V11-PERFORMANCE",
+    "Responsive Startup and Commands",
+    "Open your larger project, switch screens, change themes and use raw playback. Compare against the previous build. Confirm no repeated stalls and unchanged raw rows, plots and table values. Record row/channel counts and the slow action if any."
+  ],
+  [
+    "V11-APPEARANCE",
+    "Appearance Scope and Persistence",
+    "Retest V10-CLEANUP: set Entire App cell/header sizes, then create a Pressure Conversion page override. Check both pressure tables and other tables. Switch scopes and reopen JSON/browser. Each scope should show and retain its own sizes; existing page overrides remain independent."
+  ],
+  [
+    "V11-NAV",
+    "Reorder Menu",
+    "Drag workspace items above/below others. Use Alt + Up/Down on a focused menu item. Check compact selector order, current screen, custom name, backup/reopen and Reset Menu Order. No workspace disappears."
+  ],
+  [
+    "V11-BATCH",
+    "Update All Proposals",
+    "From several workspaces, invoke Update All Proposals. Inspect per-table updated/skipped/blocked results and Proposal Status. Confirm protected points, source units, selected boost kind and history remain correct; undo changes. Gear limits should be retained."
+  ],
+  [
+    "V11-MANUAL",
+    "Preserve Manual Refinements",
+    "Make manual MPR, Command and AFM proposal edits. Run Update All Proposals. Every manually refined proposal should be skipped with an explanation and unchanged values. Individual recalculation remains available with its existing confirmation."
+  ],
+  [
+    "V11-GATES",
+    "AFM Prerequisite Gates",
+    "Try no baseline, unconfirmed calibration, unknown units/mapping and an eligible confirmed baseline. Batch results explain missing prerequisites. Validation remains independent and never drives correction. Insufficient sample support still preserves unsupported points."
+  ],
+  [
+    "V11-STATUS",
+    "Proposal Status",
+    "Check missing/current/stale boost proposals, missing/unreviewed AFM evidence and saved/missing gear tables. Change inputs and evidence, then revisit status. Reasons should explain the next review step. Current does not imply safety or validation success."
+  ],
+  [
+    "V11-TYPE",
+    "Typography and Titles",
+    "Try System/Arial/Consolas, weights and Original/Title Case/Uppercase using app and page scopes. Check titles, tables, Pressure Conversion and compact navigation. Raw channel names, units, acronym spelling, numbers and your custom tab name must remain intact. Reopen JSON."
+  ],
+  [
+    "V11-LAYOUT",
+    "Named Layouts",
+    "Arrange half-width left/right panels and insert custom table views. Save two named layouts, alter the arrangement, then apply each. Confirm source/proposal values, protected cells, manual edits and evidence stay unchanged. Save replacement by the same name; delete another; reopen JSON."
+  ],
+  [
+    "V11-WINDOWS",
+    "Detached Window Coordination",
+    "Open a workspace in a separate window. Viewing window must block Update All Proposals and preference/layout mutations until editing is handed off. Check synchronization, separate main/detached arrangements and recovery behavior."
+  ],
+  [
+    "V11-REFLOW",
+    "Zoom and Reflow",
+    "At 100\u2013200% browser zoom and short/narrow windows, reach every menu item, the global update action, result report and Settings controls by mouse and keyboard. Table zoom remains separate."
+  ],
+  [
+    "V11-BACKUP",
+    "Migration and Failed Restore",
+    "Open a disposable older project, save/reopen v0.11 and compare calibration values/history/raw CSVs. New menu, typography and layouts should persist. An invalid project should leave the current project intact. Keep original backups."
+  ],
+  [
+    "V11-TRACE",
+    "Playback Traces Relevant Tables",
+    "Load a log containing reviewed RPM, command-pressure, AFM frequency and gear mappings. Use global Play/Pause, First/Previous/Next/Last and speed while viewing Boost Tables, AFM, Gear Limits and My Workspace. Markers follow the same original row; navigation does not stop playback. Check a detached table window follows the editing window\u2019s row. Missing/out-of-range inputs clear affected markers; Table Tracing toggle hides markers while coverage remains independent. Reference PA is labeled when not recorded. Filters still control proposal eligibility independently."
+  ]
+];
+document.getElementById('cases').innerHTML=cases.map(([id,title,steps])=>`<article data-case="${id}"><h2>${id} · ${title}</h2><p>${steps}</p>${['Pass','Fail','Not tested'].map(v=>`<label><input type="radio" name="${id}" value="${v}" ${v==='Not tested'?'checked':''}>${v}</label>`).join('')}<textarea aria-label="${id} observations" placeholder="Steps, expected/actual values, units, severity and screenshot references"></textarea></article>`).join('');
+document.getElementById('download').onclick=()=>{const data={release:'TuneLab v0.11',date:new Date().toISOString(),tester:document.getElementById('tester').value,browser:document.getElementById('browser').value,cases:[...document.querySelectorAll('[data-case]')].map(n=>({id:n.dataset.case,result:n.querySelector('input:checked').value,notes:n.querySelector('textarea').value}))};const a=document.createElement('a'),url=URL.createObjectURL(new Blob([JSON.stringify(data,null,2)],{type:'application/json'}));a.href=url;a.download='TuneLab-v0.11-UAT-results.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);};
+</script></body></html>

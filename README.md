@@ -1,10 +1,10 @@
-# TuneLab v0.10
+# TuneLab v0.11
 
 Extract the ZIP completely and double-click **Start-TuneLab.bat**. The app opens **portable/index.html** in your browser and works offline. No installer, .NET SDK, AI model or API key is required.
 
-Start v0.10 UAT by opening **UAT-v0.10.html** (21 cases). Keep **UAT-v0.9.html** for the accepted v0.9.1 scenarios. Keep **UAT-v0.8.html** for the 16 signed-off review scenarios. Keep **UAT-v0.7.html** for the signed-off workspace scenarios. Keep **UAT-v0.6.html** for signed-off v0.6 scenarios. Keep **UAT-Guide.html** for the 34 baseline regression cases. Both use existing historical CSVs and tables, support printing and download result JSON. No new drive or vehicle connection is needed. See **RELEASE-NOTES.md** for implemented scope and limitations.
+Start v0.11 UAT by opening **UAT-v0.11.html** (14 pending cases). Retain **UAT-v0.10.html** and its signoff/follow-up records. Keep **UAT-v0.9.html** for the accepted v0.9.1 scenarios. Keep **UAT-v0.8.html** for the 16 signed-off review scenarios. Keep **UAT-v0.7.html** for the signed-off workspace scenarios. Keep **UAT-v0.6.html** for signed-off v0.6 scenarios. Keep **UAT-Guide.html** for the 34 baseline regression cases. Both use existing historical CSVs and tables, support printing and download result JSON. No new drive or vehicle connection is needed. See **RELEASE-NOTES.md** for implemented scope and limitations.
 
-Use **Synthetic demos** in the header to choose one of five isolated practice scenarios; your original workspace stays open and practice does not write to its browser library. Use **Logging strategy** for purpose-specific capture instructions, channels and applicability. See **docs/V0.9-SCOPE.md** and **docs/V0.9-VERIFICATION.md** for the current release.
+Use **Synthetic demos** in the header to choose one of five isolated practice scenarios; your original workspace stays open and practice does not write to its browser library. Use **Logging strategy** for purpose-specific capture instructions, channels and applicability. See **docs/V0.11-SCOPE.md** and **docs/V0.11-VERIFICATION.md** for the current release.
 
 See **docs/V0.8-SCOPE.md** and **docs/V0.8-VERIFICATION.md** for the current release. Table shading is in Settings; Shift-drag charts or use Log review’s Evidence selection controls to inspect coverage. Use Review changes before exporting, and mark the inspected revision reviewed.
 
@@ -66,3 +66,6 @@ npm run test:ui
 55 synthetic tests and all five DOM suites pass; 58 tests pass with the private Hondata fixture, malformed Fit/KTuner rejection checks and consistent KTuner header/import checks. Local-file headless Edge checks passed for pointer selection, edge scrolling, protection, zoom, resizing, clipboard, downloads, backup reopen and IndexedDB. User acceptance of all 12 v0.7 scenarios is signed off in **docs/V0.7-UAT-SIGNOFF.md** (2026-10-02); prior v0.6 acceptance remains in **docs/V0.6-UAT-SIGNOFF.md**. The first Fit CSV has mismatched header/data widths; the second KTuner CSV verifies 30-channel import and raw backup/reopen. Full Civic/KTuner analysis and destination checks remain pending. See **docs/V0.8-VERIFICATION.md** for current results; Jonny signed off all 16 v0.8 scenarios on 2026-10-02; see **docs/V0.8-UAT-SIGNOFF.md**. Browser zoom/sidebar scrolling is a known next-version issue. Historical export findings remain in **docs/V0.7-UAT-FINDINGS.md**.
 
 The retained **src/** and **tests/** Windows/Avalonia shell is older v0.2 code, not this interface; it was not compiled. **README-native-v0.2.md** describes that older shell.
+
+
+v0.11 adds menu reorder, global proposal updates/status, scoped typography and named layouts. Global Log Playback traces the recorded row through native and custom tables, including detached windows; candidate locations are independent of correction eligibility. Save project JSON before moving folders. Original gear-loading and appearance findings remain in the v0.11 retest guide.

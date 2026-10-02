@@ -11,4 +11,16 @@ Preserve project backward compatibility and migration paths; do not erase manual
 
 Active UI is now v0.9. Read docs/V0.9-SCOPE.md and docs/V0.9-VERIFICATION.md. Unified practice scenarios must never read/write the user browser library or shared preferences. Logging strategy must preserve source applicability; no generic public-road pull instructions or voltage-to-Hz relabeling. v0.9.1 is accepted: all 14 UAT scenarios signed off on 2026-10-02; see docs/V0.9-UAT-SIGNOFF.md/json.
 
-Active build is v0.10; read docs/V0.10-SCOPE.md and docs/V0.10-VERIFICATION.md. Calibration tables must remain accessible/restorable without an active log. Raw plots and bookmarks do not define tuning eligibility. Shared-bin comparison is descriptive and requires reviewed units/revisions and explicit condition checks. UAT is pending.
+Active build is v0.10; read docs/V0.10-SCOPE.md and docs/V0.10-VERIFICATION.md. Calibration tables must remain accessible/restorable without an active log. Raw plots and bookmarks do not define tuning eligibility. Shared-bin comparison is descriptive and requires reviewed units/revisions and explicit condition checks. Jonny accepted all 21 v0.10 UAT scenarios on 2026-10-02; see docs/V0.10-UAT-SIGNOFF.md/json.
+
+V10-TABLES is reopened: Boost by Gear automatic no-log restoration needs investigation and retest. The other 20 UAT passes remain recorded. See the follow-up in docs/V0.10-UAT-SIGNOFF.md/json.
+
+
+Efficiency correction: see docs/V0.10-EFFICIENCY.md. Local test build includes appearance corrections and avoids redundant parsing/rendering. Current acceptance is 19 prior passes / 2 reopened (V10-TABLES, V10-CLEANUP); performance user retest pending. No next-version features implemented.
+
+
+## v0.11 Workflow and Interface Build — 2026-10-02
+
+Jonny approved the proposed six-item build. See docs/V0.11-SCOPE.md and docs/V0.11-VERIFICATION.md. Menu reorder, global conservative proposal updates/status, scoped typography, Pressure Conversion naming and named UI layouts are implemented with prior performance/appearance corrections. Gear tables render independently of logs on entry/restore. All 14 UAT-v0.11.html cases remain pending; original gear and appearance findings require user retest. Historical v0.10 is 19 prior passes / 2 reopened. Deferred features remain deferred.
+
+Playback/table tracing added at Jonny’s request during v0.11: global controls, original-row candidate markers across native/custom views and synchronized detached windows. All 14 UAT scenarios pending; see V0.11-SCOPE/VERIFICATION.

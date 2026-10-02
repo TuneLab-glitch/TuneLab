@@ -71,3 +71,27 @@ Jonny signed off both remaining UAT cases. All 14 scenarios are accepted; see V0
 ## v0.10 build — 2026-10-02
 
 Jonny approved purpose setup, readiness, synchronized raw plots, bookmarks, validation comparison and related cleanup. Tables must not depend on a log; current calibration state is restored independently. See V0.10-SCOPE.md and V0.10-VERIFICATION.md. UAT-v0.10.html has 21 pending cases. Earlier sign-offs and deferred hardware/platform work remain unchanged.
+
+Next-version notes (2026-10-02): Jonny requests draggable navigation order and a globally visible Update all proposals action. See BACKLOG.md. These are observations only; no v0.10 UAT has been completed and no next-version implementation is authorized by this note. Delivered v0.10 files remain unchanged.
+
+Next-version appearance note: stronger Title Case titles/headers plus font display and capitalization preferences. Preserve original channel/unit/acronym spelling and user-entered names. See BACKLOG.md; v0.10 UAT remains pending.
+
+## v0.10 Acceptance — 2026-10-02
+
+Jonny reported “All UAT passed.” All 21 release scenarios are accepted; see docs/V0.10-UAT-SIGNOFF.md/json (or V0.10-UAT-SIGNOFF.md/json from this directory). This supersedes earlier pending-UAT status. Delivered application commit and ZIP remain unchanged. Next-version observations remain planning items, not an approved implementation scope.
+
+Current v0.10 acceptance: V10-TABLES reopened following Jonny's report that Boost by Gear only appeared after loading a log. Retain the other 20 passes. Investigate startup cache restoration/rendering and upgrade/old-library migration before next-version feature work.
+
+V10-CLEANUP also reopened: Appearance Inheritance labels drifted after workspace renames and omitted later-added tabs. Local synchronization now follows current workspace titles, retaining the selected target; verification/delivery pending. Review final pressure-workspace wording with Jonny. Current acceptance: 19 passes / 2 reopened.
+
+Appearance font follow-up: app-scope controls were showing selected-page override values (e.g. 22px). Local fix separates scope and applies table sizing across pages. New browser-appearance.cjs checks both pressure tables and backup retention. Delivery/user retest pending; V10-CLEANUP remains reopened.
+
+
+Efficiency correction: see docs/V0.10-EFFICIENCY.md. Local test build includes appearance corrections and avoids redundant parsing/rendering. Current acceptance is 19 prior passes / 2 reopened (V10-TABLES, V10-CLEANUP); performance user retest pending. No next-version features implemented.
+
+
+## v0.11 Workflow and Interface Build — 2026-10-02
+
+Jonny approved the proposed six-item build. See docs/V0.11-SCOPE.md and docs/V0.11-VERIFICATION.md. Menu reorder, global conservative proposal updates/status, scoped typography, Pressure Conversion naming and named UI layouts are implemented with prior performance/appearance corrections. Gear tables render independently of logs on entry/restore. All 14 UAT-v0.11.html cases remain pending; original gear and appearance findings require user retest. Historical v0.10 is 19 prior passes / 2 reopened. Deferred features remain deferred.
+
+Playback/table tracing added at Jonny’s request during v0.11: global controls, original-row candidate markers across native/custom views and synchronized detached windows. All 14 UAT scenarios pending; see V0.11-SCOPE/VERIFICATION.
