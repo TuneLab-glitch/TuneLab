@@ -1,3 +1,12 @@
+# TuneLab v0.9.1 — UAT corrections
+
+- Driving/capture instructions lead each logging plan; After loading the file is a numbered workflow. Channel details are optional and collapsed.
+- Intended purpose is selected before import, saved per log, editable in Log library and linked to Review plan. Purpose never confirms a calibration match or silently assigns an evidence role.
+- Run synthetic AFM example explicitly confirms the invented example roles and analyzes the matching example curve. Real-log gates remain manual.
+- Initial v0.9 UAT results are retained: 12 Pass / 2 Fail. Retest V9-AFM-DEMO and V9-STRATEGY, including purpose import/edit/backup. Full acceptance remains pending.
+
+---
+
 # TuneLab v0.9 — reflow, practice scenarios and logging strategy
 
 - Sidebar scrolls at native browser zoom; controls wrap in short/narrow windows. Main menu preference is remembered and keyboard/help focus is clearer.

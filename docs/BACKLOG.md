@@ -63,3 +63,7 @@ Forum access previously returned 403; contents not reviewed in that attempt. Do 
 ## v0.9 build — 2026-10-02
 
 Jonny approved v0.9 and added unified synthetic scenarios plus logging strategy. See V0.9-SCOPE.md and V0.9-VERIFICATION.md. Sidebar native-zoom/reflow fix, navigation/focus/reset improvements, isolated practice scenarios and four purpose-specific logging plans are built. Prior sign-offs are retained; v0.9 UAT remains pending in UAT-v0.9.html (14 cases). Deferred alignment, advanced viewer, AI, attachments, installer and platform semantics remain deferred.
+
+## v0.9.1 UAT correction
+
+Initial v0.9 UAT: 12 Pass / 2 Fail. See V0.9-UAT-FINDINGS.md/json. Corrected AFM practice action, driving-first numbered review plans and persistent intended-purpose import metadata are built. V9-AFM-DEMO and V9-STRATEGY require retest; no full v0.9 sign-off or merge is authorized yet.

@@ -1,8 +1,8 @@
-# TuneLab v0.9
+# TuneLab v0.9.1
 
 Extract the ZIP completely and double-click **Start-TuneLab.bat**. The app opens **portable/index.html** in your browser and works offline. No installer, .NET SDK, AI model or API key is required.
 
-Start v0.9 UAT by opening **UAT-v0.9.html** (14 cases). Keep **UAT-v0.8.html** for the 16 signed-off review scenarios. Keep **UAT-v0.7.html** for the signed-off workspace scenarios. Keep **UAT-v0.6.html** for signed-off v0.6 scenarios. Keep **UAT-Guide.html** for the 34 baseline regression cases. Both use existing historical CSVs and tables, support printing and download result JSON. No new drive or vehicle connection is needed. See **RELEASE-NOTES.md** for implemented scope and limitations.
+Start v0.9.1 UAT by opening **UAT-v0.9.html** (14 cases). Keep **UAT-v0.8.html** for the 16 signed-off review scenarios. Keep **UAT-v0.7.html** for the signed-off workspace scenarios. Keep **UAT-v0.6.html** for signed-off v0.6 scenarios. Keep **UAT-Guide.html** for the 34 baseline regression cases. Both use existing historical CSVs and tables, support printing and download result JSON. No new drive or vehicle connection is needed. See **RELEASE-NOTES.md** for implemented scope and limitations.
 
 Use **Synthetic demos** in the header to choose one of five isolated practice scenarios; your original workspace stays open and practice does not write to its browser library. Use **Logging strategy** for purpose-specific capture instructions, channels and applicability. See **docs/V0.9-SCOPE.md** and **docs/V0.9-VERIFICATION.md** for the current release.
 
