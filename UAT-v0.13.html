@@ -1,0 +1,66 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>TuneLab v0.13 UAT</title><style>body{font:16px/1.6 Segoe UI,sans-serif;max-width:1000px;margin:30px auto;padding:20px;color:#233144}article{border:1px solid #cdd6df;border-radius:8px;margin:20px 0;padding:18px}textarea{width:95%;min-height:80px}label{margin-right:15px}button{padding:12px}input{padding:8px}h1{color:#c82f40}@media print{button{display:none}article{break-inside:avoid}}</style><body><h1>TuneLab v0.13 acceptance</h1><p>Save your project JSON first. Extract TuneLab-v0.13.zip into a separate folder and launch Start-TuneLab.bat. All 12 scenarios start Not tested; prior release signoffs are retained separately. Use historical logs and disposable copies of calibrations. Keep your previous project JSON and original logs. No flashing or hardware connection is needed.</p><label>Tester <input id="tester"></label><label>Browser/version <input id="browser"></label><div id="cases"></div><button id="download">Download result JSON</button><button onclick="print()">Print</button><p>Critical: incorrect physical values, lost data or protected values changed. Major: blocked workflow. Minor: presentation/explanation issue. Record expected and actual values, steps, units, file/revision and screenshots. KTuner CSV channel compatibility was checked in earlier releases; full-precision screenshot-table import verification remains pending. v0.12 retains 11 Pass / 1 Fail; this guide does not record v0.13 acceptance. Use the included SYNTHETIC command fixture only as instructed; confirm real log units separately.</p><script>
+const cases=[
+  [
+    "V13-COMMAND",
+    "Visible Command Unit Setup",
+    "Setup: use the included fixtures/V13-SYNTHETIC-command-bar.csv. Its BP CMD values deliberately have no unit label; their known synthetic units are absolute bar. 1. Launch the extracted app and click Import Logs Once below the global controls; choose that fixture. 2. Navigate left menu \u2192 Boost Tables \u2192 TC Boost Command. 3. In global Log Playback choose the fixture in Active Log, enable Table Tracing and click First. 4. With Command Pressure Units set to Use Log/Header Units, expect a visible missing-units message and no Command marker. 5. Choose Absolute bar. Expect blue candidate cells in the original Command table at 3000 RPM. 6. Click Next: expect row 2, 3500 RPM and moved markers. Source/proposed values must not change."
+  ],
+  [
+    "V13-REALCOMMAND",
+    "Previously Failing Command Recording",
+    "Setup: open a disposable copy of your saved project (3); verify BP CMD pressure units in the exporting software first. 1. Left menu \u2192 Boost Tables \u2192 TC Boost Command. 2. Global Log Playback \u2192 Active Log: select the recording that failed V12-COMMAND. 3. Choose its verified Command Pressure Units beside playback; keep Table Tracing checked. 4. Click Play and inspect original/proposed markers on an in-axis RPM/command row. 5. Navigate away and return: markers must continue without restarting playback. 6. Save Project, reopen that JSON and select the same recording: its unit choice must persist. Unmapped or out-of-range rows must show a reason and clear markers. Record the chosen units and original row tested. This is the required V12-COMMAND retest."
+  ],
+  [
+    "V13-CUSTOMTRACE",
+    "Command Tracing in My Workspace",
+    "Setup: complete V13-COMMAND. 1. Left menu \u2192 My Workspace. 2. Right-click the empty workspace and insert Boost Command original and proposed views using the context menu. If those views already exist, use them. 3. Global Log Playback \u2192 Active Log: select the synthetic fixture; set Command Pressure Units to Absolute bar. 4. Click First, then Next. Expect both Command views to follow the same original row as Boost Tables. 5. Uncheck Table Tracing: blue markers disappear; calibration values stay unchanged."
+  ],
+  [
+    "V13-DETACHED",
+    "Playback and Selection in a Separate Window",
+    "Setup: import two different logs and complete Command unit setup. 1. Left menu \u2192 Boost Tables \u2192 TC Boost Command. 2. Workspace toolbar \u2192 Open in New Window. 3. Leave the child viewing and use parent Log Playback \u2192 Play/Next: child markers follow the same row. 4. Child \u2192 Edit in This Window: only the child can edit/play. 5. Child Log Playback \u2192 Active Log: choose the second recording. Expect paused playback at its first original row, synchronized active recording in the parent and unchanged calibration values/AFM roles. Browser popup blocking must give an explicit message."
+  ],
+  [
+    "V13-ACTIVELOG",
+    "Switch Recordings Beside Playback",
+    "Setup: import the synthetic fixture and a second recording with different RPM readings. 1. Left menu \u2192 Log Review. 2. Global Log Playback \u2192 Active Log: select the fixture; click Play. 3. Use the same dropdown to choose the second recording. Expect Play (paused), first original row, updated filename/RPM and cleared old range/visit context. 4. Navigate AFM Scaler: its Baseline and Validation selectors must retain their previous assignments. 5. Navigate Boost By Gear and Boost Tables: source/proposed calibration values stay unchanged. 6. Switch back using the global dropdown from either tab."
+  ],
+  [
+    "V13-GRIDFULL",
+    "Two Full Panels Side by Side",
+    "Setup: browser desktop window; Boost Tables has at least two movable panels. 1. Left menu \u2192 Boost Tables. 2. Browser menu \u2192 Zoom: begin at 100%, then reduce to 75% or 50% until the panel grid has enough room; the threshold is 1800 CSS pixels of grid width. 3. On the original and proposed table panels use Full Width if currently half-size. 4. Drag Move Panel on one to columns 1\u20132 and the other to columns 3\u20134; a destination outline should appear. Expect two full panels on the same row, with separate table scrolling. 5. Save Project, reopen JSON: positions must return when width permits. Anchored input controls do not move."
+  ],
+  [
+    "V13-GRIDHALF",
+    "Four Half Panels and Keyboard Placement",
+    "Setup: complete V13-GRIDFULL at reduced browser zoom. 1. On four Boost Tables panels click Half Width. 2. Drag their Move Panel handles to columns 1,2,3,4. Expect four half-size panels across one row. 3. Focus a Move Panel handle and press Alt+Right or use Snap Right: move to the next valid track; Alt+Left/Snap Left moves back. 4. Restore browser zoom to 100%, then 150%: panels reflow without page overflow and remain reachable. 5. Zoom out again: saved wide columns return. 6. Workspace toolbar \u2192 Reset Workspace Panels: default placement/size returns for that workspace only."
+  ],
+  [
+    "V13-ROWCOLORS",
+    "Original Data Row Palette and Ranges",
+    "Setup: select a log with varying numeric readings. 1. Left menu \u2192 Log Review \u2192 Selected Channels · Synchronized Inspection. 2. Scroll to Original Data Row below playback inspection. Keep Color Original Data Row checked. 3. Hover a numeric reading: its tooltip shows the whole-recording min/max for that channel. 4. Left menu \u2192 Settings \u2192 Table Shading and Tracking \u2192 Palette: choose Teal Blue \u2192 Green \u2192 Yellow \u2192 Orange \u2192 Red. 5. Return to Log Review; click First/Next in global playback. Readings should use that palette with independent channel ranges, retaining original values and labels. Constant channels use a midpoint; unavailable values show Unavailable without a data color."
+  ],
+  [
+    "V13-ROWTOGGLE",
+    "Disable and Restore Row Coloring",
+    "Setup: complete V13-ROWCOLORS. 1. Left menu \u2192 Log Review \u2192 Original Data Row. 2. Uncheck Color Original Data Row. Expect numeric readings unchanged with no data-gradient backgrounds. 3. Save Project, reopen that JSON, return to Log Review: the checkbox must stay off. 4. Check it again: coloring returns with the selected table palette. Changing chart zoom must not silently change the whole-recording color ranges."
+  ],
+  [
+    "V13-CLEANUP",
+    "Remove Ineffective Advanced Options",
+    "1. Left menu \u2192 Change Review: expect no orphan Show/Hide Advanced Options button. 2. Left menu \u2192 Settings \u2192 Review Thresholds: thresholds remain accessible. 3. Settings \u2192 Workspace Defaults \u2192 Experience: choose Guided or Standard; navigate Log Review/AFM Scaler and use a remaining reveal control. Its label identifies the section and visible content changes. 4. Choose Advanced experience: redundant reveal controls are hidden because advanced sections are already exposed. Review thresholds and proposals must not change just from revealing controls."
+  ],
+  [
+    "V13-APPEARANCE",
+    "Vehicle Theme without Duplicate Preset",
+    "1. Left menu \u2192 Settings \u2192 Appearance Inheritance \u2192 Appearance. 2. Open Appearance dropdown: Si / Urban Gray is absent as a selectable preset. 3. Choose Vehicle Color Theme; Model \u2192 Honda Civic Si, Year \u2192 2026, Color \u2192 Urban Gray Pearl. Expect that vehicle theme to apply. 4. Save Project, reopen JSON: selected vehicle/year/color persist. Old saved Si choices should migrate to the vehicle selector without changing calibration data."
+  ],
+  [
+    "V13-REGRESSION",
+    "Preserve Accepted Workflows and Backups",
+    "Setup: a disposable copy of your existing project with manual proposals/protected cells. 1. Left menu \u2192 Boost By Gear before selecting a log: saved six-gear values/units appear. 2. Global toolbar \u2192 Update All Proposals: manual refinements/protected cells remain protected; blocked tables explain why. 3. Left menu \u2192 Settings: table font/theme changes apply to chosen scope. 4. Global toolbar \u2192 Reset Menu Order: starts Log Review, AFM Scaler, Boost By Gear, Boost Tables. 5. Save Project, reopen it: calibration values, menu, layouts, row-color choice and per-recording trace units persist. Invalid backup/preferences must be rejected without replacing the current project. Previous v0.12 passes remain historical; record this regression separately."
+  ]
+];
+document.getElementById('cases').innerHTML=cases.map(([id,title,steps])=>`<article data-case="${id}"><h2>${id} · ${title}</h2><p>${steps}</p>${['Pass','Fail','Not tested'].map(v=>`<label><input type="radio" name="${id}" value="${v}" ${v==='Not tested'?'checked':''}>${v}</label>`).join('')}<textarea aria-label="${id} observations" placeholder="Steps, expected/actual values, units, severity and screenshot references"></textarea></article>`).join('');
+document.getElementById('download').onclick=()=>{const data={release:'TuneLab v0.13',date:new Date().toISOString(),tester:document.getElementById('tester').value,browser:document.getElementById('browser').value,cases:[...document.querySelectorAll('[data-case]')].map(n=>({id:n.dataset.case,result:n.querySelector('input:checked').value,notes:n.querySelector('textarea').value}))};const a=document.createElement('a'),url=URL.createObjectURL(new Blob([JSON.stringify(data,null,2)],{type:'application/json'}));a.href=url;a.download='TuneLab-v0.13-UAT-results.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);};
+</script></body></html>

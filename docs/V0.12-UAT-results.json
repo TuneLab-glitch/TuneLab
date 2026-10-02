@@ -1,0 +1,68 @@
+{
+  "release": "TuneLab v0.12",
+  "date": "2026-10-02T13:43:00.197Z",
+  "tester": "Jon",
+  "browser": "Edge",
+  "cases": [
+    {
+      "id": "V12-TABLES",
+      "result": "Pass",
+      "notes": ""
+    },
+    {
+      "id": "V12-GEARS",
+      "result": "Pass",
+      "notes": ""
+    },
+    {
+      "id": "V12-PLAY",
+      "result": "Pass",
+      "notes": ""
+    },
+    {
+      "id": "V12-COMMAND",
+      "result": "Fail",
+      "notes": ""
+    },
+    {
+      "id": "V12-VISITS",
+      "result": "Pass",
+      "notes": "I love the original data row in the Log Review tab. Can we color the results based on the min max value and link it back to our gradient themes for the tables?"
+    },
+    {
+      "id": "V12-TIME",
+      "result": "Pass",
+      "notes": ""
+    },
+    {
+      "id": "V12-LEGEND",
+      "result": "Pass",
+      "notes": ""
+    },
+    {
+      "id": "V12-POSITION",
+      "result": "Pass",
+      "notes": ""
+    },
+    {
+      "id": "V12-WHY",
+      "result": "Pass",
+      "notes": ""
+    },
+    {
+      "id": "V12-MENU",
+      "result": "Pass",
+      "notes": ""
+    },
+    {
+      "id": "V12-KTUNER",
+      "result": "Pass",
+      "notes": ""
+    },
+    {
+      "id": "V12-REGRESSION",
+      "result": "Pass",
+      "notes": ""
+    }
+  ]
+}
