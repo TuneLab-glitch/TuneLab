@@ -316,3 +316,13 @@ Whole-app audit completed; see docs/V0.16-AUDIT.md for ranked findings, nine rec
 ## v0.16 Workflow Cleanup Build — 2026-10-02
 
 Approved whole-app audit scope is implemented; see docs/V0.16-SCOPE.md and docs/V0.16-VERIFICATION.md. Compact player, reconnect, clear proposal acknowledgements, task hierarchy, optional conversion tool, tutorial/instruction routing, table actions, grouped settings and indexed hover are included. v0.15 retains all thirteen UAT passes; v0.16 has thirteen pending precise-navigation cases. Deferred work remains deferred.
+
+
+## v0.16 Startup Responsiveness — 2026-10-02
+
+Jonny reports initial sluggishness followed by good responsiveness. Recorded in docs/V0.16-UAT-FINDINGS.md; prioritize startup restore profiling and visible loading feedback. Synthetic 30,000-row restore probe passed at about 1.50 seconds, with one parse. User-session cause is not established. Delivered app/archive unchanged; no blanket UAT signoff inferred.
+
+
+## v0.16.1 Selected Workbook Export — 2026-10-02
+
+User authorized selected-table XLSX export with per-table sheets, Select All and contextual recommendations. Implemented as a local add-on build with optional indexes/notes and freshness gates; see docs/V0.16.1-WORKBOOK-EXPORT.md. No signoff inferred; startup observation remains open.
