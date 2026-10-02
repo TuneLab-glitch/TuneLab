@@ -1,0 +1,73 @@
+{
+  "release": "TuneLab v0.15",
+  "date": "2026-10-02T17:44:00.516Z",
+  "tester": "Jon",
+  "browser": "Edge",
+  "cases": [
+    {
+      "id": "V15-COLLAPSE",
+      "result": "Pass",
+      "notes": ""
+    },
+    {
+      "id": "V15-POPOUT",
+      "result": "Pass",
+      "notes": "This is almost perfect. after transitioning tabs. It will say  \n\n'Disconnected. Reopen Log Playback from your main TuneLab window.' if this must be performed manually, provide a button that will do it, so i can reconnect without having to navigate away from the pop-out window"
+    },
+    {
+      "id": "V15-DISCONNECT",
+      "result": "Not tested",
+      "notes": "This is almost perfect. after transitioning tabs. It will say  \n\n'Disconnected. Reopen Log Playback from your main TuneLab window.' if this must be performed manually, provide a button that will do it, so i can reconnect without having to navigate away from the pop-out window"
+    },
+    {
+      "id": "V15-DRAG",
+      "result": "Pass",
+      "notes": "brilliant!"
+    },
+    {
+      "id": "V15-CONTEXT",
+      "result": "Not tested",
+      "notes": ""
+    },
+    {
+      "id": "V15-WHEEL",
+      "result": "Pass",
+      "notes": ""
+    },
+    {
+      "id": "V15-CUSTOMZOOM",
+      "result": "Pass",
+      "notes": ""
+    },
+    {
+      "id": "V15-GROUPS",
+      "result": "Pass",
+      "notes": ""
+    },
+    {
+      "id": "V15-TUTORIAL",
+      "result": "Pass",
+      "notes": ""
+    },
+    {
+      "id": "V15-BRANCHES",
+      "result": "Pass",
+      "notes": ""
+    },
+    {
+      "id": "V15-TRANSFER",
+      "result": "Pass",
+      "notes": ""
+    },
+    {
+      "id": "V15-END",
+      "result": "Pass",
+      "notes": ""
+    },
+    {
+      "id": "V15-REGRESSION",
+      "result": "Pass",
+      "notes": ""
+    }
+  ]
+}

@@ -252,3 +252,67 @@ Recorded for the next revision; current v0.13 code and eleven Pass / one messagi
 ## v0.14 Approved Build — 2026-10-02
 
 Jonny approved navigation, playback and review improvements plus a compact/resizable global log box. See docs/V0.14-SCOPE.md. Build verification and all eleven precise-navigation UAT cases are tracked separately; no user acceptance is inferred. Prior v0.13 is eleven passes / one messaging presentation revision. Longer-term features remain deferred.
+
+
+## Next Revision: Collapsible Global Playback and Playback-Only Popout — 2026-10-02
+
+Jonny requests entirely collapsing the persistent global log player, with an obvious Expand Log Playback control. Record for the next revision; v0.14 application/archives and pending UAT remain unchanged.
+
+- Collapse the whole global playback region, including slider, tracing controls, feedback and associated drop area; leave a compact Expand Log Playback control. Other global actions such as Search App and Update All Proposals remain available. Remember the display preference and restore the chosen panel height when expanded. Collapsing must not pause playback or stop table tracing.
+- Add Pop Out Log Playback for this global player only: a small dedicated controls window with Active Log, Play/Pause, steps, speed, position and essential trace/setup status. No calibration workspace or table editor is included.
+- The popout should control the main application's single playback clock/cursor; main and existing table windows continue updating charts/traces. Do not duplicate playback timers or transfer calibration editing ownership merely to control playback. Existing detached workspace playback is lease-bound; a dedicated validated playback-command channel is required rather than assuming current popouts already satisfy this design.
+- Returning/docking or closing the player restores accessible main controls at the same recording/position. Main-window closure/reload/disconnection gives explicit disconnected feedback. Popup blocking must offer a clear fallback; repeated Pop Out should focus the existing player. Playback commands must validate project/session/window identities and respect an ongoing calibration editing handoff.
+- Future UAT must give exact routes for Collapse/Expand and Pop Out Log Playback, test continued tracing while collapsed, popout scrubbing/active-log selection/pause across tabs, one playback clock, saved height/preference, blocked popups, repeated opening, window closure and disconnected state. Scope is global playback only.
+
+Planning notes only: no next-version build or v0.14 user signoff is inferred.
+
+
+## Next Revision: Chart Drag Zoom, Context Menu and Table Wheel Zoom — 2026-10-02
+
+Jonny requests these as next-version observations. Delivered v0.14 application/archives and pending UAT remain unchanged.
+
+- Log Review synchronized time charts: click-drag to highlight a time interval, then zoom all synchronized charts to that interval. Update the existing Chart Zoom Start / Chart Zoom End seconds fields to match the selected interval. Preserve original measurements, active log, tuning eligibility and bookmarks. A plain click continues point inspection; a minimum drag threshold distinguishes clicks from range zoom. Show a live range highlight; support either drag direction and cancel/Escape. Existing Shift-drag evidence selection remains distinct on charts that support it. Audit actual/command time-chart gestures as well; RPM-axis charts must not mislabel RPM as seconds.
+- Add a chart-local right-click context menu: Show Whole Recording (clear chart zoom), Zoom to Selected Range when one exists, Center View on Playback Position, and Copy Point Values where clipboard is available. Display useful disabled reasons; provide accessible equivalent controls/keyboard access. Resetting chart zoom must not silently clear an explicit bookmarked/evidence restriction; explain any remaining range restriction. Use rendered SVG transforms at browser zoom and resized/scrolling panels.
+- Table mouse wheel up zooms in and down zooms out when the pointer is within an eligible table. Anchor zoom on the selected cell/group so it stays at the same visible position where practical; use the current visible selection's center for multiple selected cells. Without a selection, use the cell under the pointer, then viewport center as fallback. Keep browser zoom, calibration values, selection, playback and tracing unchanged. Reuse existing table zoom bounds/preferences and persistence; handle fractional trackpad deltas smoothly and prevent page scroll only for wheel events actually consumed by table zoom. Ctrl/Meta wheel retains native browser zoom. Verify native/custom/detached table views and offer existing zoom controls as the keyboard/touch route. Preserve trace/selection visibility and avoid accidental edits.
+- Future UAT must name Log Review > Selected Channels / Synchronized Inspection and Chart Zoom Start/End fields, demonstrate both-direction highlight/zoom and precise seconds, point click versus drag, cancellation, Show Whole Recording and retained bookmark restriction; check resized/zoomed charts. Table cases must name selected cells, wheel directions, anchored visibility, min/max zoom, trackpad, native browser zoom, custom/detached views, saved/reopened table zoom and unchanged numeric values.
+
+Planning only; context-menu actions above are recommended scope, subject to next-release review. No build or user signoff inferred.
+
+
+## v0.14 UAT Acceptance — 2026-10-02
+
+Jon submitted all eleven scenarios Pass in Edge at 2026-10-02T17:06:33.612Z. See docs/V0.14-UAT-SIGNOFF.md and docs/V0.14-UAT-results.json (paths relative to repo root). Earlier pending status is superseded; delivered app/archive unchanged. V14-MESSAGES closes the previously reported messaging presentation finding through v0.14 retest. V14-APPROVALS passes with a usability observation: excessive recorded edit operations make individual review impractical; investigate and group meaningful review checkpoints without erasing audit history or silently approving hidden edits. Suspected testing accumulation is unverified. Next-version player-collapse/popout and chart/table zoom notes remain planning only.
+
+
+## v0.15 Approved Build — 2026-10-02
+
+Jonny approved player collapse/popout, chart drag/context actions, anchored table wheel zoom and review checkpoints; added end-to-end exported-log tutorial and cautious destination paste-back verification during the build. See docs/V0.15-SCOPE.md. v0.14 is accepted (eleven Pass). All thirteen v0.15 exact-navigation UAT cases remain pending. No user acceptance or hardware/ECU action is inferred. Deferred work remains deferred.
+
+
+## v0.15 UAT Follow-up — 2026-10-02
+
+Jon submitted eleven Pass / zero Fail / two Not tested in Edge at 2026-10-02T17:44:00.516Z. V15-DISCONNECT and V15-CONTEXT remain untested. V15-POPOUT is Pass with a reported disconnect after tab transitions and a request for an in-popout Reconnect button. Preserve exact statuses and investigate navigation heartbeat continuity; do not infer full sign-off or silently treat the observation as resolved. See docs/V0.15-UAT-FINDINGS.md and docs/V0.15-UAT-results.json. Application/archives unchanged in this documentation update.
+
+
+## v0.15 Follow-up: Ambiguous Current-Revision Review Control — 2026-10-02
+
+Jonny's screenshot identifies Change Review > Review This Revision / Mark this revision reviewed, not the grouped Edit History checkpoint list. It already displays Reviewed with a timestamp, but the active button remains, suggesting more review is required or an endless queue. Preserve the distinction from the earlier excessive-operation finding.
+
+Code inspection: review.js keeps one reviewAcknowledgement for a signature of current MPR/Command/AFM/gear state and evidence configuration. The signature includes active recording, profiles/calibration identifiers, analysis filters/event, evidence range/bin, review rules and calibration confirmations. It does not directly include raw playback cursor or time. The click replaces one acknowledgement/timestamp; it does not create another journal entry. Scrubbing alone is not established as an invalidation cause from this screenshot.
+
+Follow-up: label the scope clearly (Review Current Proposals / Current Proposal Review), show an unambiguous completed state after review, disable or replace the redundant action until a relevant change requires review, and explain exactly what changed when it becomes pending. Keep calibration changes versus evidence-context changes understandable; do not silently loosen stale-evidence/calibration gates. Align with checkpoint review and explain the different scopes rather than duplicating indistinguishable approval controls. Test that ordinary playback/scrubbing does not create review operations or invalidate acknowledgement, and that material calibration/mapping/evidence edits still prompt appropriately. No application change in this documentation update.
+
+
+## v0.15 UAT Acceptance — 2026-10-02
+
+Jonny explicitly reports all UAT passed. All thirteen cases are accepted; V15-DISCONNECT and V15-CONTEXT now pass. See docs/V0.15-UAT-SIGNOFF.md/json. Preserve original submitted eleven Pass / two Not tested as historical evidence. Prior popout reconnect/navigation-continuity and Current Proposal Review clarity observations remain follow-up improvements; no code fixes are inferred from sign-off. Application/archive unchanged; packaging/publication completion is a separate remaining delivery task.
+
+
+## v0.16 Whole-App Audit — 2026-10-02
+
+Whole-app audit completed; see docs/V0.16-AUDIT.md for ranked findings, nine recommended workstreams, measurements, limitations and precise UAT routes. User authorized the audit following the next-build discussion. Application code unchanged; v0.16 implementation has not started. v0.15 retains all thirteen UAT passes. Keep deferred backlog separate.
+
+
+## v0.16 Workflow Cleanup Build — 2026-10-02
+
+Approved whole-app audit scope is implemented; see docs/V0.16-SCOPE.md and docs/V0.16-VERIFICATION.md. Compact player, reconnect, clear proposal acknowledgements, task hierarchy, optional conversion tool, tutorial/instruction routing, table actions, grouped settings and indexed hover are included. v0.15 retains all thirteen UAT passes; v0.16 has thirteen pending precise-navigation cases. Deferred work remains deferred.

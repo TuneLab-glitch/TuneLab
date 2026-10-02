@@ -1,0 +1,71 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>TuneLab v0.15 UAT</title><style>body{font:16px/1.6 Segoe UI,sans-serif;max-width:1000px;margin:30px auto;padding:20px;color:#233144}article{border:1px solid #cdd6df;border-radius:8px;margin:20px 0;padding:18px}textarea{width:95%;min-height:80px}label{margin-right:15px}button{padding:12px}input{padding:8px}h1{color:#c82f40}@media print{button{display:none}article{break-inside:avoid}}</style><body><h1>TuneLab v0.15 acceptance</h1><p>Save your project JSON first. Extract TuneLab-v0.15.zip into a separate folder and launch Start-TuneLab.bat. All 13 scenarios start Not tested; prior release signoffs are retained separately. Use historical logs and disposable copies of calibrations. Keep your previous project JSON and original logs. No flashing or hardware connection is needed.</p><label>Tester <input id="tester"></label><label>Browser/version <input id="browser"></label><div id="cases"></div><button id="download">Download result JSON</button><button onclick="print()">Print</button><p>Critical: incorrect physical values, lost data or protected values changed. Major: blocked workflow. Minor: presentation/explanation issue. Record expected and actual values, steps, units, file/revision and screenshots. KTuner CSV channel compatibility was checked in earlier releases; full-precision screenshot-table import verification remains pending. v0.14 is accepted with all eleven scenarios Pass; this guide does not record v0.15 acceptance. Use the included SYNTHETIC command fixture only as instructed; confirm real log units separately.</p><script>
+const cases=[
+  [
+    "V15-COLLAPSE",
+    "Hide the Whole Global Player",
+    "Setup: select a recording with timestamp units and candidate table traces. 1. Global controls → Collapse Log Playback. Expect player controls, position, messages, resize handle and associated drop area hidden; Expand Log Playback remains. Search App / Update All Proposals stay available. 2. Expand, click Play, then collapse again: table markers continue moving. 3. Expand: same recording, current row and chosen height return. 4. Save Project, reopen JSON: collapse preference/height persist. Test at 150% browser zoom."
+  ],
+  [
+    "V15-POPOUT",
+    "Global Playback-Only Window",
+    "Setup: main window owns editing; import two recordings. 1. Global controls → Pop Out Log Playback. Expect only playback/log/unit/status controls in a new window; main player collapses. 2. Popout → Play/Pause, Next/Previous, Playback Position and Speed. Main chart/candidate cells follow the same row and timing. 3. Popout → Active Log: select second recording; expect pause/reset and unchanged calibration/AFM roles. 4. Pop Out again in main: focus existing player. 5. Popout → Return Player to Main Window: same cursor, main controls expanded. 6. Repeat then close the popout normally: main controls return. If browser blocks opening, expect a clear fallback message."
+  ],
+  [
+    "V15-DISCONNECT",
+    "Popout Handoff and Connection Loss",
+    "Setup: open global popout plus Boost Tables → Open in New Window. 1. Table child → Edit in This Window. Popout playback controls become unavailable with editing-handoff explanation; it must not take calibration editing ownership. 2. Main → Edit in This Window: popout controls resume. 3. Reload main: old player reports Disconnected and disables controls. Close and reopen player from main. 4. Close main: player disables or browser closes it; no independent playback clock continues."
+  ],
+  [
+    "V15-DRAG",
+    "Highlight and Zoom a Chart Time Range",
+    "Setup: Log Review → Selected Channels / Synchronized Inspection; choose timestamp channel/units and numeric channels. 1. Drag from an earlier to later time inside an RPM plot. See highlight while dragging; release zooms every synchronized raw plot to that range. Chart Zoom Start/End show those seconds. 2. Drag right-to-left: start remains lower than end. 3. Plain click: inspect one point without making a range. 4. Begin drag then Escape: previous range remains. 5. Repeat after resizing the panel and at 75/150% browser zoom. 6. Log Review actual/command chart with Time x-axis: drag zoom updates seconds fields; Shift-drag still selects evidence. RPM x-axis must not produce a seconds zoom."
+  ],
+  [
+    "V15-CONTEXT",
+    "Chart Actions and Whole-Recording Reset",
+    "Setup: complete V15-DRAG. 1. Right-click a synchronized raw chart. Choose Show Whole Recording: Chart Zoom Start/End clear and available recording returns. 2. Use Chart Actions button as keyboard alternative. Choose Zoom to Selected Range, then Center on Playback; observe selected interval/current time. 3. Copy Point Values: pasted text contains original row and raw channel values. 4. Open an existing evidence bookmark; zoom then Show Whole Recording from the new chart menu. Explicit bookmarked row restriction remains with explanation. Use the existing Show Whole Recording button above plots to leave that bookmark."
+  ],
+  [
+    "V15-WHEEL",
+    "Table Wheel Zoom Anchored on Selection",
+    "Setup: Boost Tables with a fresh proposal. 1. Select an interior proposed-table cell or cell group. Wheel up inside the table: zoom increases; selected region stays in view. Wheel down: zoom decreases. 2. Check Table Zoom selector tracks existing 75–200% steps. At bounds, normal page/scroll behavior is available. 3. Ctrl+wheel uses native browser zoom rather than changing table zoom. 4. Clear selection: pointer cell is zoom anchor. Repeat on original table, AFM proposed curve and Boost By Gear. 5. Save/reopen: zoom persists. Table values, protected cells, playback and selection remain unchanged."
+  ],
+  [
+    "V15-CUSTOMZOOM",
+    "Custom and Detached Table Zoom",
+    "Setup: My Workspace contains an inserted live table. 1. Wheel up/down while pointing at a table cell; custom zoom changes without altering source values or card placement. 2. Save/reopen: zoom returns for that card. 3. Boost Tables → Open in New Window: repeat wheel zoom around an existing selected/pointer cell. 4. Test small trackpad wheel deltas if available; movement accumulates without racing immediately through every zoom level. Browser zoom remains independent."
+  ],
+  [
+    "V15-GROUPS",
+    "Review Checkpoints and Complete Audit History",
+    "Setup: disposable project with multiple real edits. 1. Make two nearby edits in the same table. Edit History opens in Review Checkpoints mode: one checkpoint with two operations. 2. Inspect Recorded Changes and Go to Change: saved before/after remains read-only. 3. Approve This Checkpoint: only those exact operations approve. 4. Edit the same table again: checkpoint becomes partially approved/Needs Review. 5. Edit History → Start New Review Checkpoint; make another edit: new checkpoint. 6. Review Filter → Needs Review hides fully approved checkpoints without approving anything. 7. Show Full Edit History: every operation and existing selective undo controls remain. 8. Change Review → Approve All Review Checkpoints; save/reopen retains exact approvals and boundaries."
+  ],
+  [
+    "V15-TUTORIAL",
+    "Goal-Based Tutorial and Prerequisites",
+    "Setup: already-exported historical CSV/TXT, or an isolated Synthetic Demos practice window. 1. Top controls → Guided Tutorial. Choose AFM / Airflow Calibration and exporter. Step 1 assumes exported data; it does not ask you to extract from hardware. 2. Acknowledge the step, Next: Import and Select Your Recording. Without a selected recording, Next remains blocked. 3. Open Log Library, import/select log; reopen Guided Tutorial to resume. 4. Channel/unit check stays blocked until required mapping/units are reviewed. 5. View Relevant Logging Instructions opens Logging Strategy for selected goal. 6. AFM setup requires actual matching Baseline and explicit calibration confirmation; Analyze must be fresh before evidence completion. No confirmations/actions execute merely by advancing."
+  ],
+  [
+    "V15-BRANCHES",
+    "Boost, Startup and Validation Paths",
+    "1. Guided Tutorial → Boost Tracking / Tables → Review the Log First: inspect/log findings path. Switch Next Action to Create a Table Proposal: deliberate Boost Tables proposal step appears. 2. Choose Startup / Idle Diagnosis: guide uses raw RPM/time inspection, sensor readiness and bookmarks; no startup fueling proposal. 3. Choose Post-Change Validation, then Validate an AFM Change or Validate a Boost Change: retain independent baseline/new logs and known applied revision; comparable conditions and required setup remain explicit. 4. Change active recording: old acknowledgements reset. 5. Save/reopen JSON: goal/step remains; Close and Continue in App followed by Guided Tutorial resumes."
+  ],
+  [
+    "V15-TRANSFER",
+    "Destination Paste-Back Comparison",
+    "Setup: disposable calibration copy in destination program and a fresh reviewed TuneLab proposal; no vehicle connection needed. 1. Change Review → Transfer and Verify a Table. Read backup, exact table/units/axes/dimensions/origin checklist. 2. Table to Verify: choose Current Boost Table, Proposed AFM Curve or Displayed Boost By Gear Table; Capture Intended Export. 3. Paste using destination program supported method into a disposable copy; inspect first/last/interior cells and protected/unchanged regions. Copy resulting destination table back into Copied Destination Table. 4. Compare Pasted Table: full export match reports matching numeric entries/axes. Change one pasted numeric value: mismatch with coordinate; wrong dimensions or axes also fails. 5. For a body-only copy, check that option: matching body explicitly says axes/origin/units not verified. 6. Change TuneLab proposal or export units, then compare old reference: fresh capture required. No comparison changes calibration or applies a tune."
+  ],
+  [
+    "V15-END",
+    "Tutorial Ending and Follow-Up Validation",
+    "1. Guided Tutorial → proceed through reviewed steps, including Transfer Back Carefully and Verify. Confirm it explains wrong-cell/transposed/header/units paste risk, backup/undo and caution. 2. For a log-only/startup path, acknowledge that no calibration transfer is required. 3. Final Save and Plan the Follow-Up instructs Save Project, retain original export, externally reviewed application and a separate matched validation recording with Logging Strategy. 4. Finish Tutorial does not mark a tune safe, save a destination program or connect/flash hardware."
+  ],
+  [
+    "V15-REGRESSION",
+    "v0.15 Retention and Upgrade",
+    "1. Open disposable accepted v0.15 project. Retain raw logs, manual/protected proposals, six-gear tables without active log, custom/default menu and appearance/layout settings. 2. Playback trace across navigation and detached-table windows still works. 3. Search App and CSV/TXT drop import still navigate/validate without unintended tuning actions. 4. Save/reopen v0.15 JSON preserves accepted state plus new preferences/checkpoint/tutorial data. 5. Verify isolated Synthetic Demos do not write original browser library or preferences."
+  ]
+];
+document.getElementById('cases').innerHTML=cases.map(([id,title,steps])=>`<article data-case="${id}"><h2>${id} · ${title}</h2><p>${steps}</p>${['Pass','Fail','Not tested'].map(v=>`<label><input type="radio" name="${id}" value="${v}" ${v==='Not tested'?'checked':''}>${v}</label>`).join('')}<textarea aria-label="${id} observations" placeholder="Steps, expected/actual values, units, severity and screenshot references"></textarea></article>`).join('');
+document.getElementById('download').onclick=()=>{const data={release:'TuneLab v0.15',date:new Date().toISOString(),tester:document.getElementById('tester').value,browser:document.getElementById('browser').value,cases:[...document.querySelectorAll('[data-case]')].map(n=>({id:n.dataset.case,result:n.querySelector('input:checked').value,notes:n.querySelector('textarea').value}))};const a=document.createElement('a'),url=URL.createObjectURL(new Blob([JSON.stringify(data,null,2)],{type:'application/json'}));a.href=url;a.download='TuneLab-v0.15-UAT-results.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);};
+</script></body></html>
