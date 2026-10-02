@@ -4,7 +4,7 @@ Status: the user approved the scoped v0.6 build on 2026-10-02. See V0.6-SCOPE.md
 
 ## v0.8 build and next-version priorities
 
-Jonny approved visual clarity and evidence review on 2026-10-02. See V0.8-SCOPE.md and V0.8-VERIFICATION.md; UAT-v0.8.html has 16 scenarios and user acceptance is pending. Shading, linked evidence and change-review improvements are implemented in this scope. Other deferred features remain deferred.
+Jonny approved visual clarity and evidence review on 2026-10-02. See V0.8-SCOPE.md and V0.8-VERIFICATION.md; Jonny signed off all 16 UAT-v0.8.html scenarios on 2026-10-02; see V0.8-UAT-SIGNOFF.md. Shading, linked evidence and change-review improvements are implemented in this scope. Other deferred features remain deferred.
 
 ### High priority: browser zoom and sidebar scrolling
 

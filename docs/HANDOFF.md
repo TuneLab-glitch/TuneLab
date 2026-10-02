@@ -50,7 +50,7 @@ One window edits at a time through an explicit handoff; others view synchronized
 
 ## v0.8 build handoff — 2026-10-02
 
-The active UI is v0.8 visual clarity/evidence review, approved by Jonny. See V0.8-SCOPE.md, V0.8-VERIFICATION.md and UAT-v0.8.html. User acceptance remains pending; earlier sign-offs are unchanged. Backups carry shading scales/review records, retain old project migration and clear transient evidence filters/calibration confirmations on reopen. Coverage is not confidence or ECU control influence; AFM links distinguish local support and actual bin-center kernel membership.
+The active UI is v0.8 visual clarity/evidence review, approved by Jonny. See V0.8-SCOPE.md, V0.8-VERIFICATION.md and UAT-v0.8.html. Jonny reported “All UAT has passed” on 2026-10-02. All 16 guide cases are signed off in V0.8-UAT-SIGNOFF.md/json; earlier sign-offs are unchanged. Backups carry shading scales/review records, retain old project migration and clear transient evidence filters/calibration confirmations on reopen. Coverage is not confidence or ECU control influence; AFM links distinguish local support and actual bin-center kernel membership.
 
 Next-version user feedback: native browser zoom hides lower sidebar options without a scrollbar. BACKLOG.md records the high-priority fix and zoom/reflow acceptance matrix. This issue is not fixed in v0.8. Deferred alignment, advanced viewer, AI, attachments, installer and platform semantics work remains outside the current release.
 

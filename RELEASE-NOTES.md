@@ -9,7 +9,7 @@
 - Quieter log-format summary with expandable mappings/provenance, plain-English labels and contextual help.
 - AFM analysis button now invokes the current normalization/provenance workflow.
 
-55 synthetic tests; 58 with three private fixtures; five DOM suites and both local-file Edge browser suites pass. See docs/V0.8-VERIFICATION.md and UAT-v0.8.html (16 cases). v0.8 user acceptance is pending. Coverage is descriptive, not confidence, ECU influence or engine safety. The reported browser-zoom/sidebar-scroll defect is tracked for the next version. Deferred features and full Civic/KTuner applicability checks remain unchanged.
+55 synthetic tests; 58 with three private fixtures; five DOM suites and both local-file Edge browser suites pass. See docs/V0.8-VERIFICATION.md and UAT-v0.8.html (16 cases). Jonny signed off all 16 v0.8 UAT scenarios on 2026-10-02; see docs/V0.8-UAT-SIGNOFF.md. Coverage is descriptive, not confidence, ECU influence or engine safety. The reported browser-zoom/sidebar-scroll defect is tracked for the next version. Deferred features and full Civic/KTuner applicability checks remain unchanged.
 
 ---
 
