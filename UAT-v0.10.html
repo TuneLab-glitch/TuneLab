@@ -1,0 +1,90 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>TuneLab v0.10 UAT</title><style>body{font:16px/1.6 Segoe UI,sans-serif;max-width:1000px;margin:30px auto;padding:20px;color:#233144}article{border:1px solid #cdd6df;border-radius:8px;margin:20px 0;padding:18px}textarea{width:95%;min-height:80px}label{margin-right:15px}button{padding:12px}input{padding:8px}h1{color:#c82f40}@media print{button{display:none}article{break-inside:avoid}}</style><body><h1>TuneLab v0.10 acceptance</h1><p>Extract the complete ZIP and launch Start-TuneLab.bat. Use historical logs and disposable copies of calibrations. Keep your previous project JSON and original logs. No flashing or hardware connection is needed.</p><label>Tester <input id="tester"></label><label>Browser/version <input id="browser"></label><div id="cases"></div><button id="download">Download result JSON</button><button onclick="print()">Print</button><p>Critical: incorrect physical values, lost data or protected values changed. Major: blocked workflow. Minor: presentation/explanation issue. Record expected and actual values, steps, units, file/revision and screenshots. KTuner header/import checks have been verified with the supplied export. Full Civic/KTuner analysis requires appropriate channels and reviewed semantics; that separate verification remains pending.</p><script>
+const cases=[
+  [
+    "V10-PURPOSE",
+    "Purpose-aware setup",
+    "Import startup, AFM, boost and validation logs with intended purpose. Apply suggested setup deliberately. Observe appropriate preset/RPM defaults and raw channels. Baseline/validation roles and confirmations do not change silently."
+  ],
+  [
+    "V10-READINESS",
+    "Channel readiness",
+    "Try a complete reviewed export, unknown units, missing channels and missing numeric data. Readiness distinguishes Ready, Needs clarification and Limited review and explains why. A ready log does not imply engine safety or calibration match."
+  ],
+  [
+    "V10-STARTUP",
+    "Startup without boost",
+    "Import a CSV with timestamp/RPM/temperature/battery but no boost target. Choose Startup. Plot available raw channels and inspect zero RPM/cranking/idle without being blocked by missing boost."
+  ],
+  [
+    "V10-CHANNELS",
+    "Synchronized raw plots",
+    "Choose up to four channels. Click different plots or move the raw slider. Every cursor refers to the same original row; readout retains all imported values. Individual native-value scales are clearly labeled."
+  ],
+  [
+    "V10-GAPS",
+    "Gaps and large recordings",
+    "Inspect missing values, non-increasing timestamps and time gaps. Lines break. Large recordings retain visible bucket extrema; exact slider inspection still uses every original sample."
+  ],
+  [
+    "V10-RANGES",
+    "Chart zoom versus evidence",
+    "Set a chart time range and reset it. Zoom changes visible raw context only. AFM proposal values and boost eligibility remain governed by their own controls. Bookmark start/end are original data-row numbers."
+  ],
+  [
+    "V10-BOOKMARK",
+    "Save/reopen evidence",
+    "Save a named observation over original rows with selected channels. Switch logs, reopen the bookmark and verify log, channels, time units, range and original sample identities. Revision/purpose are retained in the observation."
+  ],
+  [
+    "V10-NOTES",
+    "Review notes compatibility",
+    "Older Learning entries remain in Review notes. Save boost review notes and bookmarks. Removing a log retains its bookmark observation as a removed-log record; reopening it explains the missing log. Delete only when intended."
+  ],
+  [
+    "V10-VALIDATE-AFM",
+    "AFM matched validation",
+    "Use independently mapped/reviewed logs with known installed revisions. Confirm comparable conditions and compare AFM. Shared 250 Hz bins show counts, means and validation-minus-baseline delta. Observation cap/eligibility are explicit; this comparison never changes the curve."
+  ],
+  [
+    "V10-VALIDATE-BOOST",
+    "Boost matched validation",
+    "Compare reviewed boost logs. Shared 500 RPM bins summarize actual-minus-command error from loaded/transient eligible samples. Sparse or one-sided bins omit deltas. Different conditions require judgment; there is no automatic improvement/safety claim."
+  ],
+  [
+    "V10-GATES",
+    "Comparison gates",
+    "Try same log twice, missing revision, unreviewed mapping/units or unchecked conditions. Comparison explains the prerequisites and does not present an unsupported result. Changing inputs clears previous comparison."
+  ],
+  [
+    "V10-TABLES",
+    "Tables do not need logs",
+    "Load a project with actual imported gear/MPR/command/AFM tables. Clear active-log selection and visit every table. Values remain available and unchanged. Reload with browser storage enabled: previous tables return without requiring a log. No gear table is invented if none was imported."
+  ],
+  [
+    "V10-CLEANUP",
+    "Aligned interface",
+    "Use the main import flow and AFM role shortcuts. Follow the purpose checklist/Review plan. Review status relates to the active purpose; Pressure representations accurately names its function. Channel details stay optional."
+  ],
+  [
+    "V10-BACKUP",
+    "Backup/migration and failed restore",
+    "Save/reopen v0.10 JSON including bookmarks and raw view, and open older accepted JSON. Roles/settings/history/layouts/raw CSV remain correct and calibration confirmations clear. Invalid bookmarks/views fail without replacing current work. Keep the downloaded JSON when changing origins."
+  ],
+  [
+    "V10-WINDOWS",
+    "Windows, zoom and practice regression",
+    "Repeat v0.9.1 native zoom/scroll/grid/focus checks and shared-window editing/recovery. Practice scenarios preserve the original project/library/cache. Their synthetic-only AFM action still works."
+  ],
+  [
+    "V10-REGRESSION",
+    "Protected calculations and exports",
+    "Repeat relevant signed-off editing, units, source/proposal shading, protection, undo and export workflows. Purpose/raw plotting/bookmarks do not change existing calculation formulas. Full Civic/KTuner semantics remain separately pending."
+  ],
+  ["V10-PALETTES","Table gradient choices","In Settings try teal blue → green → yellow → orange → red, Violet → gold, Ocean and Ember. Check all table types, legends, selected/protected cells and readable numbers. Difference views stay neutral at zero. Save/reopen retains the palette and numbers remain unchanged. Toggle Show cursor tracking and Show coverage counts in Settings or Linked historical evidence; markers disappear independently, choices stay synchronized and survive backup reopen. Filters and calculations remain unchanged."],
+  ["V10-VEHICLE-THEMES","Model, year and factory-color appearance","Choose Vehicle color theme, Civic Si and each year 2022–2026. Year changes update the color list. Select a paint and inspect navigation, tables and dialogs. Verify app/page inheritance, save/reopen and practice isolation. Screen colors are inspired by U.S. factory paints; these controls do not change calibration context."],
+  ["V10-PLAYBACK","Raw-recording playback","Load a timed recording; choose channels and press Play/Pause. Try speeds, Previous/Next sample, Start/End and slider seeking. Check synchronized cursors and table tracking where the sample is eligible. Numeric/bookmark view ranges constrain playback. Log/range/workspace changes pause. Timestamp resets pause; gaps keep recorded timing. Filters/calculations remain unchanged."],
+  ["V10-CUSTOM","My workspace custom table workspace","Open the blank My workspace tab. Right-click or use Add table; insert original/proposed boost and another available table. Rename the tab, resize/move/snap panels left/right, remove a view and save/reopen. Source edits update views. Open source returns to the editing workspace. Views are read-only; raw data/proposals and original layouts remain unchanged."]
+];
+document.getElementById('cases').innerHTML=cases.map(([id,title,steps])=>`<article data-case="${id}"><h2>${id} · ${title}</h2><p>${steps}</p>${['Pass','Fail','Not tested'].map(v=>`<label><input type="radio" name="${id}" value="${v}" ${v==='Not tested'?'checked':''}>${v}</label>`).join('')}<textarea aria-label="${id} observations" placeholder="Steps, expected/actual values, units, severity and screenshot references"></textarea></article>`).join('');
+document.getElementById('download').onclick=()=>{const data={release:'TuneLab v0.10',date:new Date().toISOString(),tester:document.getElementById('tester').value,browser:document.getElementById('browser').value,cases:[...document.querySelectorAll('[data-case]')].map(n=>({id:n.dataset.case,result:n.querySelector('input:checked').value,notes:n.querySelector('textarea').value}))};const a=document.createElement('a'),url=URL.createObjectURL(new Blob([JSON.stringify(data,null,2)],{type:'application/json'}));a.href=url;a.download='TuneLab-v0.10-UAT-results.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);};
+</script></body></html>

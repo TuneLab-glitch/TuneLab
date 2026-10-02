@@ -28,3 +28,9 @@ button:focus-visible,select:focus-visible,input:focus-visible,textarea:focus-vis
 .panel-grid>.drop-target::after{white-space:normal;font-weight:600}
 @media(max-width:800px){.panel-grid>.panel[data-span="1"][data-side]{grid-column:1}.workspace-toolbar .workspace-select{width:100%}.workspace-toolbar select{width:100%;min-width:0}.workspace-toolbar output{min-width:0;flex-basis:100%}}
 @media(max-width:500px){main{padding:18px 12px}.page .panel{padding:14px}.editbar label{max-width:100%;flex:1 1 130px}.sectionbar .actions{width:100%}.panel-tools{justify-content:flex-start}.metrics{grid-template-columns:minmax(0,1fr)}}
+
+#rawReadout{white-space:pre-wrap;overflow-wrap:anywhere;max-width:100%}
+#rawPlots svg{width:100%;max-height:240px}
+#readinessStatus,#matchedSummary{display:block;margin:12px 0;overflow-wrap:anywhere}
+
+.brandmark{color:var(--accent-ink,#fff)}

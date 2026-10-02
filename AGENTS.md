@@ -10,3 +10,5 @@ Run npm test and npm run test:ui in portable/ after relevant changes. Tests use 
 Preserve project backward compatibility and migration paths; do not erase manual refinements automatically. Record release limitations honestly.
 
 Active UI is now v0.9. Read docs/V0.9-SCOPE.md and docs/V0.9-VERIFICATION.md. Unified practice scenarios must never read/write the user browser library or shared preferences. Logging strategy must preserve source applicability; no generic public-road pull instructions or voltage-to-Hz relabeling. v0.9.1 is accepted: all 14 UAT scenarios signed off on 2026-10-02; see docs/V0.9-UAT-SIGNOFF.md/json.
+
+Active build is v0.10; read docs/V0.10-SCOPE.md and docs/V0.10-VERIFICATION.md. Calibration tables must remain accessible/restorable without an active log. Raw plots and bookmarks do not define tuning eligibility. Shared-bin comparison is descriptive and requires reviewed units/revisions and explicit condition checks. UAT is pending.

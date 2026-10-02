@@ -1,8 +1,8 @@
-# TuneLab v0.9.1
+# TuneLab v0.10
 
 Extract the ZIP completely and double-click **Start-TuneLab.bat**. The app opens **portable/index.html** in your browser and works offline. No installer, .NET SDK, AI model or API key is required.
 
-Start v0.9.1 UAT by opening **UAT-v0.9.html** (14 cases). Keep **UAT-v0.8.html** for the 16 signed-off review scenarios. Keep **UAT-v0.7.html** for the signed-off workspace scenarios. Keep **UAT-v0.6.html** for signed-off v0.6 scenarios. Keep **UAT-Guide.html** for the 34 baseline regression cases. Both use existing historical CSVs and tables, support printing and download result JSON. No new drive or vehicle connection is needed. See **RELEASE-NOTES.md** for implemented scope and limitations.
+Start v0.10 UAT by opening **UAT-v0.10.html** (20 cases). Keep **UAT-v0.9.html** for the accepted v0.9.1 scenarios. Keep **UAT-v0.8.html** for the 16 signed-off review scenarios. Keep **UAT-v0.7.html** for the signed-off workspace scenarios. Keep **UAT-v0.6.html** for signed-off v0.6 scenarios. Keep **UAT-Guide.html** for the 34 baseline regression cases. Both use existing historical CSVs and tables, support printing and download result JSON. No new drive or vehicle connection is needed. See **RELEASE-NOTES.md** for implemented scope and limitations.
 
 Use **Synthetic demos** in the header to choose one of five isolated practice scenarios; your original workspace stays open and practice does not write to its browser library. Use **Logging strategy** for purpose-specific capture instructions, channels and applicability. See **docs/V0.9-SCOPE.md** and **docs/V0.9-VERIFICATION.md** for the current release.
 
@@ -11,6 +11,8 @@ See **docs/V0.8-SCOPE.md** and **docs/V0.8-VERIFICATION.md** for the current rel
 See **docs/V0.7-PROPOSAL.md** and **docs/V0.7-VERIFICATION.md** for v0.7 scope and checks. Use **Edit in this window** to hand off editing between windows. Drag preview/analysis panels by **Move panel**, use half/full width and reset as needed; main and detached arrangements save independently. If the main window closes or reloads, save a recovery JSON from the detached window and reopen it in a main window.
 
 See **docs/V0.6-SCOPE.md** for approved/deferred work and **docs/V0.6-VERIFICATION.md** for fresh results and pending KTuner/UAT verification. Settings now centralizes workspace preferences. Log library stores a reviewed mapping and units per export; unknown units need explicit choices. Full workspace JSON retains raw logs, mapping provenance, proposals, history, role IDs, layout and settings.
+
+Use Log review’s purpose setup, readiness, synchronized raw channels, evidence bookmarks and matched validation comparison. Calibration tables restore independently of active logs when browser storage is enabled. Download JSON as the portable backup. See **docs/V0.10-SCOPE.md** and **docs/V0.10-VERIFICATION.md**.
 
 ## Suggested first session
 
