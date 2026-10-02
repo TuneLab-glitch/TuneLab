@@ -55,3 +55,15 @@ The active UI is v0.8 visual clarity/evidence review, approved by Jonny. See V0.
 Next-version user feedback: native browser zoom hides lower sidebar options without a scrollbar. BACKLOG.md records the high-priority fix and zoom/reflow acceptance matrix. This issue is not fixed in v0.8. Deferred alignment, advanced viewer, AI, attachments, installer and platform semantics work remains outside the current release.
 
 Jonny added left/right half-width grid snapping to the current v0.8 build. Explicit column choices, empty-half drag targets, keyboard controls and backup retention are included; UAT-v0.8.html now has 16 scenarios.
+
+## v0.9 build — 2026-10-02
+
+Jonny approved v0.9 and added unified synthetic scenarios plus logging strategy. See V0.9-SCOPE.md and V0.9-VERIFICATION.md. Sidebar native-zoom/reflow fix, navigation/focus/reset improvements, isolated practice scenarios and four purpose-specific logging plans are built. Prior sign-offs are retained; v0.9 UAT remains pending in UAT-v0.9.html (14 cases). Deferred alignment, advanced viewer, AI, attachments, installer and platform semantics remain deferred.
+
+## v0.9.1 UAT correction
+
+Initial v0.9 UAT: 12 Pass / 2 Fail. See V0.9-UAT-FINDINGS.md/json. Corrected AFM practice action, driving-first numbered review plans and persistent intended-purpose import metadata are built. Jonny subsequently reported “All remaining UAT Passed” on 2026-10-02. Both corrected cases are signed off; all 14 scenarios are accepted. See V0.9-UAT-SIGNOFF.md/json.
+
+## v0.9.1 acceptance — 2026-10-02
+
+Jonny signed off both remaining UAT cases. All 14 scenarios are accepted; see V0.9-UAT-SIGNOFF.md/json. Accepted app commit ebc577ac49fc6eae30f6d1f97bf300157912f846 and delivered archive stay unchanged. Earlier sign-offs and deferred platform work are retained.

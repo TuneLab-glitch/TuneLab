@@ -1,3 +1,24 @@
+# TuneLab v0.9.1 — UAT corrections
+
+- Driving/capture instructions lead each logging plan; After loading the file is a numbered workflow. Channel details are optional and collapsed.
+- Intended purpose is selected before import, saved per log, editable in Log library and linked to Review plan. Purpose never confirms a calibration match or silently assigns an evidence role.
+- Run synthetic AFM example explicitly confirms the invented example roles and analyzes the matching example curve. Real-log gates remain manual.
+- Initial v0.9 UAT results are retained: 12 Pass / 2 Fail. Jonny signed off both remaining cases on 2026-10-02; all 14 release scenarios are accepted. See docs/V0.9-UAT-SIGNOFF.md/json.
+
+---
+
+# TuneLab v0.9 — reflow, practice scenarios and logging strategy
+
+- Sidebar scrolls at native browser zoom; controls wrap in short/narrow windows. Main menu preference is remembered and keyboard/help focus is clearer.
+- Half-width panels use one column when space is limited; saved left/right placement returns when widened. Expanded cards use the viewport. Reset restores the current workspace's order, side, sizes and open state.
+- One header **Synthetic demos** selector offers steady AFM, sparse AFM, boost pull, gear-limit and startup/idle scenarios. Separate practice windows isolate logs, settings and library writes from your original project.
+- **Logging strategy** gives AFM, boost, startup and post-change validation capture plans, channel lists, review checks and official-source applicability. Voltage-only AFM is not relabeled Hz; startup fueling and arbitrary-channel plots remain deferred.
+- v0.9 backups migrate older projects and retain explicit calibration gates. Calculations remain unchanged.
+
+57 synthetic / 60 private-fixture tests, six DOM suites and four local-file Edge suites pass. Native browser zoom matrix covers 15 size/zoom combinations across 11 workspaces plus detached checks. See docs/V0.9-VERIFICATION.md and UAT-v0.9.html (14 cases). User v0.9 UAT is pending. Full Civic/KTuner semantics and the earlier deferred backlog remain outside this build.
+
+---
+
 # TuneLab v0.8 — visual clarity and evidence review
 
 - Shared original/proposed table shading with gradient legends, two palettes, no-shading mode and zero-centered absolute/percentage change views. Scales stay fixed during edits; clipped values are counted and reset is explicit.

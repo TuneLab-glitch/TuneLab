@@ -1,0 +1,76 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>TuneLab v0.9.1 UAT</title><style>body{font:16px/1.6 Segoe UI,sans-serif;max-width:1000px;margin:30px auto;padding:20px;color:#233144}article{border:1px solid #cdd6df;border-radius:8px;margin:20px 0;padding:18px}textarea{width:95%;min-height:80px}label{margin-right:15px}button{padding:12px}input{padding:8px}h1{color:#c82f40}@media print{button{display:none}article{break-inside:avoid}}</style><body><h1>TuneLab v0.9.1 acceptance</h1><p>Extract the complete ZIP and launch Start-TuneLab.bat. Use historical logs and disposable copies of calibrations. Keep your previous project JSON and original logs. No flashing or hardware connection is needed.</p><label>Tester <input id="tester"></label><label>Browser/version <input id="browser"></label><div id="cases"></div><button id="download">Download result JSON</button><button onclick="print()">Print</button><p>Critical: incorrect physical values, lost data or protected values changed. Major: blocked workflow. Minor: presentation/explanation issue. Record expected and actual values, steps, units, file/revision and screenshots. KTuner header/import checks have been verified with the supplied export. Full Civic/KTuner analysis requires appropriate channels and reviewed semantics; that separate verification remains pending.</p><script>
+const cases=[
+  [
+    "V9-SIDEBAR",
+    "Native zoom / menu reachability",
+    "Use browser zoom 100%, 125%, 150%, 175%, 200% in tall and short windows. Scroll the sidebar to Logging strategy and footer. Reach every workspace using mouse and keyboard; no lower menu items are trapped."
+  ],
+  [
+    "V9-REFLOW",
+    "Narrow layouts and readable evidence",
+    "Narrow the window and use the workspace dropdown. Visit all workspaces, tables, mapping, charts and long help. Controls wrap, content remains reachable and tables scroll within their panels. Browser zoom and table zoom stay independent."
+  ],
+  [
+    "V9-MENU",
+    "Remembered navigation",
+    "Collapse the menu and reload, then expand and reload. Main menu preference is remembered. Opening a project or detached workspace does not replace it."
+  ],
+  [
+    "V9-GRID",
+    "Horizontal and narrow snapping",
+    "Make two cards half width. Snap left/right with buttons, drag and Alt+arrows. Use different heights. Narrow the window: saved right-side cards remain reachable in one column; widen: side choice returns."
+  ],
+  [
+    "V9-EXPAND",
+    "Viewport expansion",
+    "Expand a chart or table panel. It uses the browser viewport, remains scrollable and can be restored. Try at 200% zoom."
+  ],
+  [
+    "V9-RESET",
+    "Complete scoped panel reset",
+    "Reorder, resize, collapse and expand current-workspace panels; reset (keyboard activation can reach the reset while a card is expanded). Order, side, widths/heights and open labels reset. Other workspaces and detached layouts keep their arrangements."
+  ],
+  [
+    "V9-FOCUS",
+    "Keyboard focus and help",
+    "Switch workspaces with keyboard/dropdown, move cards and open/close help. Focus is visible, headings identify the new workspace and help returns focus to its invoker."
+  ],
+  [
+    "V9-DETACH",
+    "Detached scaling and shared state",
+    "Open Log review alone, hand off editing and repeat zoom checks. Only the requested workspace shows; shared edits/recovery still behave as in v0.7."
+  ],
+  [
+    "V9-DEMO",
+    "One demo selector",
+    "Use the header Synthetic demos button in wide, collapsed-menu and narrow layouts. Select each of five purposes. Descriptions explain what to inspect. Pop-up blocking is reported; allow this app to open its practice window if necessary. No scattered gear-demo button remains."
+  ],
+  [
+    "V9-ISOLATION",
+    "Protect original work",
+    "Load a disposable original project/log, change a table and record its name. Open and edit a practice scenario, change appearance and close it. Original project, raw logs and preferences remain unchanged; reload retains original browser library. Practice storage checkbox is disabled."
+  ],
+  [
+    "V9-AFM-DEMO",
+    "AFM scenarios and gates",
+    "Open warm AFM and sparse/transient scenarios. Baseline/validation roles are assigned but calibration confirmations are clear. Use Run synthetic AFM example; it confirms invented example matches and analyzes. Inspect supported changes in the warm demo and exclusions in the sparse demo. Real-log confirmations remain manual. Synthetic labels remain visible. No real calibration match is claimed."
+  ],
+  [
+    "V9-OTHER-DEMO",
+    "Boost, gear and startup scenarios",
+    "Boost scenario shows spool/overshoot in transient review. Gear scenario retains invented native originals and lower-gear restrictions. Startup includes zero RPM/cranking/idle via raw review and raw channel inspection, with minimum RPM zero. No startup-fueling proposal or arbitrary-channel chart is claimed."
+  ],
+  [
+    "V9-STRATEGY",
+    "Purpose-specific logging plans",
+    "Choose AFM, boost, startup and validation in Logging strategy. Review driving instructions and the numbered After loading the file workflow. Channel details are optional and collapsed. Before import choose Intended purpose, then use Review plan. Change the purpose in Log library and save/reopen JSON; the choice persists. AFM distinguishes Hz from Hondata voltage documentation; boost uses tuner-defined controlled conditions; startup stays parked; validation records applied revision and matching conditions. Official source links and guidance applicability are clear."
+  ],
+  [
+    "V9-REGRESSION",
+    "Backup and signed-off workflows",
+    "Save/reopen v0.9.1 JSON and an older backup. Raw logs, settings, history and separate layouts persist; calibration confirmations clear on reopen. Repeat relevant signed-off v0.6/v0.7/v0.8 workflows. Full Civic/KTuner semantics remain separately pending."
+  ]
+];
+document.getElementById('cases').innerHTML=cases.map(([id,title,steps])=>`<article data-case="${id}"><h2>${id} · ${title}</h2><p>${steps}</p>${['Pass','Fail','Not tested'].map(v=>`<label><input type="radio" name="${id}" value="${v}" ${v==='Not tested'?'checked':''}>${v}</label>`).join('')}<textarea aria-label="${id} observations" placeholder="Steps, expected/actual values, units, severity and screenshot references"></textarea></article>`).join('');
+document.getElementById('download').onclick=()=>{const data={release:'TuneLab v0.9.1',date:new Date().toISOString(),tester:document.getElementById('tester').value,browser:document.getElementById('browser').value,cases:[...document.querySelectorAll('[data-case]')].map(n=>({id:n.dataset.case,result:n.querySelector('input:checked').value,notes:n.querySelector('textarea').value}))};const a=document.createElement('a'),url=URL.createObjectURL(new Blob([JSON.stringify(data,null,2)],{type:'application/json'}));a.href=url;a.download='TuneLab-v0.9.1-UAT-results.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);};
+</script></body></html>

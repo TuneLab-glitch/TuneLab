@@ -1,0 +1,78 @@
+{
+  "release": "TuneLab v0.9",
+  "date": "2026-10-02T09:01:32.605Z",
+  "tester": "Jon",
+  "browser": "Edge",
+  "cases": [
+    {
+      "id": "V9-SIDEBAR",
+      "result": "Pass",
+      "notes": ""
+    },
+    {
+      "id": "V9-REFLOW",
+      "result": "Pass",
+      "notes": ""
+    },
+    {
+      "id": "V9-MENU",
+      "result": "Pass",
+      "notes": ""
+    },
+    {
+      "id": "V9-GRID",
+      "result": "Pass",
+      "notes": ""
+    },
+    {
+      "id": "V9-EXPAND",
+      "result": "Pass",
+      "notes": ""
+    },
+    {
+      "id": "V9-RESET",
+      "result": "Pass",
+      "notes": ""
+    },
+    {
+      "id": "V9-FOCUS",
+      "result": "Pass",
+      "notes": ""
+    },
+    {
+      "id": "V9-DETACH",
+      "result": "Pass",
+      "notes": ""
+    },
+    {
+      "id": "V9-DEMO",
+      "result": "Pass",
+      "notes": ""
+    },
+    {
+      "id": "V9-ISOLATION",
+      "result": "Pass",
+      "notes": ""
+    },
+    {
+      "id": "V9-AFM-DEMO",
+      "result": "Fail",
+      "notes": "I cant get the AFM demo to work correctly. The demos for baseline/validation always say 'confirm baseline on the rows' with potential adjustments. "
+    },
+    {
+      "id": "V9-OTHER-DEMO",
+      "result": "Pass",
+      "notes": ""
+    },
+    {
+      "id": "V9-STRATEGY",
+      "result": "Fail",
+      "notes": "with the 'instructions' \"What to log\" isnt important for them. They will just log perform the driving instructions then load the file. It would also be good to have an option when loading a datalog selecting its intended purpose"
+    },
+    {
+      "id": "V9-REGRESSION",
+      "result": "Pass",
+      "notes": ""
+    }
+  ]
+}

@@ -1,11 +1,11 @@
 {
   "name": "tunelab-portable",
-  "version": "0.8.0",
+  "version": "0.9.1",
   "private": true,
   "scripts": {
-    "test": "node --test tests/engine.test.cjs tests/workbench.test.cjs tests/sessions.test.cjs tests/workflows.test.cjs tests/review.test.cjs",
-    "test:browser": "node tests/browser-workspaces.cjs && node tests/browser-review.cjs",
-    "test:ui": "node tests/ui-integration.cjs && node tests/session-ui.cjs && node tests/workflows-ui.cjs && node tests/workspaces-ui.cjs && node tests/review-ui.cjs"
+    "test": "node --test tests/engine.test.cjs tests/workbench.test.cjs tests/sessions.test.cjs tests/workflows.test.cjs tests/review.test.cjs tests/demos.test.cjs",
+    "test:browser": "node tests/browser-workspaces.cjs && node tests/browser-review.cjs && node tests/browser-scaling.cjs && node tests/browser-demos.cjs",
+    "test:ui": "node tests/ui-integration.cjs && node tests/session-ui.cjs && node tests/workflows-ui.cjs && node tests/workspaces-ui.cjs && node tests/review-ui.cjs && node tests/polish-ui.cjs"
   },
   "devDependencies": {
     "jsdom": "26.1.0"
