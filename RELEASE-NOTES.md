@@ -186,3 +186,8 @@ Jonny explicitly reports all UAT passed. All thirteen cases are accepted; V15-DI
 ## v0.16 Workflow Cleanup Build — 2026-10-02
 
 Approved whole-app audit scope is implemented; see docs/V0.16-SCOPE.md and docs/V0.16-VERIFICATION.md. Compact player, reconnect, clear proposal acknowledgements, task hierarchy, optional conversion tool, tutorial/instruction routing, table actions, grouped settings and indexed hover are included. v0.15 retains all thirteen UAT passes; v0.16 has thirteen pending precise-navigation cases. Deferred work remains deferred.
+
+
+## v0.16.2 Startup Loading — 2026-10-02
+
+Startup interaction gate implemented. See docs/V0.16.2-STARTUP.md for verification and exact UAT steps. Prior UAT acceptance unchanged; chart gesture note remains pending.
