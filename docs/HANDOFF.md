@@ -25,3 +25,7 @@ User should export v0.5 project JSON and retain original logs and release ZIP se
 4. Maintain backlog, release notes, decisions and UAT inside the repository.
 
 This handoff is a requirements summary, not a verbatim chat archive. It does not contain personal logs, project exports or prior binary release archives.
+
+## Repository verification update (2026-10-02)
+
+The flattened initial upload was repaired without changing application/test bytes. Fresh synthetic tests: 39 pass; both DOM suites pass. See BASELINE-VERIFICATION.md for scope, limitations and UAT order. The optional private-log test was not run. PC UAT remains pending.
