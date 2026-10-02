@@ -85,3 +85,8 @@ Jonny explicitly reports all UAT passed. All thirteen cases are accepted; V15-DI
 ## v0.16 Workflow Cleanup Build — 2026-10-02
 
 Approved whole-app audit scope is implemented; see docs/V0.16-SCOPE.md and docs/V0.16-VERIFICATION.md. Compact player, reconnect, clear proposal acknowledgements, task hierarchy, optional conversion tool, tutorial/instruction routing, table actions, grouped settings and indexed hover are included. v0.15 retains all thirteen UAT passes; v0.16 has thirteen pending precise-navigation cases. Deferred work remains deferred.
+
+
+## v0.17 Approved Build — 2026-10-02
+
+Jonny confirmed starting the aligned build; this supersedes the prior hold. See docs/V0.17-SCOPE.md. Datalog chart gestures/navigation, page section controls, consistent EFI terminology and progressively detailed mode summaries are implemented. v0.16.2 retains all fifteen accepted UAT scenarios. v0.17 user acceptance remains pending; private datalogs stay excluded.

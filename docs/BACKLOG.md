@@ -336,3 +336,20 @@ Jonny requests right-button hold/drag to highlight a time range and zoom; left-b
 ## v0.16.2 Startup Loading — 2026-10-02
 
 Startup interaction gate implemented. See docs/V0.16.2-STARTUP.md for verification and exact UAT steps. Prior UAT acceptance unchanged; chart gesture note remains pending.
+
+## Next Build: Page Section Controls — 2026-10-02
+
+Jonny requests Collapse All and Expand All controls for sections on the current page. Scope is the current workspace/page. Record for planning; implementation must wait for Jonny's explicit confirmation before starting the next build. This hold also applies to other next-build notes, including chart mouse gestures. No application change made.
+
+## Next Build: Terminology and Tuning Voice Review — 2026-10-02
+
+Jonny requests an app-wide terminology consistency review. Align labels, help, status messages, errors, logging plans, tutorial, exports and UAT with modern professional performance EFI tuning language rather than data science/engineering jargon. Use consistent names for the same concepts across screens. Guided, Standard and Advanced modes should progressively reveal more comprehensive terminology and detail while preserving the same underlying meaning and calculation engine. Keep platform-specific terms and pressure/channel distinctions accurate; do not simplify away units or assumptions. Review and propose a shared glossary and mode-specific wording before implementation. Next-build implementation remains on hold until Jonny explicitly confirms starting it.
+
+## v0.16.2 UAT Acceptance — 2026-10-02
+
+Jonny explicitly reports: "All UAT has passed" for outputs/UAT-v0.16.2.html. All 15 scenarios are accepted: the 13 v0.16 cases plus V161-WORKBOOK and V162-STARTUP. This supersedes prior pending acceptance for these scenarios. Evidence is user chat sign-off; no submitted results JSON or browser/version details are inferred. Next-build implementation remains on hold until Jonny explicitly confirms; chart mouse gestures, page Collapse/Expand All and terminology/mode review remain planning notes. Application and archive unchanged by this acceptance record.
+
+
+## v0.17 Approved Build — 2026-10-02
+
+Jonny confirmed starting the aligned build; this supersedes the prior hold. See docs/V0.17-SCOPE.md. Datalog chart gestures/navigation, page section controls, consistent EFI terminology and progressively detailed mode summaries are implemented. v0.16.2 retains all fifteen accepted UAT scenarios. v0.17 user acceptance remains pending; private datalogs stay excluded.
