@@ -191,3 +191,12 @@ Approved whole-app audit scope is implemented; see docs/V0.16-SCOPE.md and docs/
 ## v0.16.2 Startup Loading — 2026-10-02
 
 Startup interaction gate implemented. See docs/V0.16.2-STARTUP.md for verification and exact UAT steps. Prior UAT acceptance unchanged; chart gesture note remains pending.
+
+## v0.16.2 UAT Acceptance — 2026-10-02
+
+Jonny explicitly reports: "All UAT has passed" for outputs/UAT-v0.16.2.html. All 15 scenarios are accepted: the 13 v0.16 cases plus V161-WORKBOOK and V162-STARTUP. This supersedes prior pending acceptance for these scenarios. Evidence is user chat sign-off; no submitted results JSON or browser/version details are inferred. Next-build implementation remains on hold until Jonny explicitly confirms; chart mouse gestures, page Collapse/Expand All and terminology/mode review remain planning notes. Application and archive unchanged by this acceptance record.
+
+
+## v0.17 Approved Build — 2026-10-02
+
+Jonny confirmed starting the aligned build; this supersedes the prior hold. See docs/V0.17-SCOPE.md. Datalog chart gestures/navigation, page section controls, consistent EFI terminology and progressively detailed mode summaries are implemented. v0.16.2 retains all fifteen accepted UAT scenarios. v0.17 user acceptance remains pending; private datalogs stay excluded.

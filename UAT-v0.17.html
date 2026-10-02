@@ -1,0 +1,46 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>TuneLab v0.17 UAT</title><style>body{font:16px/1.6 Segoe UI,sans-serif;max-width:1000px;margin:30px auto;padding:20px;color:#233144}article{border:1px solid #cdd6df;border-radius:8px;margin:20px 0;padding:18px}textarea{width:95%;min-height:80px}label{margin-right:15px}button{padding:12px}input{padding:8px}</style><body><h1>TuneLab v0.17 Acceptance</h1><p>Save your current project first. Extract TuneLab-v0.17.zip into its own folder, then double-click Start-TuneLab.bat. <a href="portable/index.html">Open the delivered app</a>. All 8 cases start Not tested. v0.16.2 retains its 15 passes; no v0.17 acceptance is inferred. Use disposable projects and already-exported logs. No hardware connection or flashing is needed.</p><label>Tester <input id="tester"></label><label>Browser/version <input id="browser"></label><div id="cases"></div><button id="download">Download Result JSON</button><button onclick="print()">Print</button><script>
+const cases=[
+  [
+    "V17-ZOOM",
+    "Right-Drag Range Zoom",
+    "Setup: main v0.17 app \u2192 Synthetic Demos \u2192 choose Loaded pull · spool and boost error \u2192 Open Practice Window. In that practice window open Datalog Review. 1. On the first synchronized channel chart, hold the right mouse button, drag across a portion of the timeline, then release. A highlighted range should appear during selection; the chart zooms to it and Chart Zoom Start/End update in seconds. No context menu should open after the drag. 2. Click Full Datalog below that chart; the full available timeline returns. Repeat with a right-drag from right to left: start/end are correctly ordered. 3. Repeat after resizing the chart panel and at 75%, 150% and 200% browser zoom: the selected time range follows the visible chart coordinates."
+  ],
+  [
+    "V17-PAN",
+    "Live Left-Drag Panning and Cancel",
+    "Setup: same populated practice Datalog Review; first right-drag to zoom into the middle of the datalog. 1. Hold the left button and drag horizontally: the displayed timeline shifts while held, retains its span, and Chart Zoom Start/End follow it. Release to keep that window. 2. Drag again and press Escape while held; release: the previous window returns. 3. Pan toward either end: the window stops at the available datalog limits. 4. Plain left-click without dragging: the selected sample/readings move to that point. Chart zoom does not change tuning filters or calibration values."
+  ],
+  [
+    "V17-CHART-ACTIONS",
+    "Click, Context Menu and Keyboard Controls",
+    "Setup: Datalog Review with a timestamped practice datalog. 1. Plain right-click a synchronized chart: Chart Actions appears. Test Center on Playback and Show Whole Datalog. 2. Use the visible Pan Earlier, Pan Later, Zoom In and Full Datalog buttons; verify time fields update. Focus those buttons with Tab and activate with Enter. 3. Start Datalog Playback and pan a zoomed chart: playback is not paused merely by dragging; inspect the new window. A plain measurement click still pauses for inspection. 4. Datalog Review → Boost Review Units, Filters and Channel Mapping → select Time in the horizontal-axis selector for the boost-review chart and repeat range zoom/pan. With RPM selected, time-drag controls should be disabled/explained; Shift-drag sample selection retains its separate behavior."
+  ],
+  [
+    "V17-SECTIONS",
+    "Collapse and Expand the Current Page",
+    "Setup: main app \u2192 Boost Tables; save your original project first. 1. Current Tuning Setup \u2192 Collapse All: collapsible panels and details on Boost Tables close; Collapse All/Expand All remain reachable. 2. Expand All: those panels/details open; individual panel and disclosure controls still work. 3. Repeat in Datalog Review and Settings. Controls hidden by Guided/Standard mode remain governed by that mode. 4. Verify global Datalog Playback, other workspaces, table values, panel order, sizes and zoom are not changed by these actions."
+  ],
+  [
+    "V17-PERSIST",
+    "Save/Reopen Section States and Existing Projects",
+    "Setup: disposable main-window project with a datalog and calibration tables. 1. Datalog Review \u2192 Collapse All; individually open a chosen panel/disclosure. Navigate away and back: the chosen states remain. 2. Save Project, then Open Project with that JSON: section states and calibration values return. 3. Reload the same app file after browser storage settles: both datalog and calibration tables restore. Check Boost By Gear is available without loading another datalog. 4. Open a prior v0.16.2 project backup: values, menu order and layouts still load; new section preferences are optional."
+  ],
+  [
+    "V17-TERMS",
+    "Consistent Datalog and EFI Terminology",
+    "Setup: main app, your exported datalog or disposable practice data. 1. Check navigation: Datalog Review, Datalog Library and Datalogging Instructions; check Datalog Playback controls, import prompts, channel-source help and error messages. 2. Open the Guided Tutorial and Datalogging Instructions: wording stays consistent with the app. 3. Open the Datalog Playback popout: its title and Active Datalog label align. 4. Export Excel Workbook with Export Notes enabled: Active Datalog and Raw Datalogs labels align. 5. Compare imported filenames, original channel headers, saved personal notes, pressure units and calibration table axes/values with the originals: none should be renamed or changed. Record any remaining confusing terminology with the exact workspace/label."
+  ],
+  [
+    "V17-MODES",
+    "Guided, Standard and Advanced Detail",
+    "Setup: main app \u2192 Settings \u2192 Appearance \u2192 experience-mode selector. 1. Choose Guided, then visit Boost Tables, AFM Scaler and Datalog Review: Current Tuning Setup includes a plain-language next step. 2. Choose Standard: core names stay the same, but the summary is concise. 3. Choose Advanced: open the detailed calculation/sample-filter disclosure in Current Tuning Setup; compare its settings with the visible controls. 4. Change a relevant adjustment or filter: the summary updates. AFM identifies the selected baseline datalog, not an unrelated active datalog; boost-table adjustment wording does not claim to use datalog samples. 5. Save Project/reopen: your existing experience/appearance scope preferences remain."
+  ],
+  [
+    "V17-REGRESSION",
+    "Playback, Startup and Review Workflow",
+    "Setup: disposable project with current proposals and an already-exported datalog. 1. Reload v0.17: animated splash blocks premature interaction, then datalog/tables return. 2. Play \u2192 navigate Datalog Review, Boost Tables, AFM Scaler and Boost By Gear: supported traces continue; test the playback popout and a detached workspace. 3. Change Review \u2192 mark current proposals reviewed; collapse/expand sections and change chart zoom: those display-only actions must not invalidate the proposal acknowledgement. 4. Export Excel Workbook and existing Copy/Export TSV routes: values, units and indexed/body-only orientation remain correct. 5. At 100% zoom on a 1440\u00d7900 viewport, the primary datalog chart remains visible in the first screen; at higher zoom, menu and page controls remain reachable."
+  ]
+];
+document.getElementById('cases').innerHTML=cases.map(([id,title,steps])=>`<article data-case="${id}"><h2>${id} · ${title}</h2><p>${steps}</p>${['Pass','Fail','Not tested'].map(v=>`<label><input type="radio" name="${id}" value="${v}" ${v==='Not tested'?'checked':''}>${v}</label>`).join('')}<textarea aria-label="${id} observations" placeholder="Steps, expected/actual values, units, severity and screenshot references"></textarea></article>`).join('');
+document.getElementById('download').onclick=()=>{const data={release:'TuneLab v0.17',date:new Date().toISOString(),tester:document.getElementById('tester').value,browser:document.getElementById('browser').value,cases:[...document.querySelectorAll('[data-case]')].map(n=>({id:n.dataset.case,result:n.querySelector('input:checked').value,notes:n.querySelector('textarea').value}))};const a=document.createElement('a'),url=URL.createObjectURL(new Blob([JSON.stringify(data,null,2)],{type:'application/json'}));a.href=url;a.download='TuneLab-v0.17-UAT-results.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);};
+</script></body></html>
