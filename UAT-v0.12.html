@@ -1,0 +1,66 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>TuneLab v0.12 UAT</title><style>body{font:16px/1.6 Segoe UI,sans-serif;max-width:1000px;margin:30px auto;padding:20px;color:#233144}article{border:1px solid #cdd6df;border-radius:8px;margin:20px 0;padding:18px}textarea{width:95%;min-height:80px}label{margin-right:15px}button{padding:12px}input{padding:8px}h1{color:#c82f40}@media print{button{display:none}article{break-inside:avoid}}</style><body><h1>TuneLab v0.12 acceptance</h1><p>Save your project JSON first. Extract TuneLab-v0.12.zip into a separate folder and launch Start-TuneLab.bat. All 12 scenarios start Not tested; prior release signoffs are retained separately. Use historical logs and disposable copies of calibrations. Keep your previous project JSON and original logs. No flashing or hardware connection is needed.</p><label>Tester <input id="tester"></label><label>Browser/version <input id="browser"></label><div id="cases"></div><button id="download">Download result JSON</button><button onclick="print()">Print</button><p>Critical: incorrect physical values, lost data or protected values changed. Major: blocked workflow. Minor: presentation/explanation issue. Record expected and actual values, steps, units, file/revision and screenshots. KTuner CSV channel compatibility was checked in earlier releases; full-precision screenshot-table import verification remains pending. v0.11 retains 12 Pass / 2 Fail; this guide does not record v0.12 acceptance.</p><script>
+const cases=[
+  [
+    "V12-TABLES",
+    "Hondata Tables Before Loading a Log",
+    "Start in a new extracted folder without a log or saved calibration. Boost By Gear Limits should show RPM 3000,3500,4000,4500,5000,5500 and gears 1\u20136, all 3.00 absolute bar, clearly labeled user-supplied. Import your RPM-by-gear table, change a disposable value, save JSON and reopen before loading a log. Your imported values must replace the starting template and survive reopen. Retest failed V11-TABLES."
+  ],
+  [
+    "V12-GEARS",
+    "Six Gears and Legacy Retention",
+    "Import gears 1 and 6 successfully. Gear 7 must explain the current six-gear view. Open an older project containing additional gears; display/export show only 1\u20136 while downloaded project JSON preserves the original additional gear rows."
+  ],
+  [
+    "V12-PLAY",
+    "Continuous Playback Across Screens",
+    "Play a reviewed log. Navigate Boost Tables, AFM, Logs, Gear Limits, My Workspace and Settings. Return to each relevant table: playback and marker updates continue without Pause/Play. Change window focus and inspect a detached table. Check Pause, speed, skip and selected-range boundaries. Retest failed V11-TRACE."
+  ],
+  [
+    "V12-COMMAND",
+    "Command Table Tracing",
+    "Use reviewed RPM and command-pressure mappings/units. Select Command and check original/proposed/custom table markers. A unit-bearing command-only log should trace without requiring an actual-boost channel. Remove command mapping or leave units ambiguous: clear marker and show reason. Explicit tracing-unit choice should restore valid matching."
+  ],
+  [
+    "V12-VISITS",
+    "Most Visited Locations",
+    "Choose Whole Log / Sample Count. Inspect heatmap and named maximum coordinates; ties should be shown. Replay and scrub the same rows repeatedly: counts must not increase. Change selected playback range and choose Selected Playback Range; only original rows in that range contribute."
+  ],
+  [
+    "V12-TIME",
+    "Weighted Time and Gaps",
+    "Choose Time Spent and compare with the recording. Interpolated cell time is weighted. Missing timestamps, resets, nonconsecutive source rows and gaps over one second do not create dwell time. Last row has no fabricated dwell. Toggle maximum highlight separately from heatmap."
+  ],
+  [
+    "V12-LEGEND",
+    "Independent Tracing and Coverage",
+    "Toggle Table Tracing, Visit Heatmap, Highlight Most Visited and analysis Coverage independently. Each legend matches its visible effect. Mouse over a visited cell for counts/time. These overlays must not change source/proposed calibration values or proposal eligibility."
+  ],
+  [
+    "V12-POSITION",
+    "Global Playback Position",
+    "Use slider and first/previous/next/last controls across screens. Readout must match the original CSV row, timestamp, RPM and gear. Scrubbing pauses playback at the requested row rather than jumping to the previous cursor."
+  ],
+  [
+    "V12-WHY",
+    "Useful Missing-Trace Explanations",
+    "Try missing RPM, command units, AFM frequency, gear mapping and out-of-axis values in disposable logs. Affected markers clear; reasons explain what is missing. Review Channel Mapping opens the appropriate screen. Reference PA must remain explicit when not recorded."
+  ],
+  [
+    "V12-MENU",
+    "Save Menu Order",
+    "Rearrange the menu and click Save Menu Order. Confirm saving scope is explained. Reopen the same folder, then reopen downloaded JSON in a separate folder. Order must be retained. Storage-disabled workspaces must direct you to JSON rather than claim a browser save."
+  ],
+  [
+    "V12-KTUNER",
+    "KTuner Axis Units",
+    "Choose KTuner import, selected gear 1\u20136, body units and atmospheric-axis units separately. A full-precision PSI export must retain original values and correct RPM/pressure structure. Nine repeated -0.2 screenshot headers should explain the need for full precision without merging or inventing columns. Real screenshot-table compatibility remains unverified until its export is available."
+  ],
+  [
+    "V12-REGRESSION",
+    "Backup and Prior Passing Workflows",
+    "Save/reopen a disposable project with manual proposals, protected cells, imported tables, layouts, appearance and tracing preferences. Values and units stay unchanged; malformed preferences fail without overwriting the open project. Spot-check Update All Proposals, detached-window editing and prior performance/appearance passes."
+  ]
+];
+document.getElementById('cases').innerHTML=cases.map(([id,title,steps])=>`<article data-case="${id}"><h2>${id} · ${title}</h2><p>${steps}</p>${['Pass','Fail','Not tested'].map(v=>`<label><input type="radio" name="${id}" value="${v}" ${v==='Not tested'?'checked':''}>${v}</label>`).join('')}<textarea aria-label="${id} observations" placeholder="Steps, expected/actual values, units, severity and screenshot references"></textarea></article>`).join('');
+document.getElementById('download').onclick=()=>{const data={release:'TuneLab v0.12',date:new Date().toISOString(),tester:document.getElementById('tester').value,browser:document.getElementById('browser').value,cases:[...document.querySelectorAll('[data-case]')].map(n=>({id:n.dataset.case,result:n.querySelector('input:checked').value,notes:n.querySelector('textarea').value}))};const a=document.createElement('a'),url=URL.createObjectURL(new Blob([JSON.stringify(data,null,2)],{type:'application/json'}));a.href=url;a.download='TuneLab-v0.12-UAT-results.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);};
+</script></body></html>

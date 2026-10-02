@@ -1,0 +1,78 @@
+{
+  "release": "TuneLab v0.11",
+  "date": "2026-10-02T12:47:31.637Z",
+  "tester": "",
+  "browser": "",
+  "cases": [
+    {
+      "id": "V11-TABLES",
+      "result": "Fail",
+      "notes": "I got an error that said Gear must be 1-10.... lol I dont know of any si's with a 10 speed. Should only be 1-6"
+    },
+    {
+      "id": "V11-PERFORMANCE",
+      "result": "Pass",
+      "notes": ""
+    },
+    {
+      "id": "V11-APPEARANCE",
+      "result": "Pass",
+      "notes": ""
+    },
+    {
+      "id": "V11-NAV",
+      "result": "Pass",
+      "notes": "This works great. However, If we have 'Reset Menu' Order, we also need 'Save Menu Order' to preserve the order"
+    },
+    {
+      "id": "V11-BATCH",
+      "result": "Pass",
+      "notes": ""
+    },
+    {
+      "id": "V11-MANUAL",
+      "result": "Pass",
+      "notes": ""
+    },
+    {
+      "id": "V11-GATES",
+      "result": "Pass",
+      "notes": ""
+    },
+    {
+      "id": "V11-STATUS",
+      "result": "Pass",
+      "notes": ""
+    },
+    {
+      "id": "V11-TYPE",
+      "result": "Pass",
+      "notes": ""
+    },
+    {
+      "id": "V11-LAYOUT",
+      "result": "Pass",
+      "notes": ""
+    },
+    {
+      "id": "V11-WINDOWS",
+      "result": "Pass",
+      "notes": ""
+    },
+    {
+      "id": "V11-REFLOW",
+      "result": "Pass",
+      "notes": ""
+    },
+    {
+      "id": "V11-BACKUP",
+      "result": "Pass",
+      "notes": ""
+    },
+    {
+      "id": "V11-TRACE",
+      "result": "Fail",
+      "notes": "see notes in chat"
+    }
+  ]
+}

@@ -69,3 +69,6 @@ The retained **src/** and **tests/** Windows/Avalonia shell is older v0.2 code, 
 
 
 v0.11 adds menu reorder, global proposal updates/status, scoped typography and named layouts. Global Log Playback traces the recorded row through native and custom tables, including detached windows; candidate locations are independent of correction eligibility. Save project JSON before moving folders. Original gear-loading and appearance findings remain in the v0.11 retest guide.
+
+
+Current UAT build: v0.12. Launch Start-TuneLab.bat; use UAT-v0.12.html and docs/V0.12-SCOPE.md. Save your project JSON before upgrading. Earlier UAT records remain historical; v0.12 acceptance is pending.
