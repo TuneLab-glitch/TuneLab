@@ -1,0 +1,71 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>TuneLab v0.16 UAT</title><style>body{font:16px/1.6 Segoe UI,sans-serif;max-width:1000px;margin:30px auto;padding:20px;color:#233144}article{border:1px solid #cdd6df;border-radius:8px;margin:20px 0;padding:18px}textarea{width:95%;min-height:80px}label{margin-right:15px}button{padding:12px}input{padding:8px}</style><body><h1>TuneLab v0.16 Acceptance</h1><p>Save your current project first. Extract TuneLab-v0.16.zip into its own folder, then double-click Start-TuneLab.bat. <a href="portable/index.html">Open the delivered app</a>. All 13 cases start Not tested. v0.15 retains its 13 passes; no v0.16 acceptance is inferred. Use disposable projects and already-exported logs. No hardware connection or flashing is needed.</p><label>Tester <input id="tester"></label><label>Browser/version <input id="browser"></label><div id="cases"></div><button id="download">Download Result JSON</button><button onclick="print()">Print</button><script>
+const cases=[
+  [
+    "V16-PLAYER",
+    "Compact, Detailed and Collapsed Playback",
+    "Setup: open the new build at 100% zoom; save your previous project first. 1. Global toolbar \u2192 Player Details: First/Last, Command Pressure Units, Tracing Options and Help, and Resize Log Panel become available. 2. Choose Compact Player: transport remains, details reduce; unit issues must remain actionable. 3. Collapse Log Playback: all transport controls hide, while Search App and Update All Proposals remain. 4. Expand, Save Project, reopen that JSON: compact/collapse preferences persist. Resize in detail mode and confirm the chosen height returns after reopening."
+  ],
+  [
+    "V16-RECONNECT",
+    "Reconnect the Global Playback Popout",
+    "Setup: import an exported log with timestamps via Import or Drop CSV / TXT Datalogs \u2192 Import CSV / TXT Datalogs. 1. Global toolbar \u2192 Pop Out Log Playback. In that window select the log, click Play, and switch the main window between Log Review, AFM Scaler, Boost Tables and Boost By Gear. Playback position and relevant table traces continue. 2. Background the main window for at least 15 seconds; return. If waiting is shown, click Reconnect inside the player. Expect its current state and usable controls without restarting playback or creating a second timer. 3. Return Player to Main Window: same row returns. 4. Reopen the popout, then reload/close the main app: old controller disables controls and tells you to reopen it from TuneLab; do not silently attach it to a different project."
+  ],
+  [
+    "V16-REVIEW",
+    "Current Proposal Review Has a Completed State",
+    "Setup: load your project with a calculated or manually edited proposal; do not alter your only backup. 1. Change Review \u2192 Current Proposal Review \u2192 Mark Current Proposals Reviewed. Expect Reviewed plus timestamp; the completed button is disabled. 2. Play/scrub the current log and return: no new acknowledgement required just for the cursor. 3. Boost Tables \u2192 deliberately edit one unprotected proposal cell, then return to Current Proposal Review: expect Pending and a named changed area. 4. Review again; change a mapping/evidence filter and repeat. Historical Review Checkpoints and Transfer And Verify A Table remain separate stages, not claims of vehicle validation."
+  ],
+  [
+    "V16-LOGS",
+    "Primary Log Charts Before Secondary Setup",
+    "Setup: Synthetic Demos \u2192 select Startup or Boost scenario \u2192 launch the isolated practice window. 1. Log Review: Selected Channels \u00b7 Synchronized Inspection is first; at 1440\u00d7900 and 100% zoom a primary chart appears in the first screen. 2. Channels and Timestamp Setup \u2192 change Channel 1; expect that channel plotted with its native units. 3. Chart Zoom Start/End, drag zoom, plain-click inspection and Chart Actions still work. 4. Purpose and Channel Readiness \u2014 Setup and Recovery \u2192 inspect readiness and apply suggested setup. Boost Review Units, Filters and Channel Mapping remains explicitly reachable when boost analysis is relevant."
+  ],
+  [
+    "V16-TASKS",
+    "Table-First Editing and Preserved Layouts",
+    "Setup: fresh project, plus a saved project with manually arranged panels. 1. Boost Tables: inspect Source Table before secondary curve panels; all Adjustment Controls remain reachable below it. 2. AFM Scaler: inspect the proposed copy/paste table in its existing preview area, then open Guided Workflow Shortcuts. 3. Reopen your arranged project: saved card order, dimensions and left/right positions remain. 4. Workspace Window and Panel Options \u2192 Reset workspace panels: the new default table order returns. Confirm no values changed through layout actions."
+  ],
+  [
+    "V16-GEARS",
+    "Gear Table Remains Available Without a Log",
+    "Setup: reopen a project containing gear limits, with no active log. 1. Boost By Gear: the native limits table is available without importing a datalog. 2. Import and Pressure Conversion Setup \u2192 inspect format, units, paste/import controls and atmospheric reference. 3. Close setup and edit/view the table normally. 4. Copy displayed table; verify shape and units in a disposable editor. Confirm six gears for the supplied Hondata default and no inferred full-precision KTuner screenshot axes."
+  ],
+  [
+    "V16-CONVERSION",
+    "Pressure Conversion Is an Optional Tool",
+    "Setup: existing MPR/Command source tables and recorded units/reference pressure. 1. Boost Tables \u2192 Pressure Conversion Tool beside the table controls. Expect the same source shown in Hondata and KTuner pressure representations, with an explanation that this is not an independent calibration comparison. 2. Select the source table and Refresh comparison. Verify a few values against the existing unit conversion. 3. Back to Boost Tables: source/proposal values unchanged. 4. Search App \u2192 Pressure Conversion still finds the tool; old projects using compare remain openable although its sidebar item is hidden."
+  ],
+  [
+    "V16-GUIDE",
+    "One End-to-End Tutorial With Contextual Instructions",
+    "Setup: use isolated demos or disposable exported logs. 1. Global toolbar \u2192 Guided Tutorial: choose AFM, Boost, Startup and Validation in turn; inspect the appropriate branch and prerequisites. 2. Open the named workspace from a step, then reopen Guided Tutorial: resume progress. 3. Logging Strategy \u2192 Start or Resume Guided Tutorial reaches the same guide; Logging Instructions from the import area remains purpose-specific. 4. Follow a proposal branch to Transfer And Verify A Table. Instructions must explain backups, correct table/units/axes, cautious paste alignment, comparison, undo and matched validation. No auto-calibration confirmation or ECU action occurs."
+  ],
+  [
+    "V16-TABLE-ACTIONS",
+    "Consistent Zoom and Trace Actions",
+    "Setup: log with confirmed units/channels and candidate traces; tables with unprotected selection. 1. Boost Tables \u2192 Source Table or Proposed Table \u2192 Zoom In / Zoom Out. Selected-cell focus and original values remain. 2. Wheel over the selected cell, then Ctrl+wheel: table zoom versus normal browser zoom stay distinct. 3. Go to Trace locates the candidate cell when off-screen; no needless jump when visible. 4. Repeat in AFM proposed copy/paste, Boost By Gear and an inserted My workspace table. Frequency-level evidence explains appearance sizing instead of promising unsupported wheel zoom."
+  ],
+  [
+    "V16-SETTINGS",
+    "Organized Settings and Appearance Inheritance",
+    "Setup: save a project first. 1. Settings \u2192 Appearance \u2192 Appearance Inheritance: change app table sizing, then choose a page override; verify source, proposed and conversion tables. 2. Inspect Workspace Layout, Units and Review Preferences, and Storage and Projects groups (groups appear according to included panels). 3. Reopen JSON: preferences survive, without numeric table changes. 4. Project & Versions: confirm Save Project downloads JSON and browser storage is separately described as local convenience storage."
+  ],
+  [
+    "V16-FEEDBACK",
+    "Normal Empty State Versus Actionable Setup Problems",
+    "Setup: fresh project with no log, then an exported log with unknown Command pressure units. 1. Global playback: no-log message is neutral, not an error condition; import controls are reachable. 2. Import the uncertain-unit log: Needs Setup is visible even in compact mode and the Command Pressure Units selector is accessible. 3. Choose verified units: candidate status updates; no in-range location is explained separately. 4. Change Review: stale proposals and pending review remain visible. Important errors must not disappear inside collapsed options."
+  ],
+  [
+    "V16-BACKUP",
+    "Compatibility, Isolation and Source Preservation",
+    "Setup: retain a downloaded v0.15 project and older available backup. 1. Open Project \u2192 select each backup: no loss of source/proposed values, logs, menu order or custom tables; calibration confirmations intentionally clear. 2. Save Project as a new file, reopen it: v0.16 interface preferences persist. 3. Synthetic Demos \u2192 launch a practice window, edit its demo, close it: original project/library stays unchanged. 4. Verify an interrupted/disconnected editing window cannot command playback or silently overwrite the main project."
+  ],
+  [
+    "V16-ACCESS",
+    "Zoom, Keyboard and Larger-Log Responsiveness",
+    "Setup: main window plus a populated disposable project. 1. Test 100%, 150% and 200% browser zoom: sidebar scrolls; compact/expanded toolbar, import and settings remain reachable without trapped controls. 2. Tab from the top \u2192 Skip to Current Workspace; Ctrl+K \u2192 search a field/table \u2192 select result: correct workspace opens and focus/location is visible. Escape closes help/tutorial. 3. Hover charts during playback and navigate several workspaces with a larger log; values track the original row and interaction stays responsive. 4. Include the global popout and a detached workspace; distinguish observations from measured timings."
+  ]
+];
+document.getElementById('cases').innerHTML=cases.map(([id,title,steps])=>`<article data-case="${id}"><h2>${id} · ${title}</h2><p>${steps}</p>${['Pass','Fail','Not tested'].map(v=>`<label><input type="radio" name="${id}" value="${v}" ${v==='Not tested'?'checked':''}>${v}</label>`).join('')}<textarea aria-label="${id} observations" placeholder="Steps, expected/actual values, units, severity and screenshot references"></textarea></article>`).join('');
+document.getElementById('download').onclick=()=>{const data={release:'TuneLab v0.16',date:new Date().toISOString(),tester:document.getElementById('tester').value,browser:document.getElementById('browser').value,cases:[...document.querySelectorAll('[data-case]')].map(n=>({id:n.dataset.case,result:n.querySelector('input:checked').value,notes:n.querySelector('textarea').value}))};const a=document.createElement('a'),url=URL.createObjectURL(new Blob([JSON.stringify(data,null,2)],{type:'application/json'}));a.href=url;a.download='TuneLab-v0.16-UAT-results.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);};
+</script></body></html>

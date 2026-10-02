@@ -1,10 +1,10 @@
 {
   "name": "tunelab-portable",
-  "version": "0.14.0",
+  "version": "0.16.0",
   "private": true,
   "scripts": {
     "test": "node --test tests/engine.test.cjs tests/workbench.test.cjs tests/sessions.test.cjs tests/workflows.test.cjs tests/review.test.cjs tests/demos.test.cjs tests/review-flow.test.cjs tests/visits.test.cjs",
-    "test:browser": "node tests/browser-workspaces.cjs && node tests/browser-review.cjs && node tests/browser-scaling.cjs && node tests/browser-demos.cjs && node tests/browser-review-flow.cjs && node tests/browser-appearance.cjs && node tests/browser-efficiency.cjs && node tests/browser-revision11.cjs && node tests/browser-playback-tracing.cjs && node tests/browser-revision12.cjs && node tests/browser-revision13.cjs && node tests/browser-revision14.cjs",
+    "test:browser": "node tests/browser-workspaces.cjs && node tests/browser-review.cjs && node tests/browser-scaling.cjs && node tests/browser-demos.cjs && node tests/browser-review-flow.cjs && node tests/browser-appearance.cjs && node tests/browser-efficiency.cjs && node tests/browser-revision11.cjs && node tests/browser-playback-tracing.cjs && node tests/browser-revision12.cjs && node tests/browser-revision13.cjs && node tests/browser-revision14.cjs && node tests/browser-revision15.cjs && node tests/browser-tutorial15.cjs && node tests/browser-revision16.cjs",
     "test:ui": "node tests/ui-integration.cjs && node tests/session-ui.cjs && node tests/workflows-ui.cjs && node tests/workspaces-ui.cjs && node tests/review-ui.cjs && node tests/polish-ui.cjs"
   },
   "devDependencies": {

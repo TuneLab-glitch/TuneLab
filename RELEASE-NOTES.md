@@ -161,3 +161,28 @@ Current v0.13 UAT: eleven Pass / one Needs Revision, explicitly reported by Jonn
 ## v0.14 Approved Build — 2026-10-02
 
 Jonny approved navigation, playback and review improvements plus a compact/resizable global log box. See docs/V0.14-SCOPE.md. Build verification and all eleven precise-navigation UAT cases are tracked separately; no user acceptance is inferred. Prior v0.13 is eleven passes / one messaging presentation revision. Longer-term features remain deferred.
+
+
+## v0.14 UAT Acceptance — 2026-10-02
+
+Jon submitted all eleven scenarios Pass in Edge at 2026-10-02T17:06:33.612Z. See docs/V0.14-UAT-SIGNOFF.md and docs/V0.14-UAT-results.json (paths relative to repo root). Earlier pending status is superseded; delivered app/archive unchanged. V14-MESSAGES closes the previously reported messaging presentation finding through v0.14 retest. V14-APPROVALS passes with a usability observation: excessive recorded edit operations make individual review impractical; investigate and group meaningful review checkpoints without erasing audit history or silently approving hidden edits. Suspected testing accumulation is unverified. Next-version player-collapse/popout and chart/table zoom notes remain planning only.
+
+
+## v0.15 Approved Build — 2026-10-02
+
+Jonny approved player collapse/popout, chart drag/context actions, anchored table wheel zoom and review checkpoints; added end-to-end exported-log tutorial and cautious destination paste-back verification during the build. See docs/V0.15-SCOPE.md. v0.14 is accepted (eleven Pass). All thirteen v0.15 exact-navigation UAT cases remain pending. No user acceptance or hardware/ECU action is inferred. Deferred work remains deferred.
+
+
+## v0.15 UAT Follow-up — 2026-10-02
+
+Jon submitted eleven Pass / zero Fail / two Not tested in Edge at 2026-10-02T17:44:00.516Z. V15-DISCONNECT and V15-CONTEXT remain untested. V15-POPOUT is Pass with a reported disconnect after tab transitions and a request for an in-popout Reconnect button. Preserve exact statuses and investigate navigation heartbeat continuity; do not infer full sign-off or silently treat the observation as resolved. See docs/V0.15-UAT-FINDINGS.md and docs/V0.15-UAT-results.json. Application/archives unchanged in this documentation update.
+
+
+## v0.15 UAT Acceptance — 2026-10-02
+
+Jonny explicitly reports all UAT passed. All thirteen cases are accepted; V15-DISCONNECT and V15-CONTEXT now pass. See docs/V0.15-UAT-SIGNOFF.md/json. Preserve original submitted eleven Pass / two Not tested as historical evidence. Prior popout reconnect/navigation-continuity and Current Proposal Review clarity observations remain follow-up improvements; no code fixes are inferred from sign-off. Application/archive unchanged; packaging/publication completion is a separate remaining delivery task.
+
+
+## v0.16 Workflow Cleanup Build — 2026-10-02
+
+Approved whole-app audit scope is implemented; see docs/V0.16-SCOPE.md and docs/V0.16-VERIFICATION.md. Compact player, reconnect, clear proposal acknowledgements, task hierarchy, optional conversion tool, tutorial/instruction routing, table actions, grouped settings and indexed hover are included. v0.15 retains all thirteen UAT passes; v0.16 has thirteen pending precise-navigation cases. Deferred work remains deferred.
