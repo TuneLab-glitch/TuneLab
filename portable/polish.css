@@ -34,3 +34,5 @@ button:focus-visible,select:focus-visible,input:focus-visible,textarea:focus-vis
 #readinessStatus,#matchedSummary{display:block;margin:12px 0;overflow-wrap:anywhere}
 
 .brandmark{color:var(--accent-ink,#fff)}
+
+.logic-summary{border-left:3px solid var(--accent);background:var(--surface);padding:12px 16px;margin:0 0 18px;font-size:13px;line-height:1.65;overflow-wrap:anywhere}.logic-summary p{margin:5px 0}.logic-summary details{margin-top:6px}.logic-summary summary{cursor:pointer;color:var(--muted)}

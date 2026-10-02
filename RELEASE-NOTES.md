@@ -8,9 +8,10 @@
 - All calibration tables restore independently of active log selection, with optional atomic browser workspace caching. Project JSON is the portable backup.
 - Four extra table gradients, including teal blue → green → yellow → orange → red. Extensible model/year/color theme selectors currently cover U.S. Civic Si 2022–2026, with readable contrast and existing appearance inheritance.
 - Independent cursor-tracking/coverage display switches, recorded-time raw playback and a renameable custom workspace with live table views and grid layout.
+- Dynamic plain-English Current setup summaries on all 12 tabs describe selected filters, units, edits and missing prerequisites.
 - Version 10 JSON migrates earlier projects; calibration gates, history, protected cells and existing calculations are retained.
 
-63 synthetic / 66 private-fixture tests, six DOM suites and five Edge browser suites pass. See docs/V0.10-VERIFICATION.md and UAT-v0.10.html (20 cases). User acceptance is pending; v0.9.1 sign-off is unchanged. Calculated channels and advanced playback layouts, AI, alignment, attachments and full expanded ECU semantics remain deferred.
+63 synthetic / 66 private-fixture tests, six DOM suites and five Edge browser suites pass. See docs/V0.10-VERIFICATION.md and UAT-v0.10.html (21 cases). User acceptance is pending; v0.9.1 sign-off is unchanged. Calculated channels and advanced playback layouts, AI, alignment, attachments and full expanded ECU semantics remain deferred.
 
 ---
 
@@ -46,7 +47,7 @@
 - Quieter log-format summary with expandable mappings/provenance, plain-English labels and contextual help.
 - AFM analysis button now invokes the current normalization/provenance workflow.
 
-55 synthetic tests; 58 with three private fixtures; five DOM suites and both local-file Edge browser suites pass. See docs/V0.8-VERIFICATION.md and UAT-v0.8.html (20 cases). Jonny signed off all 16 v0.8 UAT scenarios on 2026-10-02; see docs/V0.8-UAT-SIGNOFF.md. Coverage is descriptive, not confidence, ECU influence or engine safety. The reported browser-zoom/sidebar-scroll defect is tracked for the next version. Deferred features and full Civic/KTuner applicability checks remain unchanged.
+55 synthetic tests; 58 with three private fixtures; five DOM suites and both local-file Edge browser suites pass. See docs/V0.8-VERIFICATION.md and UAT-v0.8.html (21 cases). Jonny signed off all 16 v0.8 UAT scenarios on 2026-10-02; see docs/V0.8-UAT-SIGNOFF.md. Coverage is descriptive, not confidence, ECU influence or engine safety. The reported browser-zoom/sidebar-scroll defect is tracked for the next version. Deferred features and full Civic/KTuner applicability checks remain unchanged.
 
 ---
 
