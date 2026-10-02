@@ -1,0 +1,94 @@
+{
+  "release": "TuneLab v0.7",
+  "date": "2026-10-02",
+  "timezone": "America/New_York",
+  "tester": "Jonny",
+  "build": "a8828c312b2a01724dea2353f1424db01ecb626c",
+  "mergedCommit": "d6bd2261b0c8fc10d51beba1a756675c5d630644",
+  "archive": "TuneLab-v0.7.zip",
+  "archiveSha256": "235a4c268e6519457d6a622117ddb3d54724cc69411ae88914a625a60287499b",
+  "attribution": "User-reported aggregate sign-off in this chat",
+  "statement": "All UAT passed",
+  "scope": "All 12 v0.7 guide scenarios within implemented release scope; separately pending applicability checks are not attested",
+  "browser": null,
+  "os": null,
+  "cases": [
+    {
+      "id": "V7-NAV",
+      "scenario": "Named and compact navigation",
+      "result": "Pass",
+      "evidence": "Aggregate user report; individual execution transcript not supplied"
+    },
+    {
+      "id": "V7-WINDOW",
+      "scenario": "One workspace per window",
+      "result": "Pass",
+      "evidence": "Aggregate user report; individual execution transcript not supplied"
+    },
+    {
+      "id": "V7-HANDOFF",
+      "scenario": "Edit handoff and shared values",
+      "result": "Pass",
+      "evidence": "Aggregate user report; individual execution transcript not supplied"
+    },
+    {
+      "id": "V7-CONFLICT",
+      "scenario": "Concurrent requests and stale edits",
+      "result": "Pass",
+      "evidence": "Aggregate user report; individual execution transcript not supplied"
+    },
+    {
+      "id": "V7-PROJECT",
+      "scenario": "Project opening from either window",
+      "result": "Pass",
+      "evidence": "Aggregate user report; individual execution transcript not supplied"
+    },
+    {
+      "id": "V7-RECOVERY",
+      "scenario": "Owner closure and reload",
+      "result": "Pass",
+      "evidence": "Aggregate user report; individual execution transcript not supplied"
+    },
+    {
+      "id": "V7-POPUP",
+      "scenario": "Blocked popup",
+      "result": "Pass",
+      "evidence": "Aggregate user report; individual execution transcript not supplied"
+    },
+    {
+      "id": "V7-GRID",
+      "scenario": "Drag and snap",
+      "result": "Pass",
+      "evidence": "Aggregate user report; individual execution transcript not supplied"
+    },
+    {
+      "id": "V7-SIZE",
+      "scenario": "Resize and readable grid",
+      "result": "Pass",
+      "evidence": "Aggregate user report; individual execution transcript not supplied"
+    },
+    {
+      "id": "V7-KEYBOARD",
+      "scenario": "Keyboard panel movement and reset",
+      "result": "Pass",
+      "evidence": "Aggregate user report; individual execution transcript not supplied"
+    },
+    {
+      "id": "V7-LAYOUT",
+      "scenario": "Independent layout backup",
+      "result": "Pass",
+      "evidence": "Aggregate user report; individual execution transcript not supplied"
+    },
+    {
+      "id": "V7-REGRESSION",
+      "scenario": "Calculation and migration regression",
+      "result": "Pass",
+      "evidence": "Aggregate user report; individual execution transcript not supplied"
+    }
+  ],
+  "remainingVerification": [
+    "Full Civic/KTuner analysis channel semantics and destination paste",
+    "Broader browser/OS/touch/accessibility matrix"
+  ],
+  "deferredFeatures": "Unchanged; see BACKLOG.md and V0.7-PROPOSAL.md"
+}
