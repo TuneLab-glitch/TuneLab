@@ -278,3 +278,13 @@ Jonny reports initial sluggishness followed by good responsiveness. Recorded in 
 ## v0.16.1 Selected Workbook Export — 2026-10-02
 
 User authorized selected-table XLSX export with per-table sheets, Select All and contextual recommendations. Implemented as a local add-on build with optional indexes/notes and freshness gates; see docs/V0.16.1-WORKBOOK-EXPORT.md. No signoff inferred; startup observation remains open.
+
+
+## Next Revision: Log Chart Mouse Gestures — 2026-10-02
+
+Jonny requests right-button hold/drag to highlight a time range and zoom; left-button hold/drag pans the log chart. Preserve right-click context menu and left-click measurement selection when no drag occurs. Pending implementation and specific UAT.
+
+
+## v0.16.2 Startup Loading — 2026-10-02
+
+Startup interaction gate implemented. See docs/V0.16.2-STARTUP.md for verification and exact UAT steps. Prior UAT acceptance unchanged; chart gesture note remains pending.
