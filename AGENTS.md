@@ -8,3 +8,5 @@ Official Hondata/KTuner sources first for platform claims. Record applicability 
 Keep raw user logs and project backups out of git. Never infer unseen settings of locked tunes. No ECU flashing or live hardware actions are in scope.
 Run npm test and npm run test:ui in portable/ after relevant changes. Tests use synthetic fixtures by default. TUNELAB_LOG_FIXTURE can point to a private compatibility fixture. DOM tests do not establish browser rendering, clipboard, resizing or storage behavior.
 Preserve project backward compatibility and migration paths; do not erase manual refinements automatically. Record release limitations honestly.
+
+Active UI is now v0.9. Read docs/V0.9-SCOPE.md and docs/V0.9-VERIFICATION.md. Unified practice scenarios must never read/write the user browser library or shared preferences. Logging strategy must preserve source applicability; no generic public-road pull instructions or voltage-to-Hz relabeling. v0.9 acceptance is pending.

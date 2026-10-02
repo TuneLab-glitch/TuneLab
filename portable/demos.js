@@ -1,0 +1,19 @@
+'use strict';
+const demoDialog=document.createElement('dialog');demoDialog.id='demoDialog';demoDialog.setAttribute('aria-labelledby','demoTitle');demoDialog.innerHTML=`<h2 id="demoTitle">Choose a synthetic practice scenario</h2><p>Opens a separate practice window. Your current project stays in this window; practice logs never write to its browser library. Values are invented, not factory settings or tuning recommendations.</p><label>Scenario<select id="demoScenario">${TuneLabDemos.scenarios.map(x=>`<option value="${x.id}">${esc(x.name)}</option>`).join('')}</select></label><p id="demoPurpose"></p><div class="actions"><button id="launchDemo">Open practice window</button><button id="closeDemo" class="secondary">Cancel</button></div>`;document.body.append(demoDialog);
+function describeDemo(){$('demoPurpose').textContent=TuneLabDemos.scenarios.find(x=>x.id===$('demoScenario').value).purpose;}
+$('demoScenario').onchange=describeDemo;describeDemo();$('demo').onclick=()=>{demoDialog.showModal();$('demoScenario').focus();};$('closeDemo').onclick=()=>demoDialog.close();demoDialog.addEventListener('close',()=>$('demo').focus());
+$('launchDemo').onclick=()=>{const url=new URL(location.href);url.search='';url.searchParams.set('demo',$('demoScenario').value);const child=window.open(url.href,'_blank');if(!child){message('Practice window blocked. Allow pop-ups for this local app, then try again.','error');return;}demoDialog.close();};
+const serializeDemosBase=serialize;serialize=function(){const project=serializeDemosBase();delete project.inputs.demoScenario;return project;};
+const loadDemosBase=loadProject;loadProject=function(project){loadDemosBase(project);renderLoggingPlan();describeDemo();if(window.TuneLabPractice){workflow.storageEnabled=false;$('browserStorage').checked=false;}};
+async function loadSyntheticScenario(id){const scenario=TuneLabDemos.scenarios.find(x=>x.id===id);if(!scenario)throw Error('Unknown synthetic scenario');workflow.storageEnabled=false;$('browserStorage').checked=false;sessions=[];learning=[];journal=[];baseline=validation=review=null;activeSession=null;workflow.roles={};setDemo(true);$('projectName').value='SYNTHETIC · '+scenario.name;
+ const first=await importSession(TuneLabDemos.csv(id),'SYNTHETIC · '+scenario.name);first.log.synthetic=true;first.calibration='Synthetic illustration — no real ECU calibration';first.notes=scenario.purpose;
+ if(id==='afm'||id==='sparse'){const second=await importSession(TuneLabDemos.csv(id,true),'SYNTHETIC · validation');second.log.synthetic=true;second.calibration='Synthetic validation illustration';setActive(first.id);for(const [role,item]of [['baseline',first],['validation',second]]){$(role+'Session').value=item.id;$(role+'Session').dispatchEvent(new Event('change',{bubbles:true}));}state.afm=clone(TuneLabTables.afm);$('afmSamples').value=20;$('baselineConfirm').checked=$('validationConfirm').checked=false;markAfmDirty();}
+ if(id==='gears')loadSyntheticGear();
+ $('logPreset').value=id==='boost'?'transient':'raw';$('reviewMinRpm').value=id==='startup'?0:1500;renderReview();rebuildSessionList();goPage(scenario.page);message('SYNTHETIC PRACTICE: '+scenario.purpose+' No measurements from your car. Browser library writes are disabled.');
+}
+if(window.TuneLabPractice){
+ persistSessionStore=async function(){return;};
+ $('browserStorage').disabled=true;$('detachWorkspace').disabled=true;$('detachWorkspace').title='Practice scenarios already use a separate isolated window.';$('demo').textContent='Choose another demo';
+ const preferenceWrites=new Set(['theme','experience','accent','compact','toggleNavigation','browserStorage','defaultPressure']);document.addEventListener('change',e=>{if(preferenceWrites.has(e.target.id))workflow.storageEnabled=false;},true);
+ if(windowRole==='main')action(()=>loadSyntheticScenario(new URLSearchParams(location.search).get('demo')))();
+}
