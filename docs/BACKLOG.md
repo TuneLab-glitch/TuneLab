@@ -2,6 +2,10 @@
 
 Status: the user approved the scoped v0.6 build on 2026-10-02. See V0.6-SCOPE.md for included and explicitly deferred items. The user signed off implemented v0.6 release-note scenarios on 2026-10-02; real KTuner export verification awaits a private fixture. The list below retains the original requests, including deferred work. Prioritize defects before expanding scope.
 
+## v0.7 acceptance
+
+Jonny signed off all 12 v0.7 UAT scenarios on 2026-10-02; see V0.7-UAT-SIGNOFF.md. PR #5 is merged. Deferred features and separately pending platform applicability checks remain unchanged.
+
 ## v0.7 requests and proposal
 
 - Remove numeric sidebar prefixes; retain named navigation with a compact-layout dropdown option.
