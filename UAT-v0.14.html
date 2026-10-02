@@ -1,0 +1,61 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>TuneLab v0.14 UAT</title><style>body{font:16px/1.6 Segoe UI,sans-serif;max-width:1000px;margin:30px auto;padding:20px;color:#233144}article{border:1px solid #cdd6df;border-radius:8px;margin:20px 0;padding:18px}textarea{width:95%;min-height:80px}label{margin-right:15px}button{padding:12px}input{padding:8px}h1{color:#c82f40}@media print{button{display:none}article{break-inside:avoid}}</style><body><h1>TuneLab v0.14 acceptance</h1><p>Save your project JSON first. Extract TuneLab-v0.14.zip into a separate folder and launch Start-TuneLab.bat. All 11 scenarios start Not tested; prior release signoffs are retained separately. Use historical logs and disposable copies of calibrations. Keep your previous project JSON and original logs. No flashing or hardware connection is needed.</p><label>Tester <input id="tester"></label><label>Browser/version <input id="browser"></label><div id="cases"></div><button id="download">Download result JSON</button><button onclick="print()">Print</button><p>Critical: incorrect physical values, lost data or protected values changed. Major: blocked workflow. Minor: presentation/explanation issue. Record expected and actual values, steps, units, file/revision and screenshots. KTuner CSV channel compatibility was checked in earlier releases; full-precision screenshot-table import verification remains pending. v0.13 retains 11 Pass / 1 messaging Needs Revision; this guide does not record v0.14 acceptance. Use the included SYNTHETIC command fixture only as instructed; confirm real log units separately.</p><script>
+const cases=[
+  [
+    "V14-MESSAGES",
+    "Obvious Command Setup Feedback",
+    "Start with a disposable project. 1. Global Log Playback → Import CSV / TXT Datalogs: select fixtures/V13-SYNTHETIC-command-bar.csv. 2. Left menu → Boost Tables; choose TC Boost Command. 3. Global playback → Command Pressure Units: choose Use Log/Header Units. Expect a bordered “Needs Setup” message identifying the channel and the needed unit choice. 4. Choose Absolute bar (known units of this fabricated fixture). Expect Command Trace feedback and candidate locations where RPM/axes overlap. 5. Click Next and verify the message remains legible without repeated error alerts. Physical units of private logs require separate confirmation."
+  ],
+  [
+    "V14-RESIZE",
+    "Compact and Resizable Global Log Panel",
+    "1. Open Log Review at 100% browser zoom. Inspect the compact global Log Playback panel. 2. Drag Resize Log Panel downward, then upward. Only the log box height changes; tables retain layout. 3. Focus the resize handle and press ArrowDown/ArrowUp: height changes by 20px; Home restores automatic height. 4. Choose a manual height, then Project & Versions → Save Project; reopen that JSON. The chosen height returns. 5. At 150%/200% browser zoom, scroll inside the log box to reach all controls and messages. No controls should become unreachable."
+  ],
+  [
+    "V14-SLIDER",
+    "Full-Width Position Slider",
+    "Setup: import the synthetic fixture. 1. Global Log Playback → scroll within the box if needed → Playback Position. Its slider occupies its own wide row. 2. Drag start/middle/end: Position Readout identifies matching original rows and timestamps. 3. Focus slider; press Left/Right: move one original row. 4. Repeat at 75%, 100%, 150% browser zoom and in a detached Boost Tables window. No fabricated intermediate measurements appear."
+  ],
+  [
+    "V14-POINTER",
+    "Chart Coordinates at Zoom and Resize",
+    "Setup: select a historical recording with reviewed time/pressure units. 1. Left menu → Log Review → Selected Channels / Synchronized Inspection. Choose timestamp channel/units and an RPM channel. 2. Click left, center and right inside the plot (not its labels); compare time and original row against the plotted locations. 3. Repeat after narrowing the panel and at 75%,100%,150% browser zoom. 4. In Log Review actual/command chart, choose visible eligible samples; click and drag within the plotted rectangle. The cursor follows the pointer. 5. Shift-drag a range: endpoints agree with plotted coordinates. Clicking outside the plotted area must not jump to an unrelated row."
+  ],
+  [
+    "V14-VALUES",
+    "Local Chart Values and Hover Isolation",
+    "Setup: complete V14-POINTER. 1. Log Review → Selected Channels / Synchronized Inspection: click Play in global playback. Each chart shows its relevant native-channel value and original row. 2. Pause; note the global row. Move the mouse over another plot point. Local readout says Inspecting and shows that point; global row remains unchanged. 3. Move off the plot: local readout returns to Playback. 4. Repeat on actual/command chart: enabled actual and command values appear with PSI/time. Missing values must say Unavailable rather than zero."
+  ],
+  [
+    "V14-TRACE",
+    "Go to Trace in Native and Custom Tables",
+    "Setup: select a mapped log with reviewed units and an in-axis traced row; keep Table Tracing checked. 1. Boost Tables → TC Boost Command → original table → Go to Trace. If candidate cells are already visible, scrolling remains unchanged. 2. Increase table zoom and scroll away; click Go to Trace. Current candidate region becomes visible without changing zoom, log row or values. 3. Repeat on proposed table, AFM Scaler and Boost By Gear when each has an available trace. 4. My Workspace: insert a live table view; use its Go to Trace. 5. Repeat in detached window. With Table Tracing off or unmappable input, expect a clear explanation."
+  ],
+  [
+    "V14-SEARCH",
+    "Search Fields, Tables and Actions",
+    "1. Click Search App · Ctrl+K at the top or press Ctrl+K. Search “Command Pressure Units”; choose its result. Expect the actual selector focused/highlighted, with no changed value. 2. Search “MPR”: navigate to Boost Tables/MPR original/proposed view. 3. Search a collapsed setting such as Minimum Samples; choose the AFM result. Its containing section opens. 4. Search Update All Proposals: selecting only locates the button; proposals do not update. 5. Test arrows/Enter and Escape. 6. Search nonsense: useful no-results message. Repeat from renamed My Workspace and a read-only detached workspace; cross-workspace navigation goes to the main window."
+  ],
+  [
+    "V14-IMPORT",
+    "Drop CSV/TXT and Preserve Data",
+    "Setup: retain your original project JSON. 1. Drop a supported CSV into Drop CSV / TXT Datalogs Here beside global playback. Expect imported filename/status and paused selection. 2. Left menu → Log Library: drop the identical original file and a second distinct log together. Expect duplicate recognition for the first and import for the second. 3. Import equivalent comma CSV and tab-separated TXT exports: numeric channels/rows match. 4. Drop invalid TXT and native KDLG: explicit per-file rejection; existing logs remain. 5. Verify Baseline/Validation roles and tables are unchanged. 6. Save/reopen JSON: original imported text and logs remain. Check read-only child cannot import until editing handoff."
+  ],
+  [
+    "V14-APPROVALS",
+    "Approve All and Individual Revisions",
+    "Setup: disposable project with at least two actual calibration edits recorded. 1. Change Review → Revision Approvals → Review Individual Revisions: Edit History shows each recorded operation. 2. Click Approve Revision on one entry; only that entry becomes Approved. Clear Approval reverses its review status without undoing the edit. 3. Change Review → Approve All Revisions: status states exact recorded-operation count. 4. Make another edit: its history entry starts Needs Review; previous approvals stay attached to their recorded content. 5. Save/reopen project JSON: approvals persist. 6. Clear All Revision Approvals: history/calibration values remain. Current proposal acknowledgement and snapshots are distinct from this operation list."
+  ],
+  [
+    "V14-CHANGE",
+    "Go to Change Without Restoring History",
+    "Setup: complete V14-APPROVALS; include a cell edit and a structural/source/control edit. 1. Edit History → entry approval row → Go to Change. Read-only Recorded Change displays saved coordinates and before/after. 2. Choose Locate Current Cell for an available coordinate; affected workspace/cell becomes visible and highlighted. Repeat other listed coordinates for multi-cell changes. 3. For a structural revision, inspect recorded before/after frames and changed-control links. 4. No proposal, calibration, log or revision is restored merely by navigating. Historical values remain clearly separated from the current table."
+  ],
+  [
+    "V14-REGRESSION",
+    "Prior Tables, Layouts and Playback",
+    "1. Reopen a v0.14 project with manual proposals, protected cells and no selected log: Boost By Gear and other retained tables still appear. 2. Confirm accepted default/custom saved menu order, typography, palettes and wide-grid placements. 3. Select a recording; Play and navigate across tabs. Tracing resumes correctly without toggling Play. 4. Open in New Window; test playback synchronization and Edit in This Window handoff. 5. Use an isolated synthetic practice window; original project/library preferences remain unchanged. 6. Save/reopen and compare calibration values, protected/manual edits and raw logs."
+  ]
+];
+document.getElementById('cases').innerHTML=cases.map(([id,title,steps])=>`<article data-case="${id}"><h2>${id} · ${title}</h2><p>${steps}</p>${['Pass','Fail','Not tested'].map(v=>`<label><input type="radio" name="${id}" value="${v}" ${v==='Not tested'?'checked':''}>${v}</label>`).join('')}<textarea aria-label="${id} observations" placeholder="Steps, expected/actual values, units, severity and screenshot references"></textarea></article>`).join('');
+document.getElementById('download').onclick=()=>{const data={release:'TuneLab v0.14',date:new Date().toISOString(),tester:document.getElementById('tester').value,browser:document.getElementById('browser').value,cases:[...document.querySelectorAll('[data-case]')].map(n=>({id:n.dataset.case,result:n.querySelector('input:checked').value,notes:n.querySelector('textarea').value}))};const a=document.createElement('a'),url=URL.createObjectURL(new Blob([JSON.stringify(data,null,2)],{type:'application/json'}));a.href=url;a.download='TuneLab-v0.14-UAT-results.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);};
+</script></body></html>

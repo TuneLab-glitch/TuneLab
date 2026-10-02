@@ -45,15 +45,15 @@
   else {const p=[];outPsi.forEach((r,j)=>r.forEach((v,k)=>{if(distance(t.rpm[j],o.rpmFilter)===0&&distance(t.axis[k],o.axisFilter)===0)p.push(v);}));proposedPeak=Math.max(...p);}
   return{...t,values,weights,selectedPeak,proposedPeak,factor,changed,reversals,highestPsi:Math.max(...outPsi.flat())};
  }
- function csvRows(text){
+ function csvRows(text,delimiter=','){
   const rows=[];let row=[],cell='',quoted=false;
   text=text.replace(/^\uFEFF/,'');
-  for(let j=0;j<text.length;j++){const ch=text[j];if(ch==='"'){if(quoted&&text[j+1]==='"'){cell+='"';j++;}else quoted=!quoted;}else if(ch===','&&!quoted){row.push(cell);cell='';}else if((ch==='\n'||ch==='\r')&&!quoted){if(ch==='\r'&&text[j+1]==='\n')j++;row.push(cell);if(row.some(x=>x.trim()!==''))rows.push(row);row=[];cell='';}else cell+=ch;}
+  for(let j=0;j<text.length;j++){const ch=text[j];if(ch==='"'){if(quoted&&text[j+1]==='"'){cell+='"';j++;}else quoted=!quoted;}else if(ch===delimiter&&!quoted){row.push(cell);cell='';}else if((ch==='\n'||ch==='\r')&&!quoted){if(ch==='\r'&&text[j+1]==='\n')j++;row.push(cell);if(row.some(x=>x.trim()!==''))rows.push(row);row=[];cell='';}else cell+=ch;}
   if(quoted)throw Error('CSV has an unterminated quoted field');if(cell||row.length){row.push(cell);rows.push(row);}return rows;
  }
  function parseLog(text,name='Log'){
   if(text.includes('\\r\\nframe,'))text=text.replaceAll('\\r\\n','\n');
-  const rows=csvRows(text),h=rows.findIndex(r=>r.some(x=>/^(time_ms|time|time_s|time_seconds|Time\s*\(s\)|Time\s*\(ms\))$/i.test(x.trim()))&&r.some(x=>/^(RPM|AFM Hz|Engine Speed|Engine Speed \(rpm\)|MAF Frequency|MAF Frequency \(Hz\))$/i.test(x.trim())));
+  const delimiter=text.split(/\r?\n/).some(l=>/^(?:[^\t]*\t)*[^\t]*(?:time|time_ms|time_s)[^\t]*\t/i.test(l)&&/RPM|AFM Hz|Engine Speed|MAF Frequency/i.test(l))?'\t':',';const rows=csvRows(text,delimiter),h=rows.findIndex(r=>r.some(x=>/^(time_ms|time|time_s|time_seconds|Time\s*\(s\)|Time\s*\(ms\))$/i.test(x.trim()))&&r.some(x=>/^(RPM|AFM Hz|Engine Speed|Engine Speed \(rpm\)|MAF Frequency|MAF Frequency \(Hz\))$/i.test(x.trim())));
   if(h<0)throw Error('No data header found. Expected time_ms (or time) and RPM / AFM Hz.');
   const headers=rows[h].map(x=>x.trim());if(new Set(headers.map(x=>x.toLowerCase())).size!==headers.length)throw Error('Duplicate channel headers; resolve before importing');
   let rejected=0;const data=[];for(const r of rows.slice(h+1)){if(r.length!==headers.length){rejected++;continue;}data.push(Float64Array.from(r,numeric));}

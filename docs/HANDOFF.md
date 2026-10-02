@@ -123,3 +123,84 @@ Current v0.12 UAT status: 11 Pass / 1 Fail, submitted by Jon in Edge on 2026-10-
 ## v0.13 Approved Build — 2026-10-02
 
 Jonny approved the five-item scope in docs/V0.13-SCOPE.md. Active Log beside playback, visible per-recording Command units/status, wider four-track grids, Original Data Row gradients and obsolete-control/appearance cleanup are implemented. All twelve v0.13 UAT scenarios are pending; instructions include exact navigation and checkpoints. v0.12 retains eleven passes and one Command failure awaiting retest. Physical log-unit confirmation is separate from successful candidate tracing. Private logs/backups remain excluded. Deferred features remain deferred.
+
+
+## Next Revision: Global Navigation Search — 2026-10-02
+
+Jonny requests search that navigates directly to specific fields, functions and tables. Record as a next-revision feature; no delivered v0.13 application or acceptance status changes in this notes update.
+
+Proposed behavior:
+- Always-available Search App control, with Ctrl+K shortcut, Escape dismissal and keyboard result navigation.
+- Index current visible labels for workspaces, fields, buttons/actions, table views and settings; include useful aliases such as MPR, Command, gear limits, AFM, fonts, pressure units and playback. Search is navigation, not full-log data search.
+- Results show the matching label and its tab/section path. Selecting a result navigates to the workspace, expands enclosing sections or advanced controls when needed, scrolls to the target, highlights it briefly and places focus appropriately.
+- Finding an action must never execute it; proposal updates, imports, exports, resets and edits require their normal user action. Finding a field must not change its value.
+- Use current renamed workspace labels and distinguish original/proposed/custom table views. If a table/control is unavailable, explain the prerequisite rather than claim it is visible. Respect detached-window navigation and the editing lease; avoid silently taking edit ownership.
+- Keep indexing lightweight and refresh labels only when needed. Provide a useful no-results state and readable keyboard/focus behavior at browser zoom.
+
+Future UAT must specify exact Search App location/shortcut, search phrases, result paths and expected focused/highlighted targets, including a collapsed section, renamed custom workspace, an unavailable target and a read-only detached window. Verify that locating Update All Proposals or Reset does not execute it.
+
+
+## Next Revision: Datalog Drag-and-Drop Import — 2026-10-02
+
+Jonny also requests dragging and dropping datalog files. Record alongside Global Navigation Search for the next revision; delivered v0.13 code and acceptance remain unchanged.
+
+- Provide a clearly labeled CSV drop area near Active Log / Log Playback and in Log Library. Support multiple CSV files through the existing importSession path, retaining format validation, raw data, mapping provenance and duplicate detection. Keep the file picker available.
+- Show a drag-over indication and per-file imported/duplicate/failed results. Prevent accepted drops from navigating the browser away. Explain unsupported formats such as native .kdlg without claiming they can be parsed; do not bypass validation based on extension alone.
+- Reuse the existing import/active-log workflow and intended-purpose selection. Pause playback when importing changes the active recording. Do not silently assign Baseline/Validation, replace calibration tables or infer pressure units. Respect the editing lease and practice-window storage isolation.
+- Keyboard-accessible file picking remains an equivalent route. Future UAT must identify the exact drop area, files to drag, expected active/library changes and failure messages; include multi-file, duplicate, invalid CSV, unsupported format and read-only detached-window checks.
+
+
+### Datalog File Picker Labels and TXT Support — 2026-10-02
+
+Jonny sees MegaLogViewerHD in the file-type dropdown and asks for CSV/TXT support. Current sessionFiles picker accepts .csv; import validation uses the CSV parser. Windows file associations may explain the MegaLogViewerHD label, but the exact dialog has not been inspected. Do not equate associated application labels with file encoding/format.
+
+Next-revision drag/drop scope should include .csv and .txt in the file picker and drop validation. TXT must contain a supported delimited datalog, not arbitrary text. Detect comma/tab delimiters deliberately, retain metadata/header and column-width validation, and reject malformed or unsupported text with a clear explanation. Do not merely relax extensions and claim all TXT files are supported. Label the import route CSV / TXT Datalogs where the app controls the wording; operating-system association labels can remain outside app control. UAT: same data in CSV and supported TXT yields equivalent channels/rows; invalid TXT and native/binary formats are rejected without losing existing logs.
+
+
+## Next Revision: Go to Trace on Tables — 2026-10-02
+
+Jonny requests a Go to Trace action on traced tables. Reveal the current recorded row's candidate table location at the existing zoom. If all currently traced cells are already visible in the table viewport, leave scrolling unchanged. At higher table zoom or a scrolled-away location, scroll the relevant table viewport just enough to expose the traced region, centering it when practical. Preserve browser/table zoom, calibration values, cell selection, log position and playback state.
+
+- Place the action with each supported table's controls; support original/proposed tables and corresponding My Workspace/detached views. Expand a collapsed table panel when necessary and bring its visible area into view without changing the layout.
+- For interpolated locations, reveal the group of candidate cells. If the group cannot fit in the viewport, prioritize the highest-weight current candidate deterministically and explain that multiple cells are involved.
+- Disable or explain when no current location is available, tracing is off, or units/mapping/axes prevent a trace. Use the current playback row at click time. Do not switch recordings, advance the log or execute tuning actions.
+- This is an explicit one-shot navigation action; continuously following the trace is not included unless separately requested.
+- Precise UAT must name the table and Go to Trace button; check unchanged scrolling when visible at low zoom, reveal after table zoom/scroll hides the marker, correct original/proposed/custom/detached targeting, interpolation groups, missing trace, and unchanged zoom/log/calibration values.
+
+Recorded alongside navigation search and CSV/TXT drag-and-drop for the next revision. Delivered v0.13 remains unchanged.
+
+
+## Next Revision: Chart Point Readouts and Pointer Accuracy — 2026-10-02
+
+Jonny requests values relevant to each chart at the measurement point during playback and mouse inspection. Show a visible cursor and nearby readout for that chart's displayed series, including timestamp/original row, channel names, values and units. Distinguish temporary hover inspection from the selected playback cursor; moving the mouse must not silently change playback or tuning eligibility. Missing samples/gaps must remain explicit; do not imply fabricated measurements. Match each chart's own x-axis and visible range.
+
+Jonny also reports chart navigation clicks do not select the mouse coordinate, appearing to use total workspace width instead of the visible chart. Treat as a pointer-coordinate defect; no cause is verified merely from that description. Audit historical boost charts and synchronized raw-channel plots, including click/drag-range inspection. Translate client coordinates through the rendered SVG transform and actual plot rectangle (accounting for viewBox, aspect-ratio letterboxing, padding, scrolling, resizing and browser zoom), rather than assuming workspace or element width equals plotted width. Out-of-plot clicks must not choose unrelated samples. Preserve original-row linkage and deterministic nearest valid sample behavior.
+
+Priority: correct pointer geometry before layering point tooltips onto it. Future UAT must name each chart/series, mouse targets at left/middle/right plotted positions, expected timestamp/original row and values, resized panels/table layouts, reduced/increased browser zoom, scrolled views and detached windows. Verify playback readouts and hover return behavior separately. Record this alongside search, CSV/TXT drag/drop and Go to Trace; no changes to delivered v0.13 in this notes update.
+
+
+## Next Revision: Full-Width Playback Position Slider — 2026-10-02
+
+Jonny requests scaling the global Playback Position slider across the window to improve pointer precision through the recording. Give it a dedicated full-width row spanning the available main/detached content area, rather than sharing a narrow flex slot with other controls. Retain nearby timestamp/original-row/RPM/gear feedback and existing one-original-row steps. Wider rendering increases pointer precision; it does not interpolate or add data samples. Preserve keyboard single-row navigation, playback/scrubbing behavior and responsive wrapping at browser zoom.
+
+UAT must identify global Log Playback > Playback Position, compare its width against the available window, scrub near start/middle/end at wide and narrow sizes and browser zoom, verify matching original row/time and keyboard steps, and check detached-window behavior. Recorded for the next revision; delivered v0.13 unchanged.
+
+
+Current v0.13 UAT: eleven Pass / one Needs Revision, explicitly reported by Jonny on 2026-10-02. V13-COMMAND needs more obvious dynamic status/error messaging; all other scenarios, including real Command tracing, pass. Earlier pending status is superseded. See docs/V0.13-UAT-FINDINGS.md and docs/V0.13-UAT-results.json. Prior v0.12 Command failure is historical, not a remaining functional failure after this retest. Delivered archives unchanged; no new build initiated.
+
+
+## Next Revision: Approve All Revisions and Go to Change — 2026-10-02
+
+Jonny requests an option to mark all revisions approved, and an additional button beside each individual approval to jump directly to its change. Integrate with existing Change Review / Edit History review records; keep review approval distinct from applying a proposal, ECU flashing or proof of safety.
+
+- Provide clearly labeled Approve All Revisions for the current project's listed reviewable revisions. Preserve individual approval. Define scope visibly (for example current listed revisions) and record exactly which revision identifiers/current contents were approved, rather than treating later changes as automatically approved. Do not require repetitive approval dialogs for the batch action.
+- Add Go to Change beside each individual revision approval. Navigate to its affected workspace/table and reveal/highlight changed cells at the existing zoom. For multiple affected regions show their locations and provide next/previous change navigation where appropriate. Structural/control changes should focus the changed setting or axis with a clear explanation rather than inventing a cell location. Historical revisions may require a read-only before/after view; navigation must not restore or apply them automatically. Reuse existing Show in Table mechanisms where applicable.
+- Persist approval records in project JSON with reviewer/time/revision identity where available. Changed contents invalidate the corresponding review approval; subsequent revisions require their own review. Retain existing protection, stale-proposal and evidence gates. Keep batch approval reversible without deleting history or calibration edits.
+- UAT must specify exact revision/review screen and buttons; cover individual/batch approval, approval scope, Go to Change on cell/control/structural changes, multiple changed regions, saved/reopened approvals and invalidation after further edits.
+
+Recorded for the next revision; current v0.13 code and eleven Pass / one messaging Needs Revision status remain unchanged.
+
+
+## v0.14 Approved Build — 2026-10-02
+
+Jonny approved navigation, playback and review improvements plus a compact/resizable global log box. See docs/V0.14-SCOPE.md. Build verification and all eleven precise-navigation UAT cases are tracked separately; no user acceptance is inferred. Prior v0.13 is eleven passes / one messaging presentation revision. Longer-term features remain deferred.

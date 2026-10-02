@@ -1,0 +1,68 @@
+{
+  "release": "TuneLab v0.13",
+  "date": "2026-10-02",
+  "tester": "Jonny",
+  "source": "Explicit chat UAT report",
+  "cases": [
+    {
+      "id": "V13-COMMAND",
+      "result": "Needs revision",
+      "notes": "Command unit setup is visible, but dynamic messaging/errors are difficult to notice. Improve prominence; no inference of a tracing failure."
+    },
+    {
+      "id": "V13-REALCOMMAND",
+      "result": "Pass",
+      "notes": "User reported all other UAT passed."
+    },
+    {
+      "id": "V13-CUSTOMTRACE",
+      "result": "Pass",
+      "notes": "User reported all other UAT passed."
+    },
+    {
+      "id": "V13-DETACHED",
+      "result": "Pass",
+      "notes": "User reported all other UAT passed."
+    },
+    {
+      "id": "V13-ACTIVELOG",
+      "result": "Pass",
+      "notes": "User reported all other UAT passed."
+    },
+    {
+      "id": "V13-GRIDFULL",
+      "result": "Pass",
+      "notes": "User reported all other UAT passed."
+    },
+    {
+      "id": "V13-GRIDHALF",
+      "result": "Pass",
+      "notes": "User reported all other UAT passed."
+    },
+    {
+      "id": "V13-ROWCOLORS",
+      "result": "Pass",
+      "notes": "User reported all other UAT passed."
+    },
+    {
+      "id": "V13-ROWTOGGLE",
+      "result": "Pass",
+      "notes": "User reported all other UAT passed."
+    },
+    {
+      "id": "V13-CLEANUP",
+      "result": "Pass",
+      "notes": "User reported all other UAT passed."
+    },
+    {
+      "id": "V13-APPEARANCE",
+      "result": "Pass",
+      "notes": "User reported all other UAT passed."
+    },
+    {
+      "id": "V13-REGRESSION",
+      "result": "Pass",
+      "notes": "User reported all other UAT passed."
+    }
+  ]
+}
