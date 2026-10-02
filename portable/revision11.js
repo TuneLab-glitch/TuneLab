@@ -1,7 +1,7 @@
 'use strict';
 // UI release versions and the compatible project format are independent.
 let revision11={schema:1,order:[],typography:{app:{family:'system',weight:'400',caps:'title'},pages:{}},layouts:[]};
-const nav11=document.querySelector('nav'),defaultOrder11=[...nav11.querySelectorAll('[data-tab]')].map(n=>n.dataset.tab);
+const nav11=document.querySelector('nav'),defaultOrder11=["logs","afm","gears","boost","compare","changes","custom","settings","history","library","strategy","project"];
 const families11={system:'system-ui, sans-serif',sans:'Arial, sans-serif',mono:'Consolas, monospace'};
 function applyOrder11(){for(const id of new Set([...revision11.order,...defaultOrder11])){const n=nav11.querySelector('[data-tab="'+id+'"]');if(n)nav11.append(n);}const active=$('workspaceSelect').value;$('workspaceSelect').innerHTML=[...nav11.querySelectorAll('[data-tab]')].map(n=>'<option value="'+n.dataset.tab+'">'+esc(n.textContent.trim())+'</option>').join('');$('workspaceSelect').value=active;}
 function moveNavigation11(id,target,after=false){if(!editingHere())return;const a=nav11.querySelector('[data-tab="'+id+'"]'),b=nav11.querySelector('[data-tab="'+target+'"]');if(!a||!b||a===b)return;after?b.after(a):b.before(a);revision11.order=[...nav11.querySelectorAll('[data-tab]')].map(n=>n.dataset.tab);applyOrder11();dirtyWindow();scheduleWorkspaceCache();a.focus();}
