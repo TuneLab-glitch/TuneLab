@@ -1,0 +1,136 @@
+{
+  "release": "TuneLab v0.10",
+  "date": "2026-10-02",
+  "tester": "Jonny",
+  "source": "User report in chat: All UAT passed.",
+  "commit": "52c30741197e258cb69bf1df3785b3ec24be5b84",
+  "result": "Reopened: V10-TABLES and V10-CLEANUP",
+  "cases": [
+    {
+      "id": "V10-PURPOSE",
+      "result": "Pass",
+      "basis": "User-reported blanket release UAT sign-off"
+    },
+    {
+      "id": "V10-READINESS",
+      "result": "Pass",
+      "basis": "User-reported blanket release UAT sign-off"
+    },
+    {
+      "id": "V10-STARTUP",
+      "result": "Pass",
+      "basis": "User-reported blanket release UAT sign-off"
+    },
+    {
+      "id": "V10-CHANNELS",
+      "result": "Pass",
+      "basis": "User-reported blanket release UAT sign-off"
+    },
+    {
+      "id": "V10-GAPS",
+      "result": "Pass",
+      "basis": "User-reported blanket release UAT sign-off"
+    },
+    {
+      "id": "V10-RANGES",
+      "result": "Pass",
+      "basis": "User-reported blanket release UAT sign-off"
+    },
+    {
+      "id": "V10-BOOKMARK",
+      "result": "Pass",
+      "basis": "User-reported blanket release UAT sign-off"
+    },
+    {
+      "id": "V10-NOTES",
+      "result": "Pass",
+      "basis": "User-reported blanket release UAT sign-off"
+    },
+    {
+      "id": "V10-VALIDATE-AFM",
+      "result": "Pass",
+      "basis": "User-reported blanket release UAT sign-off"
+    },
+    {
+      "id": "V10-VALIDATE-BOOST",
+      "result": "Pass",
+      "basis": "User-reported blanket release UAT sign-off"
+    },
+    {
+      "id": "V10-GATES",
+      "result": "Pass",
+      "basis": "User-reported blanket release UAT sign-off"
+    },
+    {
+      "id": "V10-TABLES",
+      "result": "Reopened",
+      "basis": "User-reported blanket release UAT sign-off",
+      "priorResult": "Pass",
+      "reason": "User reports Boost by Gear tables did not load automatically; loading a log was required for them to appear."
+    },
+    {
+      "id": "V10-CLEANUP",
+      "result": "Reopened",
+      "basis": "User-reported blanket release UAT sign-off",
+      "priorResult": "Pass",
+      "reason": "Appearance Inheritance retained Platform compare after navigation renamed it to Pressure representations. User requests review of naming approval."
+    },
+    {
+      "id": "V10-BACKUP",
+      "result": "Pass",
+      "basis": "User-reported blanket release UAT sign-off"
+    },
+    {
+      "id": "V10-WINDOWS",
+      "result": "Pass",
+      "basis": "User-reported blanket release UAT sign-off"
+    },
+    {
+      "id": "V10-REGRESSION",
+      "result": "Pass",
+      "basis": "User-reported blanket release UAT sign-off"
+    },
+    {
+      "id": "V10-PALETTES",
+      "result": "Pass",
+      "basis": "User-reported blanket release UAT sign-off"
+    },
+    {
+      "id": "V10-VEHICLE-THEMES",
+      "result": "Pass",
+      "basis": "User-reported blanket release UAT sign-off"
+    },
+    {
+      "id": "V10-PLAYBACK",
+      "result": "Pass",
+      "basis": "User-reported blanket release UAT sign-off"
+    },
+    {
+      "id": "V10-CUSTOM",
+      "result": "Pass",
+      "basis": "User-reported blanket release UAT sign-off"
+    },
+    {
+      "id": "V10-LOGIC",
+      "result": "Pass",
+      "basis": "User-reported blanket release UAT sign-off"
+    }
+  ],
+  "limitations": "No result JSON or per-case execution details supplied in this turn. This records user acceptance, not new automated test execution or expanded ECU semantics.",
+  "followUp": {
+    "date": "2026-10-02",
+    "source": "User reports Boost by Gear tables did not load automatically; loading a log was required for them to appear.",
+    "case": "V10-TABLES",
+    "status": "Needs investigation and retest",
+    "remainingCases": "19 prior user-reported passes retained"
+  },
+  "appearanceFollowUp": {
+    "date": "2026-10-02",
+    "case": "V10-CLEANUP",
+    "status": "Local corrections browser-verified; delivery and user retest pending",
+    "source": "Appearance Inheritance retained Platform compare after navigation renamed it to Pressure representations. User requests review of naming approval.",
+    "naming": "Pressure Conversion suggested, not yet approved or applied.",
+    "fontIssue": "Entire-app controls incorrectly merged the selected page override, so a 22px page font could appear as the app default and obscure a saved change.",
+    "localFix": "Scope-aware preferences; sizing applied to every page using its effective app/page preferences. Browser verifies both pressure tables, app/page isolation and backup retention."
+  }
+}

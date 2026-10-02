@@ -129,3 +129,14 @@ MPR and Command generation, smooth transitions, two-row editable AFM preview, ma
 - Platform Compare converts one source into two pressure representations. It does not load two independent platform calibrations. Structural gear translation remains in Boost by gear, with explicit assumptions.
 - Guided steps navigate and explain; they are not a fully gated wizard or proof that a novice usability study has passed. Some generic control-level help still falls back to the relevant page workflow.
 - No verified model-year factory paint catalog, full ECU simulator, live hardware connection, compiled Windows executable or flashing.
+
+## v0.10 Acceptance — 2026-10-02
+
+Jonny reported “All UAT passed.” All 21 release scenarios are accepted; see docs/V0.10-UAT-SIGNOFF.md/json (or V0.10-UAT-SIGNOFF.md/json from this directory). This supersedes earlier pending-UAT status. Delivered application commit and ZIP remain unchanged. Next-version observations remain planning items, not an approved implementation scope.
+
+
+## v0.11 Workflow and Interface Build — 2026-10-02
+
+Jonny approved the proposed six-item build. See docs/V0.11-SCOPE.md and docs/V0.11-VERIFICATION.md. Menu reorder, global conservative proposal updates/status, scoped typography, Pressure Conversion naming and named UI layouts are implemented with prior performance/appearance corrections. Gear tables render independently of logs on entry/restore. All 14 UAT-v0.11.html cases remain pending; original gear and appearance findings require user retest. Historical v0.10 is 19 prior passes / 2 reopened. Deferred features remain deferred.
+
+Playback/table tracing added at Jonny’s request during v0.11: global controls, original-row candidate markers across native/custom views and synchronized detached windows. All 14 UAT scenarios pending; see V0.11-SCOPE/VERIFICATION.

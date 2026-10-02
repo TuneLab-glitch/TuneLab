@@ -74,6 +74,45 @@ Jonny signed off both remaining UAT cases. All 14 scenarios are accepted; see V0
 
 ## v0.10 build — 2026-10-02
 
-Jonny approved purpose setup, readiness, synchronized raw plots, bookmarks, validation comparison and related cleanup. Tables must not depend on a log; current calibration state is restored independently. See V0.10-SCOPE.md and V0.10-VERIFICATION.md. UAT-v0.10.html has 16 pending cases. Earlier sign-offs and deferred hardware/platform work remain unchanged.
+Jonny approved purpose setup, readiness, synchronized raw plots, bookmarks, validation comparison and related cleanup. Tables must not depend on a log; current calibration state is restored independently. See V0.10-SCOPE.md and V0.10-VERIFICATION.md. UAT-v0.10.html has 21 pending cases. Earlier sign-offs and deferred hardware/platform work remain unchanged.
 
 Additional v0.10 scope approved and built: four table gradients, U.S. Civic Si 2022–2026 vehicle themes through an extensible model/year/color catalog, cursor/coverage display toggles, basic recorded-time playback and a renameable My workspace tab with live table views. Multiple custom tabs, inline custom editors, calculated channels and broader vehicle catalogs remain deferred.
+
+## Next-version observations — 2026-10-02
+
+Jonny has not completed any v0.10 UAT. These are planning observations, not acceptance results or authorization to implement them in v0.10.
+
+- Rearrange the left-hand navigation with drag and drop, similar to table panels. Suggested design: remember the order, provide keyboard movement and a reset-to-default option; retain renamed custom workspace labels.
+- Add an Update all proposals button that remains visible throughout the app. Suggested design: explicitly recalculate eligible proposals using their current settings, retain protected cells and calibration gates, summarize updated/skipped/blocked tables, and avoid silently replacing manual refinements. Define how this interacts with manual proposals and undo before implementation.
+
+v0.10 UAT remains pending (21 scenarios). The delivered app/ZIP is unchanged. Priorities and final next-version scope still need alignment.
+
+### Titles, Headers and Text Appearance
+
+Jonny requests stronger capitalization and a more deliberate title/header hierarchy. Include this with the next-version interface work; current v0.10 UAT remains pending.
+
+- Default app titles and section headers to Title Case; keep explanatory paragraphs in sentence case.
+- Add font display preferences, including font family and separate title/header sizing or weight. Existing table body/header sizing remains available.
+- Offer title/header capitalization choices: Title Case, Sentence case and UPPERCASE. Apply as presentation preferences with app defaults and page overrides where appropriate; preserve them in workspace backups.
+- Preserve the spelling/case of imported channel headers, units, acronyms, filenames and user-entered names. Capitalization must not change data, mappings or exported values.
+- Verify readable hierarchy, wrapping and menu reachability at narrow widths and browser zoom.
+
+This is a next-version planning item; no changes to the delivered v0.10 build or acceptance records.
+
+## v0.10 Acceptance — 2026-10-02
+
+Jonny reported “All UAT passed.” All 21 release scenarios are accepted; see docs/V0.10-UAT-SIGNOFF.md/json (or V0.10-UAT-SIGNOFF.md/json from this directory). This supersedes earlier pending-UAT status. Delivered application commit and ZIP remain unchanged. Next-version observations remain planning items, not an approved implementation scope.
+
+Current v0.10 acceptance: V10-TABLES reopened following Jonny's report that Boost by Gear only appeared after loading a log. Retain the other 20 passes. Investigate startup cache restoration/rendering and upgrade/old-library migration before next-version feature work.
+
+V10-CLEANUP also reopened: Appearance Inheritance labels drifted after workspace renames and omitted later-added tabs. Local synchronization now follows current workspace titles, retaining the selected target; verification/delivery pending. Review final pressure-workspace wording with Jonny. Current acceptance: 19 passes / 2 reopened.
+
+
+Efficiency correction: see docs/V0.10-EFFICIENCY.md. Local test build includes appearance corrections and avoids redundant parsing/rendering. Current acceptance is 19 prior passes / 2 reopened (V10-TABLES, V10-CLEANUP); performance user retest pending. No next-version features implemented.
+
+
+## v0.11 Workflow and Interface Build — 2026-10-02
+
+Jonny approved the proposed six-item build. See docs/V0.11-SCOPE.md and docs/V0.11-VERIFICATION.md. Menu reorder, global conservative proposal updates/status, scoped typography, Pressure Conversion naming and named UI layouts are implemented with prior performance/appearance corrections. Gear tables render independently of logs on entry/restore. All 14 UAT-v0.11.html cases remain pending; original gear and appearance findings require user retest. Historical v0.10 is 19 prior passes / 2 reopened. Deferred features remain deferred.
+
+Playback/table tracing added at Jonny’s request during v0.11: global controls, original-row candidate markers across native/custom views and synchronized detached windows. All 14 UAT scenarios pending; see V0.11-SCOPE/VERIFICATION.
