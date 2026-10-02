@@ -1,0 +1,119 @@
+{
+  "release": "TuneLab v0.8",
+  "date": "2026-10-02",
+  "timezone": "America/New_York",
+  "tester": "Jonny",
+  "build": "5b40710e43ffc2d0a732815034314e2397210dec",
+  "pullRequest": "https://github.com/TuneLab-glitch/TuneLab/pull/7",
+  "archive": "TuneLab-v0.8.zip",
+  "archiveSha256": "5bab369c49ce7863ee291211106ac99b7b6dff0cc6dee5610524abaea044dac0",
+  "attribution": "User-reported aggregate sign-off in this chat",
+  "statement": "All UAT has passed",
+  "scope": "All 16 guide scenarios within implemented v0.8 scope; separately pending checks and the next-version zoom/sidebar issue are not attested",
+  "browser": null,
+  "os": null,
+  "cases": [
+    {
+      "id": "V8-COLORS",
+      "scenario": "Shared value shading",
+      "result": "Pass",
+      "evidence": "Aggregate user report; individual execution transcript not supplied"
+    },
+    {
+      "id": "V8-DELTA",
+      "scenario": "Difference shading",
+      "result": "Pass",
+      "evidence": "Aggregate user report; individual execution transcript not supplied"
+    },
+    {
+      "id": "V8-SCALE",
+      "scenario": "Stable scale and reset",
+      "result": "Pass",
+      "evidence": "Aggregate user report; individual execution transcript not supplied"
+    },
+    {
+      "id": "V8-PROTECT",
+      "scenario": "Selection and protection",
+      "result": "Pass",
+      "evidence": "Aggregate user report; individual execution transcript not supplied"
+    },
+    {
+      "id": "V8-BOOST",
+      "scenario": "Boost and gear operating evidence",
+      "result": "Pass",
+      "evidence": "Aggregate user report; individual execution transcript not supplied"
+    },
+    {
+      "id": "V8-AFM",
+      "scenario": "AFM support and kernel evidence",
+      "result": "Pass",
+      "evidence": "Aggregate user report; individual execution transcript not supplied"
+    },
+    {
+      "id": "V8-RANGE",
+      "scenario": "Chart and keyboard evidence ranges",
+      "result": "Pass",
+      "evidence": "Aggregate user report; individual execution transcript not supplied"
+    },
+    {
+      "id": "V8-BIN",
+      "scenario": "Whole-bin selection",
+      "result": "Pass",
+      "evidence": "Aggregate user report; individual execution transcript not supplied"
+    },
+    {
+      "id": "V8-RESET",
+      "scenario": "Clear selection and filters",
+      "result": "Pass",
+      "evidence": "Aggregate user report; individual execution transcript not supplied"
+    },
+    {
+      "id": "V8-REVIEW",
+      "scenario": "Change review and report",
+      "result": "Pass",
+      "evidence": "Aggregate user report; individual execution transcript not supplied"
+    },
+    {
+      "id": "V8-INVALIDATE",
+      "scenario": "Review becomes outdated",
+      "result": "Pass",
+      "evidence": "Aggregate user report; individual execution transcript not supplied"
+    },
+    {
+      "id": "V8-BACKUP",
+      "scenario": "Versioned backups",
+      "result": "Pass",
+      "evidence": "Aggregate user report; individual execution transcript not supplied"
+    },
+    {
+      "id": "V8-WINDOW",
+      "scenario": "Window handoff and layouts",
+      "result": "Pass",
+      "evidence": "Aggregate user report; individual execution transcript not supplied"
+    },
+    {
+      "id": "V8-SNAP",
+      "scenario": "Left/right half-width snapping",
+      "result": "Pass",
+      "evidence": "Aggregate user report; individual execution transcript not supplied"
+    },
+    {
+      "id": "V8-FORMAT",
+      "scenario": "Quiet log-format summary and help",
+      "result": "Pass",
+      "evidence": "Aggregate user report; individual execution transcript not supplied"
+    },
+    {
+      "id": "V8-REGRESSION",
+      "scenario": "Existing workflows",
+      "result": "Pass",
+      "evidence": "Aggregate user report; individual execution transcript not supplied"
+    }
+  ],
+  "remainingVerification": [
+    "Full Civic/KTuner semantics and destination paste",
+    "Wider browser/OS/touch/accessibility matrix"
+  ],
+  "nextVersionIssue": "Browser zoom hides lower sidebar options without a scrollbar; remains open",
+  "deferredFeatures": "Unchanged; see BACKLOG.md and V0.8-SCOPE.md"
+}

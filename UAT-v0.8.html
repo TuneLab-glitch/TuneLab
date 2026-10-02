@@ -1,0 +1,86 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>TuneLab v0.8 UAT</title><style>body{font:16px/1.6 Segoe UI,sans-serif;max-width:1000px;margin:30px auto;padding:20px;color:#233144}article{border:1px solid #cdd6df;border-radius:8px;margin:20px 0;padding:18px}textarea{width:95%;min-height:80px}label{margin-right:15px}button{padding:12px}input{padding:8px}h1{color:#c82f40}@media print{button{display:none}article{break-inside:avoid}}</style><body><h1>TuneLab v0.8 acceptance</h1><p>Extract the complete ZIP and launch Start-TuneLab.bat. Use historical logs and disposable copies of calibrations. Keep your previous project JSON and original logs. No flashing or hardware connection is needed.</p><label>Tester <input id="tester"></label><label>Browser/version <input id="browser"></label><div id="cases"></div><button id="download">Download result JSON</button><button onclick="print()">Print</button><p>Critical: incorrect physical values, lost data or protected values changed. Major: blocked workflow. Minor: presentation/explanation issue. Record expected and actual values, steps, units, file/revision and screenshots. KTuner header/import checks have been verified with the supplied export. Full Civic/KTuner analysis requires appropriate channels and reviewed semantics; that separate verification remains pending.</p><script>
+const cases=[
+  [
+    "V8-COLORS",
+    "Shared value shading",
+    "Choose both palettes and no shading in Settings. Compare original/proposed Boost, AFM and gear tables. Same physical values use the same colors. Inspect gradient legend and numeric endpoints; values, selected cells and locks remain readable in light and dark themes. Boost shading uses absolute bar even when displayed/exported units differ."
+  ],
+  [
+    "V8-DELTA",
+    "Difference shading",
+    "Choose absolute and percentage change. Inspect negative, zero and positive differences with zero-centered legends. Nonpositive/near-zero original references omit percentages. Original rows show zero difference; missing originals are unavailable rather than fabricated."
+  ],
+  [
+    "V8-SCALE",
+    "Stable scale and reset",
+    "Manually edit a proposed value beyond the legend endpoints. Scale stays fixed, clipped count increases and the numeric value stays exact. Reset scales to include current values. Changing source/units creates the appropriate scale."
+  ],
+  [
+    "V8-PROTECT",
+    "Selection and protection",
+    "Drag or Shift-select a rectangle with protected and unprotected cells. Shading does not hide selection edges, lock marks or configured alert indicators. Apply a manual edit and undo; protected values remain unchanged."
+  ],
+  [
+    "V8-BOOST",
+    "Boost and gear operating evidence",
+    "Select a proposed Boost or gear rectangle with an active historical log. Inspect linked unique samples, per-cell counts and coverage gaps. Missing PA is labeled as reference fallback, out-of-axis locations are omitted, and linked samples do not establish active ECU influence or calibration match."
+  ],
+  [
+    "V8-AFM",
+    "AFM support and kernel evidence",
+    "Analyze a matching baseline with reviewed mappings and calibration confirmation. Select frequency cells. Inspect unique eligible raw-row references, local support and 50 Hz bin-center kernel contributors separately. Validation never drives correction. Changing inputs/mapping or reopening a saved/manual proposal flags missing/stale analysis provenance."
+  ],
+  [
+    "V8-RANGE",
+    "Chart and keyboard evidence ranges",
+    "Shift-drag the boost chart for time/RPM or an AFM curve for Hz. Alternatively enter range bounds in Log review. Linked samples/counts and chart highlights change while proposal values remain identical. Reversed/empty bounds show an error. Plot zoom remains separate from evidence filtering."
+  ],
+  [
+    "V8-BIN",
+    "Whole-bin selection",
+    "Click or focus/Enter a nonempty error histogram bin. All matching rows are included, including the last upper endpoint. Boundary rows do not belong to two adjacent bins. Reset filters restores the eligible pool."
+  ],
+  [
+    "V8-RESET",
+    "Clear selection and filters",
+    "Clear a table selection separately from resetting evidence filters. Switching active logs clears transient filters. Changing log eligibility removes a previous histogram selection. Table-kind switches clear obsolete rectangles."
+  ],
+  [
+    "V8-REVIEW",
+    "Change review and report",
+    "Use Review changes before export. Inspect changed counts, covered/uncovered cells, manual-refinement status, protection, current/stale proposals and missing validation. Mark the revision reviewed and download the report. This records inspection rather than vehicle application or a validated outcome."
+  ],
+  [
+    "V8-INVALIDATE",
+    "Review becomes outdated",
+    "After marking reviewed, edit a value, change mapping/calibration confirmation, thresholds or evidence filters. The review requires another inspection. Presentation-only shading changes do not change physical proposals."
+  ],
+  [
+    "V8-BACKUP",
+    "Versioned backups",
+    "Open a disposable v0.7 or older backup; manual values, logs, history and main/detached layouts survive. Save/reopen v0.8 with shading scales/review record. Evidence filters clear and calibration confirmations clear, so earlier review can become outdated. A malformed visual-review backup preserves current work."
+  ],
+  [
+    "V8-WINDOW",
+    "Window handoff and layouts",
+    "Open Boost/AFM/Logs alone in new windows; hand off editing. Shared proposals, units and shading settings remain consistent. Move/resize the new evidence cards; main/detached layouts stay independent. Repeat owner-close/recovery and stale-edit checks."
+  ],
+  [
+    "V8-SNAP",
+    "Left/right half-width snapping",
+    "Set a movable card to Half width. Use Snap left/Snap right and Alt+Left/Right on its handle. Drag into the empty half of its own row or beside another half-width card; the slot highlight matches the final column. Up/down ordering remains available. Save/reopen main and detached column choices independently; Reset restores defaults. Narrow layouts use one column while preserving saved side."
+  ],
+  [
+    "V8-FORMAT",
+    "Quiet log-format summary and help",
+    "Open Log library with an active log. A short file/platform/review summary is visible; detailed mappings start collapsed. Expand units/channel mapping and help. Plain-English channel labels and nearby explanations distinguish boost/AFR, Hz/voltage, percentage/fraction and mapping/calibration confirmations. Save a reviewed mapping and switch logs; per-file status, choices and raw CSV remain correct."
+  ],
+  [
+    "V8-REGRESSION",
+    "Existing workflows",
+    "Repeat signed-off v0.6/v0.7 editing, table zoom, private-log import, raw backup/reopen and library workflows. Full Civic/KTuner analysis and destination paste still need appropriate channels and reviewed semantics. The reported browser-zoom/sidebar clipping issue is tracked for the next version and is not claimed fixed by v0.8."
+  ]
+];
+document.getElementById('cases').innerHTML=cases.map(([id,title,steps])=>`<article data-case="${id}"><h2>${id} · ${title}</h2><p>${steps}</p>${['Pass','Fail','Not tested'].map(v=>`<label><input type="radio" name="${id}" value="${v}" ${v==='Not tested'?'checked':''}>${v}</label>`).join('')}<textarea aria-label="${id} observations" placeholder="Steps, expected/actual values, units, severity and screenshot references"></textarea></article>`).join('');
+document.getElementById('download').onclick=()=>{const data={release:'TuneLab v0.8',date:new Date().toISOString(),tester:document.getElementById('tester').value,browser:document.getElementById('browser').value,cases:[...document.querySelectorAll('[data-case]')].map(n=>({id:n.dataset.case,result:n.querySelector('input:checked').value,notes:n.querySelector('textarea').value}))};const a=document.createElement('a'),url=URL.createObjectURL(new Blob([JSON.stringify(data,null,2)],{type:'application/json'}));a.href=url;a.download='TuneLab-v0.8-UAT-results.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);};
+</script></body></html>

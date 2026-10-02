@@ -1,6 +1,16 @@
-# Future builds and v0.7 planning
+# Future builds and accepted release history
 
 Status: the user approved the scoped v0.6 build on 2026-10-02. See V0.6-SCOPE.md for included and explicitly deferred items. The user signed off implemented v0.6 release-note scenarios on 2026-10-02; real KTuner export verification awaits a private fixture. The list below retains the original requests, including deferred work. Prioritize defects before expanding scope.
+
+## v0.8 build and next-version priorities
+
+Jonny approved visual clarity and evidence review on 2026-10-02. See V0.8-SCOPE.md and V0.8-VERIFICATION.md; Jonny signed off all 16 UAT-v0.8.html scenarios on 2026-10-02; see V0.8-UAT-SIGNOFF.md. Shading, linked evidence and change-review improvements are implemented in this scope. Other deferred features remain deferred.
+
+### High priority: browser zoom and sidebar scrolling
+
+User report: “When zooming I cannot see all of the options in the left hand menu and no scroller appears.” Requested as notes for the next version. Review HTML scaling/reflow and fix menu reachability before adding features. The fixed sidebar currently has no explicit vertical overflow handling; this is a likely mechanism, not a verified native-zoom reproduction.
+
+Acceptance: at 100%, 125%, 150%, 175% and 200% native browser zoom, short/tall desktop windows and narrow layouts, every workspace and sidebar action is reachable by mouse wheel/scrollbar and keyboard. Scroll containers must size to available height without clipping the brand, active navigation or footer actions. Test focus visibility, compact selector, main/detached windows, page controls, dialogs and table scrolling. Distinguish browser zoom from table zoom; verify both. No sidebar fix is included in v0.8.
 
 ## v0.7 acceptance
 
