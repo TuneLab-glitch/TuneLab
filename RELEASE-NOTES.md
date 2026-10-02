@@ -1,4 +1,4 @@
-# TuneLab v0.6 � editing, evidence and backup workflows
+# TuneLab v0.6 — editing, evidence and backup workflows
 
 Approved scope: docs/V0.6-SCOPE.md. Verification: docs/V0.6-VERIFICATION.md.
 
@@ -9,7 +9,7 @@ Approved scope: docs/V0.6-SCOPE.md. Verification: docs/V0.6-VERIFICATION.md.
 - Linked AFM original/proposed and actual percentage/g/s deltas, changed-point markers, tooltips and labeled visual magnification.
 - Single baseline/optional validation library picker with adjacent import-and-assign and calibration context.
 - Dedicated Settings for platform terminology, complexity, appearance inheritance, units, preview behavior, review preferences and storage/backup.
-- v0.6 workspace JSON, versioned migration of v0.3�v0.5 files, preflight validation, restore failure reports and saved roles/undo/layout/provenance retention. Confirmation flags clear on reopen.
+- v0.6 workspace JSON, versioned migration of v0.3–v0.5 files, preflight validation, restore failure reports and saved roles/undo/layout/provenance retention. Confirmation flags clear on reopen.
 - Per-export mapping/unit profiles and uncertain platform detection. Raw CSV preserved; mixed review units normalize separately per file. AFM normalizes known time/temperature/trim/MAP units and rejects incompatible evidence conventions.
 - Compact log/calibration/unit/proposal status strip and 13-case UAT-v0.6.html.
 
