@@ -1,5 +1,13 @@
 # Future builds and accepted release history
 
+## Current next-revision priorities — 2026-10-02
+
+1. Boost Command tracing remains unresolved in Jonny's v0.12 use despite automated passes. Reproduce with the actual saved project/log/mapping and correct the verified cause; retest native/custom/detached tables.
+2. Wider responsive grids: normal browser zoom retains the current layout; zooming out allows two full-size or four half-size panels side by side with horizontal snapping. Preserve saved layouts and reachability when zooming in.
+3. Verify the exact KTuner Boost By Gear Limits table when a full-precision export is available; nine repeated displayed -0.2 PSI headers are not exact distinct axes.
+
+The project (3) default menu correction is accepted by Jonny. This is not overall v0.12 acceptance. See V0.12-UAT-FINDINGS.md. These next-revision notes do not authorize a build yet.
+
 Status: the user approved the scoped v0.6 build on 2026-10-02. See V0.6-SCOPE.md for included and explicitly deferred items. The user signed off implemented v0.6 release-note scenarios on 2026-10-02; real KTuner export verification awaits a private fixture. The list below retains the original requests, including deferred work. Prioritize defects before expanding scope.
 
 ## v0.8 build and next-version priorities
@@ -124,3 +132,42 @@ Current v0.11 UAT: 12 Pass / 2 Fail, from Jonny’s supplied results and chat no
 ## v0.12 Playback and Tracing Review — 2026-10-02
 
 Jonny approved this build. See docs/V0.12-SCOPE.md and docs/V0.12-VERIFICATION.md. Playback continuity, Command tracing, original-row visit/time summaries, explicit menu saving and six-gear Hondata layout/template corrections are implemented. KTuner axis units are explicit; nine rounded -0.2 screenshot headers require a full-precision export. v0.11 is 12 Pass / 2 Fail; all 12 v0.12 UAT cases are pending. No user signoff is inferred. Deferred work remains deferred.
+
+
+## Future UAT Instruction Requirements — 2026-10-02
+
+Jonny requests precise navigation instructions for every future UAT case. Each case must state:
+- Required starting state, fixture/log/calibration, units and any setup.
+- Exact workspace/menu name and subsection to open, using current visible labels.
+- Numbered actions naming each button, selector, toggle or field; specify main, custom or detached window when relevant.
+- Expected visible result at each meaningful checkpoint, including values/units where applicable.
+- Save/reopen/reset steps and what must persist when persistence is under test.
+
+Avoid instructions such as “check tracing” or “test settings” without a complete route and observable result. Separate materially different navigation paths into distinct cases or clearly labeled subcases. Review the instructions against the built app before delivery. This applies to future guides; existing delivered guides and acceptance history are unchanged.
+
+
+### Change Review Advanced Options Control — 2026-10-02
+
+Jonny reports Show/Hide Advanced Options is awkwardly placed on Change Review and its effect is unclear. Code inspection confirms sessions.js creates the button when warningSettings is advanced-only; workflows.js later moves warningSettings to Settings > reviewSettings and removes advanced-only. The old Change Review button remains with no advanced-only content to reveal. This is an obsolete control, not a hidden tuning behavior.
+
+Next revision: remove the orphaned Change Review control and audit other generated advanced-option buttons against their final page content. Where a reveal control remains useful, place it next to the affected section, label what it reveals and make its expanded state accessible. UAT must specify Change Review, the old button's absence, and Settings > review rules as the route to the actual thresholds. No delivered application code changed in this notes update.
+
+
+### Log Selector Beside Global Playback — 2026-10-02
+
+Jonny requests selecting the active log beside the global Log Playback controls. Add a selector using the existing project log library, available across workspaces. Clearly identify the selected recording. Switching recordings should pause playback, reset the cursor/range appropriately, refresh markers and visit summaries, and synchronize detached windows. It must not silently reassign AFM Baseline/Validation roles or replace calibration tables/proposals. Retain a clear empty-library state and access to log import.
+
+Future UAT: specify the global Log Playback bar, exact selector label, two imported recordings and their expected row/readout differences; check paused switching, synchronized traces, unchanged evidence roles/calibrations and detached-window behavior. This is a next-revision request; no implementation in this notes update.
+
+
+### Appearance Selector Cleanup — 2026-10-02
+
+Jonny requested removing the redundant Si / Urban Gray Appearance choice because it is available through Vehicle Color Theme > Civic Si > year > Urban Gray Pearl. Source updated for the next revision: legacy option hidden/disabled, and old saved si selections resolve to Civic Si 2026 Urban Gray Pearl. Existing legacy palettes remain accepted for migration; no calibration values change. Delivered v0.12 ZIPs are unchanged.
+
+
+Current v0.12 UAT status: 11 Pass / 1 Fail, submitted by Jon in Edge on 2026-10-02. V12-COMMAND remains unresolved; all other eleven cases are signed off. See docs/V0.12-UAT-FINDINGS.md and docs/V0.12-UAT-results.json. New next-revision request: shade Log Review Original Data Row readings by per-channel min/max using selected table gradients. Prior pending counts are superseded; delivered archives remain unchanged.
+
+
+## v0.13 Approved Build — 2026-10-02
+
+Jonny approved the five-item scope in docs/V0.13-SCOPE.md. Active Log beside playback, visible per-recording Command units/status, wider four-track grids, Original Data Row gradients and obsolete-control/appearance cleanup are implemented. All twelve v0.13 UAT scenarios are pending; instructions include exact navigation and checkpoints. v0.12 retains eleven passes and one Command failure awaiting retest. Physical log-unit confirmation is separate from successful candidate tracing. Private logs/backups remain excluded. Deferred features remain deferred.

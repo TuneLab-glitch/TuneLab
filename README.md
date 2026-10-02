@@ -72,3 +72,8 @@ v0.11 adds menu reorder, global proposal updates/status, scoped typography and n
 
 
 Current UAT build: v0.12. Launch Start-TuneLab.bat; use UAT-v0.12.html and docs/V0.12-SCOPE.md. Save your project JSON before upgrading. Earlier UAT records remain historical; v0.12 acceptance is pending.
+
+
+## v0.13 Approved Build — 2026-10-02
+
+Jonny approved the five-item scope in docs/V0.13-SCOPE.md. Active Log beside playback, visible per-recording Command units/status, wider four-track grids, Original Data Row gradients and obsolete-control/appearance cleanup are implemented. All twelve v0.13 UAT scenarios are pending; instructions include exact navigation and checkpoints. v0.12 retains eleven passes and one Command failure awaiting retest. Physical log-unit confirmation is separate from successful candidate tracing. Private logs/backups remain excluded. Deferred features remain deferred.
