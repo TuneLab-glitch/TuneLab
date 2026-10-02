@@ -1,3 +1,18 @@
+# TuneLab v0.8 — visual clarity and evidence review
+
+- Shared original/proposed table shading with gradient legends, two palettes, no-shading mode and zero-centered absolute/percentage change views. Scales stay fixed during edits; clipped values are counted and reset is explicit.
+- Linked Boost/gear operating-location coverage and AFM local-support/kernel evidence, unique sample inspection and coverage gaps.
+- Time/RPM/Hz chart-range selection with Shift-drag or numeric controls; histogram selection includes the whole bin. Evidence filters do not change proposal calculations.
+- Change review identifies unsupported changes, manual refinements, protection, stale evidence and missing validation. Mark a revision reviewed and export its report; later edits/evidence changes require another review.
+- v0.8 backups retain shading/review records and migrate v0.3–v0.7 projects. Existing window handoff, recovery and independent panel layouts are retained.
+- Half-width panels snap left/right through drag targets, buttons or Alt+Left/Right; side choices survive backups and narrow layouts.
+- Quieter log-format summary with expandable mappings/provenance, plain-English labels and contextual help.
+- AFM analysis button now invokes the current normalization/provenance workflow.
+
+55 synthetic tests; 58 with three private fixtures; five DOM suites and both local-file Edge browser suites pass. See docs/V0.8-VERIFICATION.md and UAT-v0.8.html (16 cases). v0.8 user acceptance is pending. Coverage is descriptive, not confidence, ECU influence or engine safety. The reported browser-zoom/sidebar-scroll defect is tracked for the next version. Deferred features and full Civic/KTuner applicability checks remain unchanged.
+
+---
+
 # TuneLab v0.7 — workspace organization
 
 - Named sidebar without numeric prefixes; collapsible menu and a compact/narrow workspace selector.

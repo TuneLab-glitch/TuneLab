@@ -19,7 +19,7 @@ $('defaultPressure').onchange=()=>{workflow.defaultPressure=$('defaultPressure')
 $('reviewSettings').append($('warningSettings'));
 $('warningSettings').classList.remove('advanced-only');$('warningSettings').open=true;
 $('browserStorage').onchange=()=>{workflow.storageEnabled=$('browserStorage').checked;try{localStorage.setItem('TuneLabDefaultsV6',JSON.stringify({pressure:workflow.defaultPressure??$('defaultPressure').value,storage:workflow.storageEnabled}));}catch{}message(workflow.storageEnabled?'Browser library persistence enabled. Save JSON for a complete backup.':'Browser writes paused. Existing browser data remains available; save JSON before closing.');};
-$('fullBackup').onclick=action(()=>download('TuneLab-v0.7-workspace.json',JSON.stringify(serialize(),null,2),'application/json'));
+$('fullBackup').onclick=action(()=>download('TuneLab-v0.8-workspace.json',JSON.stringify(serialize(),null,2),'application/json'));
 $('applyPressureDefault').onclick=action(()=>{const original=kind;for(const k of ['mpr','command']){switchKind(k);$('outputUnits').value=$('defaultPressure').value;$('outputUnits').dispatchEvent(new Event('change',{bubbles:true}));}switchKind(original);updateStatusStrip();});
 
 const strip=document.createElement('div');strip.id='workspaceStatus';strip.className='workspace-status';strip.setAttribute('role','status');document.querySelector('header').after(strip);

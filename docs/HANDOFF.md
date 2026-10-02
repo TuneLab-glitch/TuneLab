@@ -47,3 +47,11 @@ v0.6 user sign-off is recorded. See V0.7-PROPOSAL.md for navigation and single-w
 The active UI is v0.7. See V0.7-PROPOSAL.md for approved scope and V0.7-VERIFICATION.md for test evidence and limitations. Jonny reported "All UAT passed" on 2026-10-02. All 12 v0.7 guide cases are signed off in V0.7-UAT-SIGNOFF.md/json. PR #5 is merged; the delivered application build remains unchanged. Prior v0.6 sign-off is retained.
 
 One window edits at a time through an explicit handoff; others view synchronized revisions. Detached windows pause on owner closure/reload and can save a recovery backup. Main and detached panel arrangements are independently backed up in v0.7 JSON; v0.3–v0.6 imports remain supported. Save JSON before upgrading or changing origins. The supplied Fit/KTuner CSV has mismatched header/data widths; a second export verifies 30-channel CSV structure and raw backup/reopen. Full Civic/KTuner analysis still needs appropriate channels/semantics (see V0.7-UAT-FINDINGS.md). Table shading remains deferred.
+
+## v0.8 build handoff — 2026-10-02
+
+The active UI is v0.8 visual clarity/evidence review, approved by Jonny. See V0.8-SCOPE.md, V0.8-VERIFICATION.md and UAT-v0.8.html. User acceptance remains pending; earlier sign-offs are unchanged. Backups carry shading scales/review records, retain old project migration and clear transient evidence filters/calibration confirmations on reopen. Coverage is not confidence or ECU control influence; AFM links distinguish local support and actual bin-center kernel membership.
+
+Next-version user feedback: native browser zoom hides lower sidebar options without a scrollbar. BACKLOG.md records the high-priority fix and zoom/reflow acceptance matrix. This issue is not fixed in v0.8. Deferred alignment, advanced viewer, AI, attachments, installer and platform semantics work remains outside the current release.
+
+Jonny added left/right half-width grid snapping to the current v0.8 build. Explicit column choices, empty-half drag targets, keyboard controls and backup retention are included; UAT-v0.8.html now has 16 scenarios.
