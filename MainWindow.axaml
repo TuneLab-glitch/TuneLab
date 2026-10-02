@@ -1,0 +1,53 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:TuneLab.App.ViewModels"
+        x:Class="TuneLab.App.Views.MainWindow"
+        x:DataType="vm:MainWindowViewModel"
+        Title="TuneLab" Width="1180" Height="760" MinWidth="900" MinHeight="600">
+  <Grid RowDefinitions="Auto,Auto,*,Auto" Margin="20" RowSpacing="14">
+    <Grid ColumnDefinitions="*,Auto" ColumnSpacing="12">
+      <StackPanel>
+        <TextBlock Text="TuneLab" FontSize="30" FontWeight="SemiBold" />
+        <TextBlock Text="Honda calibration-aware log analysis • v0.2" Opacity="0.7" />
+      </StackPanel>
+      <Button Grid.Column="1" Content="Open Log" Padding="20,10" Click="OpenLog_Click" />
+    </Grid>
+
+    <Border Grid.Row="1" Padding="14" CornerRadius="8" Background="#11000000">
+      <Grid ColumnDefinitions="2*,2*,2*,3*" ColumnSpacing="20">
+        <StackPanel><TextBlock Text="LOG" FontSize="11" Opacity="0.6"/><TextBlock Text="{Binding LogName}" FontWeight="SemiBold"/></StackPanel>
+        <StackPanel Grid.Column="1"><TextBlock Text="PLATFORM" FontSize="11" Opacity="0.6"/><TextBlock Text="{Binding Platform}"/></StackPanel>
+        <StackPanel Grid.Column="2"><TextBlock Text="DATA" FontSize="11" Opacity="0.6"/><TextBlock Text="{Binding FrameSummary}"/></StackPanel>
+        <StackPanel Grid.Column="3"><TextBlock Text="EVENTS" FontSize="11" Opacity="0.6"/><TextBlock Text="{Binding EventSummary}"/></StackPanel>
+      </Grid>
+    </Border>
+
+    <Grid Grid.Row="2" RowDefinitions="Auto,*" RowSpacing="8">
+      <TextBlock Text="Detected boost events" FontSize="18" FontWeight="SemiBold"/>
+      <Border Grid.Row="1" BorderThickness="1" BorderBrush="#33000000" CornerRadius="8" Padding="8">
+        <Grid RowDefinitions="Auto,*">
+          <Grid ColumnDefinitions="80,60,130,100,90,100,100,100,110" Margin="8,6">
+            <TextBlock Text="Severity" FontWeight="SemiBold"/><TextBlock Grid.Column="1" Text="Gear" FontWeight="SemiBold"/>
+            <TextBlock Grid.Column="2" Text="RPM" FontWeight="SemiBold"/><TextBlock Grid.Column="3" Text="Max CMD" FontWeight="SemiBold"/>
+            <TextBlock Grid.Column="4" Text="Peak BP" FontWeight="SemiBold"/><TextBlock Grid.Column="5" Text="Overshoot" FontWeight="SemiBold"/>
+            <TextBlock Grid.Column="6" Text="dBP/dt" FontWeight="SemiBold"/><TextBlock Grid.Column="7" Text="Min WGCMD" FontWeight="SemiBold"/>
+            <TextBlock Grid.Column="8" Text="Peak AFM.c" FontWeight="SemiBold"/>
+          </Grid>
+          <ListBox Grid.Row="1" ItemsSource="{Binding BoostEvents}">
+            <ListBox.ItemTemplate>
+              <DataTemplate x:DataType="vm:BoostEventRow">
+                <Grid ColumnDefinitions="80,60,130,100,90,100,100,100,110" Margin="4,5">
+                  <TextBlock Text="{Binding Severity}"/><TextBlock Grid.Column="1" Text="{Binding Gear}"/><TextBlock Grid.Column="2" Text="{Binding Rpm}"/>
+                  <TextBlock Grid.Column="3" Text="{Binding Command}"/><TextBlock Grid.Column="4" Text="{Binding Peak}"/><TextBlock Grid.Column="5" Text="{Binding Overshoot}"/>
+                  <TextBlock Grid.Column="6" Text="{Binding BoostRate}"/><TextBlock Grid.Column="7" Text="{Binding WastegateCommand}"/><TextBlock Grid.Column="8" Text="{Binding CylinderAir}"/>
+                </Grid>
+              </DataTemplate>
+            </ListBox.ItemTemplate>
+          </ListBox>
+        </Grid>
+      </Border>
+    </Grid>
+
+    <TextBlock Grid.Row="3" Text="{Binding Status}" Opacity="0.75" />
+  </Grid>
+</Window>

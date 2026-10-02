@@ -1,0 +1,21 @@
+const {JSDOM}=require('jsdom'),fs=require('fs'),assert=require('assert');
+const dir=require('path').resolve(__dirname,'..');
+const vm=require('vm');const dom=new JSDOM(fs.readFileSync(dir+'/index.html','utf8'),{runScripts:'outside-only',url:'http://localhost/'}),w=dom.window;
+w.matchMedia=()=>({matches:true,addEventListener(){}});w.confirm=()=>true;w.prompt=()=>null;w.URL.createObjectURL=()=> 'blob:test';w.URL.revokeObjectURL=()=>{};
+for(const file of ['tables.js','engine.js','workbench-engine.js','app.js','workbench.js','session-engine.js','sessions.js'])vm.runInContext(fs.readFileSync(dir+'/'+file,'utf8'),dom.getInternalVMContext());
+const $=id=>w.document.getElementById(id),click=id=>$(id).click(),change=(id,value)=>{$(id).value=value;$(id).dispatchEvent(new w.Event('change',{bubbles:true}));},evalx=s=>vm.runInContext(s,dom.getInternalVMContext()),tick=()=>new Promise(r=>setImmediate(r));
+(async()=>{
+assert.ok($('afmPreview').querySelectorAll('tr').length===2);assert.equal($('afmPreview').querySelectorAll('[data-edit]').length,129);
+click('previewBoost');await tick();assert.equal(evalx('state.mpr.dirty'),false);assert.ok($('proposedGrid').querySelector('[data-edit]'));let old=evalx('state.mpr.proposal.values[0][0]');
+$('proposedGrid').querySelector('[data-edit]').click();change('boostOp','add');change('boostEditAmount','0.1');w.document.querySelector('[data-apply="boost"]').click();await tick();assert.ok(Math.abs(evalx('state.mpr.proposal.values[0][0]')-old-.1)<1e-8);
+const physical=evalx('E.toBar(state.mpr.proposal.values[0][0],state.mpr.controls.outputUnits,0,.98)');change('outputUnits','kpa');await tick();assert.equal(evalx('state.mpr.dirty'),false);assert.ok(Math.abs(evalx('E.toBar(state.mpr.proposal.values[0][0],state.mpr.controls.outputUnits,0,.98)')-physical)<1e-10);
+// Explicit manual editor ids are distinct from automatic boostAmount
+assert.equal(w.document.querySelectorAll('#boostAmount').length,1,'unique ids');
+click('afmManual');await tick();assert.equal($('copyAfm').disabled,false);const flow=evalx('afmResult.cells[50].proposed');$('afmPreview').querySelector('[data-ec="50"]').click();change('airflowOp','percent');change('airflowEditAmount','1');w.document.querySelector('[data-apply="airflow"]').click();await tick();assert.ok(Math.abs(evalx('afmResult.cells[50].proposed')-flow*1.01)<1e-8);w.document.querySelector('[data-history="undo"]').click();await tick();assert.equal(evalx('afmResult.cells[50].proposed'),flow);
+change('flowUnits','kgh');await tick();assert.equal($('copyAfm').disabled,false,'display units must not mark proposal stale');
+click('gearDemo');await tick();assert.equal(evalx('gearCurrent().gears.length'),6);change('gearFormat','ktuner');await tick();assert.ok($('gearGrid').querySelectorAll('tbody tr').length===6);const original=evalx('JSON.stringify(wb.gearOriginal)');change('gearFormat','hondata');assert.equal(evalx('JSON.stringify(wb.gearOriginal)'),original);
+const project=evalx('serialize()');assert.equal(project.version,5);evalx('loadProject('+JSON.stringify(project)+')');await tick();assert.equal(evalx('gearCurrent().gears.length'),6);assert.ok(evalx('afmResult!==null'));assert.equal($('baselineConfirm').checked,false);
+change('theme','light');assert.equal(w.document.documentElement.style.getPropertyValue('--surface'),'#ffffff');change('experience','advanced');assert.ok(w.document.body.classList.contains('advanced'));click('refreshChanges');await tick();assert.ok($('changeSummary').textContent.includes('Needs validation'));
+assert.ok(w.document.querySelectorAll('.help-button').length>80);assert.ok(!$('status').classList.contains('error'),$('status').textContent);
+console.log('DOM integration PASS: startup, table preview, edit, undo, unit switch, format toggle, save/reopen, themes, help, review');
+})().catch(e=>{console.error(e);process.exitCode=1;});

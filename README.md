@@ -1,0 +1,58 @@
+# TuneLab v0.5
+
+Extract the ZIP completely and double-click **Start-TuneLab.bat**. The app opens **portable/index.html** in your browser and works offline. No installer, .NET SDK, AI model or API key is required.
+
+Start UAT by opening **UAT-Guide.html**. It uses your existing historical CSVs and tables; no new drive or vehicle connection is needed. The guide has 34 cases, print/save-PDF support, and downloadable result JSON. See **RELEASE-NOTES.md** for the exact implemented scope and limitations.
+
+## Suggested first session
+
+1. Use **Import logs once** to load a few historical CSVs.
+2. Open **Manage logs** and record installed calibration names only where known.
+3. Open **Log review**, verify channel/time/pressure mappings, choose a preset and a candidate segment.
+4. Move the slider or click/drag the chart. Compare the cursor, actual/command points and simultaneous error.
+5. Assign a baseline or validation from the library in **AFM** only when it matches the intended calibration.
+6. Paste your actual source tables before generating tuning proposals.
+7. Inspect **Change review** and **Edit history**.
+8. Save project JSON; it includes raw logs, revisions, metadata, journal and learning observations. Reloading clears AFM confirmations.
+
+Browser session storage is optional and can vary for file URLs. Project JSON is the reliable portable backup; it may be large when several logs are embedded. Parsing and saving still use the main thread. No project files are uploaded by the app.
+
+## Table editing
+
+Source boost single click toggles protection; double click edits its value. Edit source indices explicitly and preview resampling before applying. Whole-table import uses supplied values exactly. Removing protected coordinates or adding out-of-range indices is blocked. Duplicate MPR atmospheric columns are preserved when that axis is unchanged; they are not silently merged.
+
+Proposed tables support rectangle selection, add/set/percent/interpolation/smoothing/tapered addition, protected points and undo. The AFM two-row preview is editable. Percentages use displayed values, so absolute-pressure and gauge-pressure percentages differ. Display and export precision is explicit.
+
+Automatic preview updates generated boost proposals after a short pause. If a proposal has manual refinements, it pauses and requests an explicit update rather than erasing them. This choice currently applies to boost generation; AFM analysis remains explicit.
+
+## Historical-log interpretation
+
+Filters and event selection are shared by the log chart, histogram, scatter and associated inspection. The same underlying log can be assigned separately for AFM evidence. AFM eligibility uses the existing warm/closed-loop/stability rules. Boost review retains transients in its spool/overshoot preset; no smoothing masks spikes.
+
+Comparison time traces align segment starts, not timestamps from separate days. Gear, fuel, temperature and hardware need independent checks. Operating markers identify table coordinates, not ECU control causality. Missing atmosphere uses a clearly labeled reference.
+
+Learning entries record observations only. More samples or logs do not automatically increase confidence. Review rules are user preferences, not verified hardware limits, and passing them is not calibration safety certification.
+
+## Sources and naming
+
+Official Hondata and KTuner links are available in contextual help. Hondata's turbo-Civic tuning notes used for naming cover 10th-generation cars; they do not establish every 11th-generation L15CA behavior. Platform terminology changes do not erase source provenance or prove equivalent tables. Source URLs and assumptions are also listed in the v0.4 background notes retained below.
+
+## Verification
+
+Node 20+ engine tests:
+
+```
+cd portable
+node --test tests/engine.test.cjs tests/workbench.test.cjs tests/sessions.test.cjs
+```
+
+DOM integration (development only):
+
+```
+npm install
+npm run test:ui
+```
+
+40 engine checks and both DOM suites pass. Actual browser visual rendering, resize, clipboard, storage and final tuning-software paste acceptance remain PC UAT tasks. No local rendering browser was used here.
+
+The retained **src/** and **tests/** Windows/Avalonia shell is older v0.2 code, not this interface; it was not compiled. **README-native-v0.2.md** describes that older shell.

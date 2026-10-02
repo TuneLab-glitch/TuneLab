@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="src/TuneLab.Core/TuneLab.Core.csproj" />
+  <Project Path="src/TuneLab.App/TuneLab.App.csproj" />
+  <Project Path="tests/TuneLab.Core.Tests/TuneLab.Core.Tests.csproj" />
+</Solution>
