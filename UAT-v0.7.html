@@ -58,7 +58,7 @@ const cases=[
   [
     "V7-REGRESSION",
     "Calculation and migration regression",
-    "Open a copied v0.6 backup with manual proposals, raw logs, roles, history and resized cards. Values/history/old panel sizes remain; calibration confirmations clear. Repeat signed-off v0.6 scenarios. Invalid backup/layout preserves current work. The supplied Fit CSV has mismatched columns (docs/V0.7-UAT-FINDINGS.md). Full KTuner analysis remains Not tested until a corrected, appropriate CSV with required channels is available."
+    "Open a copied v0.6 backup with manual proposals, raw logs, roles, history and resized cards. Values/history/old panel sizes remain; calibration confirmations clear. Repeat signed-off v0.6 scenarios. Invalid backup/layout preserves current work. The supplied Fit CSV has mismatched columns (docs/V0.7-UAT-FINDINGS.md). The second KTuner export passes header/import checks. Full KTuner analysis remains Not tested until an appropriate CSV with required channels and reviewed semantics is available."
   ]
 ];
 document.getElementById('cases').innerHTML=cases.map(([id,title,steps])=>`<article data-case="${id}"><h2>${id} · ${title}</h2><p>${steps}</p>${['Pass','Fail','Not tested'].map(v=>`<label><input type="radio" name="${id}" value="${v}" ${v==='Not tested'?'checked':''}>${v}</label>`).join('')}<textarea aria-label="${id} observations" placeholder="Steps, expected/actual values, units, severity and screenshot references"></textarea></article>`).join('');

@@ -57,6 +57,6 @@ npm install
 npm run test:ui
 ```
 
-48 synthetic tests and all four DOM suites pass; 50 tests pass with the private Hondata fixture and explicit rejection/retention checks for the malformed Fit/KTuner CSV. Local-file headless Edge checks passed for pointer selection, edge scrolling, protection, zoom, resizing, clipboard, downloads, backup reopen and IndexedDB. User acceptance of implemented release-note scenarios is signed off in **docs/V0.6-UAT-SIGNOFF.md**. The Fit CSV has mismatched header/data widths, so full KTuner analysis and destination checks remain pending. See **docs/V0.7-VERIFICATION.md** and **docs/V0.7-UAT-FINDINGS.md**.
+48 synthetic tests and all four DOM suites pass; 51 tests pass with the private Hondata fixture, malformed Fit/KTuner rejection checks and consistent KTuner header/import checks. Local-file headless Edge checks passed for pointer selection, edge scrolling, protection, zoom, resizing, clipboard, downloads, backup reopen and IndexedDB. User acceptance of implemented release-note scenarios is signed off in **docs/V0.6-UAT-SIGNOFF.md**. The first Fit CSV has mismatched header/data widths; the second KTuner CSV verifies 30-channel import and raw backup/reopen. Full Civic/KTuner analysis and destination checks remain pending. See **docs/V0.7-VERIFICATION.md** and **docs/V0.7-UAT-FINDINGS.md**.
 
 The retained **src/** and **tests/** Windows/Avalonia shell is older v0.2 code, not this interface; it was not compiled. **README-native-v0.2.md** describes that older shell.

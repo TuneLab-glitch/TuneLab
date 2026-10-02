@@ -7,7 +7,7 @@
 - Separate main/detached layouts for each workspace, cached locally and included in v0.7 JSON. Older backups retain their panel sizes on migration.
 - Detached recovery JSON when the main window closes/reloads. Reopen the recovery in a new main window; automatic reconnection/owner promotion is not included.
 
-See docs/V0.7-VERIFICATION.md and UAT-v0.7.html. v0.7 user acceptance is pending. The supplied Fit/KTuner CSV imports partially: 189 matching rows; 2,344 rejected for column mismatch. Full raw CSV is retained and the rejection count is visible. No-space timestamp/temperature headers and explicit mbar MAP units are supported; unsupported channel meanings stay unmapped. Full KTuner/Civic analysis verification awaits a corrected, appropriate export. Table shading and all other agreed deferred features remain deferred. Calculation rules are unchanged.
+See docs/V0.7-VERIFICATION.md and UAT-v0.7.html. v0.7 user acceptance is pending. The supplied Fit/KTuner CSV imports partially: 189 matching rows; 2,344 rejected for column mismatch. Full raw CSV is retained and the rejection count is visible. No-space timestamp/temperature headers and explicit mbar MAP units are supported; unsupported channel meanings stay unmapped. A second KTuner CSV verifies import/header structure (2,938 frames, 30 channels, zero rejected rows) and raw backup/reopen. Full KTuner/Civic analysis and destination verification still require appropriate channels and reviewed semantics. Table shading and all other agreed deferred features remain deferred. Calculation rules are unchanged.
 
 ---
 
