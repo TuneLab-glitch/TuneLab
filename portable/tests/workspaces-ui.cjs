@@ -1,7 +1,7 @@
 const {JSDOM}=require('jsdom'),fs=require('node:fs'),assert=require('node:assert/strict'),vm=require('node:vm'),path=require('node:path');
 const dir=path.resolve(__dirname,'..'),dom=new JSDOM(fs.readFileSync(dir+'/index.html','utf8'),{runScripts:'outside-only',url:'http://localhost/',pretendToBeVisual:true}),w=dom.window;
 w.matchMedia=()=>({matches:true,addEventListener(){}});w.confirm=()=>true;w.prompt=()=>null;w.URL.createObjectURL=()=> 'blob:test';w.URL.revokeObjectURL=()=>{};w.open=()=>null;
-for(const file of ['tables.js','engine.js','workbench-engine.js','app.js','workbench.js','session-engine.js','sessions.js','workflow-engine.js','workflows.js','review-engine.js','review.js','demo-engine.js','strategy.js','workspaces.js','polish.js','demos.js'])vm.runInContext(fs.readFileSync(dir+'/'+file,'utf8'),dom.getInternalVMContext());
+for(const file of ['tables.js','engine.js','workbench-engine.js','app.js','vehicle-themes.js','workbench.js','session-engine.js','sessions.js','workflow-engine.js','workflows.js','review-engine.js','review.js','demo-engine.js','strategy.js','review-flow-engine.js','review-flow-ui.js','custom-workspace.js','workspaces.js','polish.js','demos.js','review-flow-cleanup.js','logic-summaries.js'])vm.runInContext(fs.readFileSync(dir+'/'+file,'utf8'),dom.getInternalVMContext());
 const run=s=>vm.runInContext(s,dom.getInternalVMContext()),$=id=>w.document.getElementById(id);
 (async()=>{try{
 assert.ok(!/\b01\b/.test(w.document.querySelector('nav').textContent));$('toggleNavigation').click();assert.ok(w.document.body.classList.contains('compact-navigation'));
@@ -9,7 +9,7 @@ $('workspaceSelect').value='afm';$('workspaceSelect').dispatchEvent(new w.Event(
 const grid=$('boost').querySelector('.panel-grid'),first=grid.firstElementChild,id=first.dataset.gridId;
 first.querySelector('[data-grid-span]').click();first.querySelector('[data-grid-down]').click();assert.equal(grid.children[1].dataset.gridId,id);assert.equal(first.dataset.span,'1');
 first.querySelector('.panel-handle').dispatchEvent(new w.KeyboardEvent('keydown',{key:'ArrowUp',altKey:true,bubbles:true}));assert.equal(grid.firstElementChild,first);
-const saved=run('serialize()');assert.equal(saved.version,9);assert.equal(saved.panelLayouts.main.boost.cards[id].span,'1');assert.deepEqual(Object.keys(saved.panelLayouts.detached),[]);
+const saved=run('serialize()');assert.equal(saved.version,10);assert.equal(saved.panelLayouts.main.boost.cards[id].span,'1');assert.deepEqual(Object.keys(saved.panelLayouts.detached),[]);
 $('resetWorkspaceGrid').click();assert.equal(first.dataset.span,'2');run('loadProject('+JSON.stringify(saved)+')');assert.equal(first.dataset.span,'1');
 const before=run('JSON.stringify(state)'),bad=structuredClone(saved);bad.panelLayouts.main.boost.cards[id].width='calc(999px)';assert.throws(()=>run('loadProject('+JSON.stringify(bad)+')'),/panel size/);assert.equal(run('JSON.stringify(state)'),before);
 const old=structuredClone(saved);old.version=6;delete old.panelLayouts;old.workflow.panelState[first.dataset.panelId]={width:'400px',height:'333px',collapsed:false};run('loadProject('+JSON.stringify(old)+')');assert.equal(first.style.height,'333px');

@@ -1,0 +1,13 @@
+'use strict';
+// Calibration tables are project state, independent of whether a log is active.
+// Persist both pieces atomically so restored roles refer to the same library.
+let cacheRestoring=false,cacheTimer=null;
+async function persistWorkspaceCache(){if(window.TuneLabPractice||windowRole!=='main'||windowApplying||cacheRestoring||!workflow.storageEnabled||!editingHere())return;const db=await sessionDB();if(!db)return;const project=serialize(),library=project.sessionLibrary;delete project.sessionLibrary;await new Promise(resolve=>{const tx=db.transaction('projects','readwrite'),store=tx.objectStore('projects');store.put(library,'working');store.put(project,'calibration');tx.oncomplete=resolve;tx.onerror=()=>{message('Browser workspace save failed. Download project JSON to preserve the tables.','error');resolve();};tx.onabort=tx.onerror;});}
+function scheduleWorkspaceCache(){if(window.TuneLabPractice||cacheRestoring)return;clearTimeout(cacheTimer);cacheTimer=setTimeout(()=>{if(window.TuneLabActions||windowPending){scheduleWorkspaceCache();return;}persistWorkspaceCache();},450);}
+const cacheFlushBase=flushWindow;flushWindow=function(){const before=windowRevision,dirty=windowDirty;cacheFlushBase();if(dirty||windowRevision!==before)scheduleWorkspaceCache();};
+const cachePersistBase=persistSessionStore;persistSessionStore=async function(){await cachePersistBase();await persistWorkspaceCache();};
+document.addEventListener('change',scheduleWorkspaceCache);document.addEventListener('click',scheduleWorkspaceCache);
+if(!window.TuneLabPractice&&windowRole==='main'){
+ const cacheEpoch=projectEpoch;window.TuneLabProjectOpened=true;cacheRestoring=true;
+ sessionDB().then(db=>{if(!db){cacheRestoring=false;window.TuneLabProjectOpened=false;return;}const tx=db.transaction('projects','readonly'),store=tx.objectStore('projects'),tableReq=store.get('calibration'),logReq=store.get('working');tx.oncomplete=()=>{try{if(!sessions.length&&!windowDirty&&projectEpoch===cacheEpoch){if(tableReq.result){loadProject({...tableReq.result,sessionLibrary:logReq.result??{sessions:[],learning:[],journal:[]}});message('Previous workspace restored, including calibration tables. Logs are optional evidence; calibration confirmations are cleared.');}else if(logReq.result){restoreSessions(logReq.result);message('Historical log library restored. Load your calibration project to restore its tables.');}}}catch(e){message('Stored workspace could not be reopened: '+e.message+'. Open your downloaded project JSON.','error');}finally{cacheRestoring=false;}};tx.onerror=()=>{cacheRestoring=false;message('Browser workspace storage is unavailable. Use project JSON.','error');};}).catch(()=>{cacheRestoring=false;});
+}
