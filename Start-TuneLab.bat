@@ -1,2 +1,2 @@
 @echo off
-start "" "%~dp0portable\index.html"
+powershell.exe -NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden -File "%~dp0Launch-TuneLab.ps1"

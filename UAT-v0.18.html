@@ -1,0 +1,51 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>TuneLab v0.18 UAT</title><style>body{font:16px/1.6 Segoe UI,sans-serif;max-width:1000px;margin:30px auto;padding:20px;color:#233144}article{border:1px solid #cdd6df;border-radius:8px;margin:20px 0;padding:18px}textarea{width:95%;min-height:80px}label{margin-right:15px}button{padding:12px}input{padding:8px}</style><body><h1>TuneLab v0.18 Acceptance</h1><p>Save your current project first. Extract TuneLab-v0.18.zip into its own folder, then double-click Start-TuneLab.bat. <a href="portable/index.html">Open the delivered app</a>. All 9 cases start Not tested. v0.17 UAT was reported complete; individual outcomes were not supplied. No v0.18 acceptance is inferred. Use disposable projects and already-exported logs. No hardware connection or flashing is needed.</p><label>Tester <input id="tester"></label><label>Browser/version <input id="browser"></label><div id="cases"></div><button id="download">Download Result JSON</button><button onclick="print()">Print</button><script>
+const cases=[
+  [
+    "V18-LAUNCH",
+    "App-Style Launch and Browser Fallback",
+    "Setup: Save Project in your existing app before closing it; extract the complete TuneLab-v0.18.zip into a new folder. 1. Double-click Start-TuneLab.bat inside that extracted folder. Expected: TuneLab opens as an app window without the browser address/tab/bookmarks bars, shows v0.18 and finishes the loading splash. 2. Resize the window; navigation and app controls remain accessible. 3. Close it and double-click Open-TuneLab-in-Browser.bat: the same app opens in your default browser with its normal browser controls. 4. Return to the app-style window and use Open Project at the top to select your saved JSON. Datalogs, tables and preferences should return. Storage is profile/folder specific; automatic transfer from Codex or an older release folder is not expected. Record browser-managed UI or launcher errors."
+  ],
+  [
+    "V18-TERMS",
+    "Adjusted Tables and Tune Changes",
+    "Setup: open v0.18, then top Open Project \u2192 docs/fixtures/V0.18-current.json in the extracted package (synthetic disposable fixture). 1. Boost Tables \u2192 inspect MPR and Boost Command headings and calculate/copy actions: outputs use Adjusted wording and source labels retain Source. 2. Check the global Update All Adjusted Tables button. 3. Open Change Review: the change summary and review acknowledgement use Tune Changes/Adjusted wording; Reviewed does not claim vehicle validation. 4. Inspect Guided Tutorial, Help & Terminology and Export Excel Workbook: output labels agree. 5. Original datalog filenames, original channel names and saved personal notes must remain unchanged. Record any remaining confusing label with its exact location."
+  ],
+  [
+    "V18-PREVIEW",
+    "Restore Preview Without Applying",
+    "Setup: top Open Project \u2192 docs/fixtures/V0.18-current.json. Main Boost Tables \u2192 MPR: the first source value is approximately 0.587 absolute bar (exact 0.586842). 1. Top Restore From Saved Project \u2192 Saved Project JSON \u2192 docs/fixtures/V0.18-saved.json. 2. Restore Scope \u2192 MPR Table \u2192 Preview Restore. Expected: Preview ready, RPM/column dimensions and source/adjusted units shown; Apply Selected Restore stays disabled. 3. Expand Compare Current and Saved Values and Dependencies: current first source value is 0.586842, saved is 0.686842. Inspect axes, units, controls and protections. 4. Close without confirming: the first source cell remains approximately 0.587 bar; Command, AFM, gear tables and active datalog stay as before."
+  ],
+  [
+    "V18-MPR",
+    "Restore MPR and Undo Only That Scope",
+    "Setup: reopen docs/fixtures/V0.18-current.json. 1. Top Restore From Saved Project \u2192 choose docs/fixtures/V0.18-saved.json \u2192 MPR Table \u2192 Preview Restore. Check the review confirmation \u2192 Apply Selected Restore. 2. Close \u2192 Boost Tables \u2192 MPR: first source cell is approximately 0.687 bar; saved adjusted values and their controls are included and must be reviewed as manual changes. 3. Boost Tables \u2192 Boost Command: first source value stays 1.000 bar; Datalog Playback still selects Synthetic UAT datalog.csv. 4. Reopen Restore From Saved Project \u2192 Undo Last Project Restore, then Close: MPR first source returns to approximately 0.587; Command and datalog stay. 5. Repeat restore, Save Project, reload and Open Project with that downloaded file: restored MPR persists. The special one-level restore undo is not retained across reload; use your saved backup for later recovery."
+  ],
+  [
+    "V18-GROUP",
+    "Boost Tables Tab Scope",
+    "Setup: reopen docs/fixtures/V0.18-current.json. 1. Restore From Saved Project \u2192 saved fixture \u2192 Restore Scope \u2192 Boost Tables Tab \u00b7 MPR and Command \u2192 Preview Restore. Both table summaries must appear; this scope includes those two tables, not datalogs or the whole workspace. 2. Confirm \u2192 Apply Selected Restore \u2192 Close. Boost Tables \u2192 MPR first source \u22480.687 bar; Boost Command first source 1.100 bar. 3. Reopen restore dialog \u2192 Undo Last Project Restore \u2192 Close: both return to \u22480.587 and 1.000 respectively. AFM, gear tables, current project name, menu order and datalogs retain current values."
+  ],
+  [
+    "V18-AFM",
+    "AFM Restore Does Not Import Datalog Confidence",
+    "Setup: reopen current fixture. 1. Restore From Saved Project \u2192 saved fixture \u2192 AFM Table \u2192 Preview Restore. Read the frequency-point/native g/s summary; saved adjusted curve is included as manual values. 2. Confirm \u2192 Apply Selected Restore \u2192 Close \u2192 AFM Scaler. Positive unprotected adjusted points are 1% above the saved source curve; nonpositive/protected points stay. Calibration confirmations are cleared and current baseline/validation role selection is retained. No donor measurement support should be claimed. 3. Reopen restore dialog \u2192 Undo Last Project Restore \u2192 Close: the prior source/adjusted curve returns. Your imported datalog is still present."
+  ],
+  [
+    "V18-GEAR",
+    "Boost By Gear Restore and Later-Edit Guard",
+    "Setup: reopen current fixture. 1. Restore From Saved Project \u2192 saved fixture \u2192 Boost By Gear Tables \u2192 Preview Restore. Summary shows Hondata, absolute bar, six gears and native/original/adjusted scope. 2. Confirm \u2192 Apply Selected Restore \u2192 Close \u2192 Boost By Gear. At 3000 RPM/gear 1, the saved native source limit is 3.10 absolute bar; remaining cells stay 3.00. 3. In the displayed gear table, click the 3000 RPM/gear 1 cell. Above that table set Operation to Set value, Amount / strength to 3.20, then click Apply to selection. 4. Reopen restore dialog \u2192 Undo Last Project Restore: expected Restore blocked / tables changed after restore. The later 3.20 edit remains; it must not be overwritten. Reopen the current fixture to reset this disposable test."
+  ],
+  [
+    "V18-PROTECT",
+    "Protected Cells and Invalid Files",
+    "Setup: reopen current fixture \u2192 Boost Tables \u2192 MPR \u2192 Source Table. 1. Click its first source cell to protect it; a protection mark appears. 2. Restore From Saved Project \u2192 saved fixture \u2192 MPR Table \u2192 Preview Restore: blocked because saved source changes that protected cell; Apply Selected Restore stays disabled and current \u22480.587 bar stays. 3. Close and click that source cell again to unprotect. 4. Reopen restore dialog, select any unrelated JSON (for example a UAT results JSON): the dialog itself displays a supported-project error and Apply remains disabled. 5. Choose the saved fixture again and Preview Restore: valid preview becomes available."
+  ],
+  [
+    "V18-REGRESSION",
+    "App Window Imports, Exports and Playback Windows",
+    "Setup: app-style v0.18 window \u2192 Open Project \u2192 current fixture. 1. Datalog Review: play the synthetic datalog and navigate to Boost Tables; supported table tracing continues. 2. Use the global Datalog Playback Pop Out control; pause/seek/play from that window and verify the main workspace follows. Dock it again. 3. Open a workspace in its separate window using its existing navigation control; verify display and editing ownership behave as before, then return editing to the main window. 4. Top Export Excel Workbook \u2192 select the source and adjusted MPR tables \u2192 Download Workbook. There is one sheet per selected table with Adjusted labels. Existing table Copy/Export TSV options still offer indexed/body-only output and preserve values. 5. Save Project, reopen the same app folder and Open Project: datalog/table state returns; no restored value implies vehicle validation."
+  ]
+];
+document.getElementById('cases').innerHTML=cases.map(([id,title,steps])=>`<article data-case="${id}"><h2>${id} · ${title}</h2><p>${steps}</p>${['Pass','Fail','Not tested'].map(v=>`<label><input type="radio" name="${id}" value="${v}" ${v==='Not tested'?'checked':''}>${v}</label>`).join('')}<textarea aria-label="${id} observations" placeholder="Steps, expected/actual values, units, severity and screenshot references"></textarea></article>`).join('');
+document.getElementById('download').onclick=()=>{const data={release:'TuneLab v0.18',date:new Date().toISOString(),tester:document.getElementById('tester').value,browser:document.getElementById('browser').value,cases:[...document.querySelectorAll('[data-case]')].map(n=>({id:n.dataset.case,result:n.querySelector('input:checked').value,notes:n.querySelector('textarea').value}))};const a=document.createElement('a'),url=URL.createObjectURL(new Blob([JSON.stringify(data,null,2)],{type:'application/json'}));a.href=url;a.download='TuneLab-v0.18-UAT-results.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);};
+</script></body></html>
