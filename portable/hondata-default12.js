@@ -1,0 +1,4 @@
+'use strict';
+function seedHondata12(){if(window.TuneLabPractice||wb.gear||wb.gearProposal)return;const rpm=[3000,3500,4000,4500,5000,5500];wb.gear={format:'hondata',units:'bar',userTemplate:true,gears:Array.from({length:6},(_,j)=>({gear:j+1,rpm:[...rpm],axis:null,values:rpm.map(()=>[3])}))};wb.gearOriginal=clone(wb.gear);$('gearFormat').value=$('gearImportFormat').value='hondata';$('gearUnits').value=$('gearDisplay').value='bar';renderGear();gearNotice12.textContent='User-supplied Hondata starting template · 3.00 absolute bar · gears 1–6. Confirm against your installed calibration before use.';}
+const seedLoad12Base=loadProject;loadProject=function(p){seedLoad12Base(p);seedHondata12();};
+function seedAfterCache12(){if(typeof cacheRestoring!=='undefined'&&cacheRestoring){setTimeout(seedAfterCache12,50);return;}seedHondata12();}seedAfterCache12();
