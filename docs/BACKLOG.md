@@ -1,6 +1,6 @@
 # Future builds and v0.6 planning
 
-Status: requested/discussed, not implemented by this handoff. Prioritize UAT defects. Scope next build explicitly.
+Status: the user approved the scoped v0.6 build on 2026-10-02. See V0.6-SCOPE.md for included and explicitly deferred items. Implemented workflows await v0.6 UAT; real KTuner export verification awaits a private fixture. The list below retains the original requests, including deferred work. Prioritize defects before expanding scope.
 
 ## New v0.6 feedback
 - Dedicated Settings tab for cross-app units, platform, complexity, appearance inheritance, calculation behavior, warning thresholds, storage and backup. Local controls stay near their tables.
