@@ -2,7 +2,7 @@ const {JSDOM}=require('jsdom'),fs=require('fs'),assert=require('assert');
 const dir=require('path').resolve(__dirname,'..');
 const vm=require('vm');const dom=new JSDOM(fs.readFileSync(dir+'/index.html','utf8'),{runScripts:'outside-only',url:'http://localhost/'}),w=dom.window;
 w.matchMedia=()=>({matches:true,addEventListener(){}});w.confirm=()=>true;w.prompt=()=>null;w.URL.createObjectURL=()=> 'blob:test';w.URL.revokeObjectURL=()=>{};
-for(const file of ['tables.js','engine.js','workbench-engine.js','app.js','workbench.js','session-engine.js','sessions.js','workflow-engine.js','workflows.js'])vm.runInContext(fs.readFileSync(dir+'/'+file,'utf8'),dom.getInternalVMContext());
+for(const file of ['tables.js','engine.js','workbench-engine.js','app.js','workbench.js','session-engine.js','sessions.js','workflow-engine.js','workflows.js','workspaces.js'])vm.runInContext(fs.readFileSync(dir+'/'+file,'utf8'),dom.getInternalVMContext());
 const $=id=>w.document.getElementById(id),click=id=>$(id).click(),change=(id,value)=>{$(id).value=value;$(id).dispatchEvent(new w.Event('change',{bubbles:true}));},evalx=s=>vm.runInContext(s,dom.getInternalVMContext()),tick=()=>new Promise(r=>setImmediate(r));
 (async()=>{
 const text='time_ms,RPM,BP,BP CMD,TPedal,Gear,WGCMD\n0,3000,18,20,90,3,30\n100,3100,20,20,90,3,30\n200,3200,22,20,90,3,30\n300,3300,21,20,90,3,30\n400,3400,2,1,10,3,30\n500,3500,20,20,90,3,30\n600,3600,21,20,90,3,30\n700,3700,22,20,90,3,30\n800,3800,23,20,90,3,30';
@@ -21,4 +21,4 @@ const nrows=evalx('state.mpr.source.rpm.length'),rpm=evalx('state.mpr.source.rpm
 const project=evalx('serialize()');assert.equal(project.sessionLibrary.sessions.length,2);evalx('loadProject('+JSON.stringify(project)+')');await tick();assert.equal(evalx('sessions.length'),2);assert.equal($('baselineConfirm').checked,false);assert.ok(evalx('journal.length')>=2);
 if(process.env.TUNELAB_LOG_FIXTURE){const raw=fs.readFileSync(process.env.TUNELAB_LOG_FIXTURE,'utf8');await evalx('importSession('+JSON.stringify(raw)+',"Earlier Hondata compatibility log.csv")');await tick();assert.equal(evalx('sessions.length'),3);assert.ok(evalx('review.data.length')>20000);assert.ok($('logChart').querySelector('svg'));}
 const ids=[...w.document.querySelectorAll('[id]')].map(x=>x.id);assert.equal(new Set(ids).size,ids.length,'runtime IDs are unique');assert.ok(!$('status').classList.contains('error'),$('status').textContent);console.log('Session DOM integration PASS: filters, linked cursor, duplicate detection, roles, contextual sources, selective undo, page themes, raw-log save/reopen, optional historical log');
-})().catch(e=>{console.error(e);process.exitCode=1;});
+})().catch(e=>{console.error(e);process.exitCode=1;}).finally(()=>dom.window.close());

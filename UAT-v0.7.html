@@ -1,0 +1,66 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>TuneLab v0.7 UAT</title><style>body{font:16px/1.6 Segoe UI,sans-serif;max-width:1000px;margin:30px auto;padding:20px;color:#233144}article{border:1px solid #cdd6df;border-radius:8px;margin:20px 0;padding:18px}textarea{width:95%;min-height:80px}label{margin-right:15px}button{padding:12px}input{padding:8px}h1{color:#c82f40}@media print{button{display:none}article{break-inside:avoid}}</style><body><h1>TuneLab v0.7 acceptance</h1><p>Extract the complete ZIP and launch Start-TuneLab.bat. Use historical logs and disposable copies of calibrations. Keep your previous project JSON and original logs. No flashing or hardware connection is needed.</p><label>Tester <input id="tester"></label><label>Browser/version <input id="browser"></label><div id="cases"></div><button id="download">Download result JSON</button><button onclick="print()">Print</button><p>Critical: incorrect physical values, lost data or protected values changed. Major: blocked workflow. Minor: presentation/explanation issue. Record expected and actual values, steps, units, file/revision and screenshots. KTuner checks stay Not tested until a real export is available.</p><script>
+const cases=[
+  [
+    "V7-NAV",
+    "Named and compact navigation",
+    "Use the named sidebar, Collapse menu and dropdown. Resize the browser narrow. Navigate with keyboard and mouse; the active workspace remains clear."
+  ],
+  [
+    "V7-WINDOW",
+    "One workspace per window",
+    "Open Boost, AFM and Log review in separate windows. Each shows only its chosen workspace and relevant context. Return to main focuses the coordinator; cross-workspace links navigate there."
+  ],
+  [
+    "V7-HANDOFF",
+    "Edit handoff and shared values",
+    "Choose Edit in this window in each window in turn. Only one window allows edits. Refine a proposal, protect a cell, undo, change units and select a log. Other windows show the same revision, physical values, history and evidence roles."
+  ],
+  [
+    "V7-CONFLICT",
+    "Concurrent requests and stale edits",
+    "Request editing from two windows quickly. Finish a pending operation before handoff. Only the granted window edits; stale submissions are rejected visibly and current work is restored. No silent overwrite."
+  ],
+  [
+    "V7-PROJECT",
+    "Project opening from either window",
+    "Save two distinct projects. Open each from main and then an editable detached window. Every window follows the project switch; logs, metadata and units never mix between projects."
+  ],
+  [
+    "V7-RECOVERY",
+    "Owner closure and reload",
+    "Make a manual edit and wait for its revision. Close or reload main. Detached editing pauses and offers Save recovery backup. Reopen that JSON in a new main window and compare values/history/logs. Open fresh detached windows."
+  ],
+  [
+    "V7-POPUP",
+    "Blocked popup",
+    "Block popups and try Open in new window. A visible explanation appears, current work is retained, and allowing popups permits another attempt."
+  ],
+  [
+    "V7-GRID",
+    "Drag and snap",
+    "Drag chart, preview and evidence cards only by Move panel. A highlighted target indicates placement. Drop before/after another card; data, protection and table selection still work. Coupled controls stay anchored."
+  ],
+  [
+    "V7-SIZE",
+    "Resize and readable grid",
+    "Use half/full width, native resize, Collapse and Expand/Restore. Switch to a narrow window: panels use one column and wide tables scroll. No controls are hidden by overlaps."
+  ],
+  [
+    "V7-KEYBOARD",
+    "Keyboard panel movement and reset",
+    "Focus Move panel and use Alt-arrow keys, or the earlier/later buttons. Focus remains usable. Reset panel layout restores order/width/size for the current workspace only."
+  ],
+  [
+    "V7-LAYOUT",
+    "Independent layout backup",
+    "Arrange Boost differently in main and a detached window. Save JSON and reopen in a fresh main window; open Boost separately. Both arrangements restore independently. Repeat AFM; changing/resetting one workspace does not change another."
+  ],
+  [
+    "V7-REGRESSION",
+    "Calculation and migration regression",
+    "Open a copied v0.6 backup with manual proposals, raw logs, roles, history and resized cards. Values/history/old panel sizes remain; calibration confirmations clear. Repeat signed-off v0.6 scenarios. Invalid backup/layout preserves current work. The supplied Fit CSV has mismatched columns (docs/V0.7-UAT-FINDINGS.md). Full KTuner analysis remains Not tested until a corrected, appropriate CSV with required channels is available."
+  ]
+];
+document.getElementById('cases').innerHTML=cases.map(([id,title,steps])=>`<article data-case="${id}"><h2>${id} · ${title}</h2><p>${steps}</p>${['Pass','Fail','Not tested'].map(v=>`<label><input type="radio" name="${id}" value="${v}" ${v==='Not tested'?'checked':''}>${v}</label>`).join('')}<textarea aria-label="${id} observations" placeholder="Steps, expected/actual values, units, severity and screenshot references"></textarea></article>`).join('');
+document.getElementById('download').onclick=()=>{const data={release:'TuneLab v0.7',date:new Date().toISOString(),tester:document.getElementById('tester').value,browser:document.getElementById('browser').value,cases:[...document.querySelectorAll('[data-case]')].map(n=>({id:n.dataset.case,result:n.querySelector('input:checked').value,notes:n.querySelector('textarea').value}))};const a=document.createElement('a'),url=URL.createObjectURL(new Blob([JSON.stringify(data,null,2)],{type:'application/json'}));a.href=url;a.download='TuneLab-v0.7-UAT-results.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);};
+</script></body></html>

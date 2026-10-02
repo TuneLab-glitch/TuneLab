@@ -1,3 +1,16 @@
+# TuneLab v0.7 — workspace organization
+
+- Named sidebar without numeric prefixes; collapsible menu and a compact/narrow workspace selector.
+- Open the current workspace alone in a new window with project/log context and Return to main.
+- Shared project revisions with **Edit in this window** handoff, pending-action coordination and explicit stale-edit rejection. Other windows view the same project; simultaneous editing uses a single editing owner.
+- Movable chart, preview and evidence panels with drag handles, highlighted grid targets, half/full width, keyboard move controls, native resize/collapse/expand and Reset panel layout. Project controls and coupled forms remain anchored.
+- Separate main/detached layouts for each workspace, cached locally and included in v0.7 JSON. Older backups retain their panel sizes on migration.
+- Detached recovery JSON when the main window closes/reloads. Reopen the recovery in a new main window; automatic reconnection/owner promotion is not included.
+
+See docs/V0.7-VERIFICATION.md and UAT-v0.7.html. v0.7 user acceptance is pending. The supplied Fit/KTuner CSV imports partially: 189 matching rows; 2,344 rejected for column mismatch. Full raw CSV is retained and the rejection count is visible. No-space timestamp/temperature headers and explicit mbar MAP units are supported; unsupported channel meanings stay unmapped. Full KTuner/Civic analysis verification awaits a corrected, appropriate export. Table shading and all other agreed deferred features remain deferred. Calculation rules are unchanged.
+
+---
+
 # TuneLab v0.6 — editing, evidence and backup workflows
 
 Approved scope: docs/V0.6-SCOPE.md. Verification: docs/V0.6-VERIFICATION.md.
