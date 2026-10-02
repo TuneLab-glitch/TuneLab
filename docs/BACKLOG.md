@@ -1,6 +1,13 @@
-# Future builds and v0.6 planning
+# Future builds and v0.7 planning
 
-Status: the user approved the scoped v0.6 build on 2026-10-02. See V0.6-SCOPE.md for included and explicitly deferred items. Implemented workflows await v0.6 UAT; real KTuner export verification awaits a private fixture. The list below retains the original requests, including deferred work. Prioritize defects before expanding scope.
+Status: the user approved the scoped v0.6 build on 2026-10-02. See V0.6-SCOPE.md for included and explicitly deferred items. The user signed off implemented v0.6 release-note scenarios on 2026-10-02; real KTuner export verification awaits a private fixture. The list below retains the original requests, including deferred work. Prioritize defects before expanding scope.
+
+## v0.7 requests and proposal
+
+- Remove numeric sidebar prefixes; retain named navigation with a compact-layout dropdown option.
+- Open a specific workspace in its own window, showing only that workspace and necessary context.
+- Shared-state coordination, conflict handling and owner-window lifecycle are required for editable separate windows.
+- See V0.7-PROPOSAL.md for suggested prioritization and acceptance. No v0.7 implementation is approved by recording these notes.
 
 ## New v0.6 feedback
 - Dedicated Settings tab for cross-app units, platform, complexity, appearance inheritance, calculation behavior, warning thresholds, storage and backup. Local controls stay near their tables.
