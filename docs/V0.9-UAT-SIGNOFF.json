@@ -1,0 +1,84 @@
+{
+  "release": "TuneLab v0.9.1",
+  "acceptedBuild": "ebc577ac49fc6eae30f6d1f97bf300157912f846",
+  "date": "2026-10-02",
+  "timezone": "America/New_York",
+  "tester": "Jonny (initial report: Jon)",
+  "browser": "Edge (initial report)",
+  "statement": "All remaining UAT Passed",
+  "status": "accepted",
+  "archiveSha256": "1d0cfab7a71a3ab5525531062691031c9e61a114077a0ed84f291f1302d6259b",
+  "initialResults": "V0.9-UAT-FINDINGS.json",
+  "cases": [
+    {
+      "id": "V9-SIDEBAR",
+      "result": "Pass",
+      "evidence": "Initial submitted UAT results: Pass"
+    },
+    {
+      "id": "V9-REFLOW",
+      "result": "Pass",
+      "evidence": "Initial submitted UAT results: Pass"
+    },
+    {
+      "id": "V9-MENU",
+      "result": "Pass",
+      "evidence": "Initial submitted UAT results: Pass"
+    },
+    {
+      "id": "V9-GRID",
+      "result": "Pass",
+      "evidence": "Initial submitted UAT results: Pass"
+    },
+    {
+      "id": "V9-EXPAND",
+      "result": "Pass",
+      "evidence": "Initial submitted UAT results: Pass"
+    },
+    {
+      "id": "V9-RESET",
+      "result": "Pass",
+      "evidence": "Initial submitted UAT results: Pass"
+    },
+    {
+      "id": "V9-FOCUS",
+      "result": "Pass",
+      "evidence": "Initial submitted UAT results: Pass"
+    },
+    {
+      "id": "V9-DETACH",
+      "result": "Pass",
+      "evidence": "Initial submitted UAT results: Pass"
+    },
+    {
+      "id": "V9-DEMO",
+      "result": "Pass",
+      "evidence": "Initial submitted UAT results: Pass"
+    },
+    {
+      "id": "V9-ISOLATION",
+      "result": "Pass",
+      "evidence": "Initial submitted UAT results: Pass"
+    },
+    {
+      "id": "V9-AFM-DEMO",
+      "result": "Pass",
+      "evidence": "User retest statement: All remaining UAT Passed"
+    },
+    {
+      "id": "V9-OTHER-DEMO",
+      "result": "Pass",
+      "evidence": "Initial submitted UAT results: Pass"
+    },
+    {
+      "id": "V9-STRATEGY",
+      "result": "Pass",
+      "evidence": "User retest statement: All remaining UAT Passed"
+    },
+    {
+      "id": "V9-REGRESSION",
+      "result": "Pass",
+      "evidence": "Initial submitted UAT results: Pass"
+    }
+  ]
+}

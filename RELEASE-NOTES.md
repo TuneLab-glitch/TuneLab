@@ -3,7 +3,7 @@
 - Driving/capture instructions lead each logging plan; After loading the file is a numbered workflow. Channel details are optional and collapsed.
 - Intended purpose is selected before import, saved per log, editable in Log library and linked to Review plan. Purpose never confirms a calibration match or silently assigns an evidence role.
 - Run synthetic AFM example explicitly confirms the invented example roles and analyzes the matching example curve. Real-log gates remain manual.
-- Initial v0.9 UAT results are retained: 12 Pass / 2 Fail. Retest V9-AFM-DEMO and V9-STRATEGY, including purpose import/edit/backup. Full acceptance remains pending.
+- Initial v0.9 UAT results are retained: 12 Pass / 2 Fail. Jonny signed off both remaining cases on 2026-10-02; all 14 release scenarios are accepted. See docs/V0.9-UAT-SIGNOFF.md/json.
 
 ---
 
