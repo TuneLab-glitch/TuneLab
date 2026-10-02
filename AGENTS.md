@@ -90,3 +90,8 @@ Approved whole-app audit scope is implemented; see docs/V0.16-SCOPE.md and docs/
 ## v0.17 Approved Build — 2026-10-02
 
 Jonny confirmed starting the aligned build; this supersedes the prior hold. See docs/V0.17-SCOPE.md. Datalog chart gestures/navigation, page section controls, consistent EFI terminology and progressively detailed mode summaries are implemented. v0.16.2 retains all fifteen accepted UAT scenarios. v0.17 user acceptance remains pending; private datalogs stay excluded.
+
+
+## v0.18 Approved Build — 2026-10-02
+
+Jonny approved the three-item build. See docs/V0.18-SCOPE.md and docs/V0.18-VERIFICATION.md. Adjusted Table terminology, app-style launch/fallback and scoped saved-table restore are implemented. The earlier planning-only hold for these items is superseded. Restore scopes are listed explicitly; arbitrary section/tab restore remains deferred. v0.17 UAT is reported complete, with pass outcomes not supplied. v0.18 has nine pending UAT cases; no signoff is inferred. Private datalogs remain excluded.

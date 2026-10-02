@@ -353,3 +353,20 @@ Jonny explicitly reports: "All UAT has passed" for outputs/UAT-v0.16.2.html. All
 ## v0.17 Approved Build — 2026-10-02
 
 Jonny confirmed starting the aligned build; this supersedes the prior hold. See docs/V0.17-SCOPE.md. Datalog chart gestures/navigation, page section controls, consistent EFI terminology and progressively detailed mode summaries are implemented. v0.16.2 retains all fifteen accepted UAT scenarios. v0.17 user acceptance remains pending; private datalogs stay excluded.
+
+## Future Version: Selective Restore From Saved Project — 2026-10-02
+
+Jonny requests restoring values for a selected table, section or tab from a previously saved project JSON without reopening/replacing the entire current project. Planning only; no implementation authorized by this note. Suggested design for review: choose the saved project and source area, preview affected values and required dependencies (axes, units, protections and relevant controls), then explicitly apply a reversible restore. Preserve unrelated current work and datalog roles; record the operation in edit history and refresh/invalidate dependent proposals and review acknowledgements as appropriate. Define section/tab scope precisely before building; do not silently import unrelated datalogs, layouts or settings.
+
+## Future Version: App-Style Browser Launch — 2026-10-02
+
+Jonny wants TuneLab to open like a dedicated application despite using a browser: hide the address bar, browser tabs, bookmarks/shortcut bars and similar browser chrome. Planning only; no implementation started. Evaluate a dedicated Edge/Chrome app-mode launcher for the portable offline app, keeping a normal-browser fallback. Browser chrome is controlled by the launch mode/browser rather than page CSS. Verify saved-workspace storage continuity, project/file import and export, playback popouts, detached workspaces, window sizing and app-owned shortcuts before delivery. Clarify any remaining browser-controlled UI or shortcut limits in the eventual proposal; do not assume kiosk lockdown or removal of TuneLab's own useful controls.
+
+## Future Version: Adjusted Table Terminology — 2026-10-02
+
+Jonny agreed to replace user-facing proposal terminology with Adjusted/Tune Changes wording. Agreed examples: Proposed Table → Adjusted Table; Proposed Changes → Tune Changes; Update All Proposals → Update All Adjusted Tables; Mark Current Proposals Reviewed → Mark Tune Changes Reviewed. Retain Source Table for starting values. Keep freshness/review/validation states separate (e.g. Needs Update, Needs Review, Reviewed); Adjusted does not establish vehicle validation. Avoid Recommended as the output-table label because it implies unsupported confidence. Future implementation should align menus, buttons, summaries, tutorial, help, exports and UAT while preserving existing internal/project identifiers and old backups. Backlog entry only; no application or archive changed.
+
+
+## v0.18 Approved Build — 2026-10-02
+
+Jonny approved the three-item build. See docs/V0.18-SCOPE.md and docs/V0.18-VERIFICATION.md. Adjusted Table terminology, app-style launch/fallback and scoped saved-table restore are implemented. The earlier planning-only hold for these items is superseded. Restore scopes are listed explicitly; arbitrary section/tab restore remains deferred. v0.17 UAT is reported complete, with pass outcomes not supplied. v0.18 has nine pending UAT cases; no signoff is inferred. Private datalogs remain excluded.
