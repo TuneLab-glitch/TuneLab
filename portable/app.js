@@ -6,7 +6,7 @@ const boostIds=['boostMode','boostAmount','sourceUnits','outputUnits','analysisM
 const defaults={boostMode:'Scale to peak',boostAmount:23,sourceUnits:'bar',outputUnits:'bar',analysisMode:'ktuner',referencePa:.98,offset:0,boostPrecision:3,rpmRule:'At or above',rpmMin:4500,rpmMax:7000,rpmWidth:2500,axisRule:'Any',axisMin:.955,axisMax:1,axisWidth:0};
 let state={mpr:{source:clone(TuneLabTables.mpr),controls:clone(defaults),proposal:null,dirty:true},command:{source:clone(TuneLabTables.command),controls:{...defaults,boostMode:'Add PSI',boostAmount:0,rpmMin:3000,rpmWidth:750,axisRule:'At or above',axisMin:15.8,axisMax:28.8,axisWidth:3},proposal:null,dirty:true},afm:clone(TuneLabTables.afm),snapshots:[]};
 function message(text,type=''){const n=$('status');n.textContent=text;n.className='status'+(type?' '+type:'');}
-function action(fn){return async(...args)=>{try{await fn(...args);}catch(e){message(e.message,'error');console.error(e);}};}
+function action(fn){return async(...args)=>{window.TuneLabActions=(window.TuneLabActions??0)+1;try{await fn(...args);}catch(e){message(e.message,'error');console.error(e);}finally{window.TuneLabActions--;window.TuneLabStateChanged?.();}};}
 function setDemo(v){isDemo=v;$('demoBadge').hidden=!v;}
 function controls(){return Object.fromEntries(boostIds.map(id=>[id,$(id).value]));}
 function syncControls(){state[kind].controls=controls();}

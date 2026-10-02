@@ -40,4 +40,10 @@ Workspace JSON includes raw logs, per-log profiles, saved proposals, roles, jour
 
 ## Next development round
 
-v0.6 user sign-off is recorded. See V0.7-PROPOSAL.md for navigation and single-workspace windows, shared-state acceptance requirements and suggested priorities. v0.7 remains planning; no build scope has been approved yet. Real KTuner format verification is still pending an original export.
+v0.6 user sign-off is recorded. See V0.7-PROPOSAL.md for navigation and single-workspace windows, shared-state acceptance requirements and suggested priorities. Jonny subsequently approved v0.7 navigation, separate windows and drag-and-snap grids. Real KTuner format verification is still pending an original export.
+
+## v0.7 build handoff — 2026-10-02
+
+The active UI is v0.7. See V0.7-PROPOSAL.md for approved scope and V0.7-VERIFICATION.md for test evidence and limitations. Open UAT-v0.7.html for new release acceptance; v0.6 sign-off remains unchanged and does not imply v0.7 acceptance.
+
+One window edits at a time through an explicit handoff; others view synchronized revisions. Detached windows pause on owner closure/reload and can save a recovery backup. Main and detached panel arrangements are independently backed up in v0.7 JSON; v0.3–v0.6 imports remain supported. Save JSON before upgrading or changing origins. The supplied Fit/KTuner CSV has mismatched header/data widths; a second export verifies 30-channel CSV structure and raw backup/reopen. Full Civic/KTuner analysis still needs appropriate channels/semantics (see V0.7-UAT-FINDINGS.md). Table shading remains deferred.

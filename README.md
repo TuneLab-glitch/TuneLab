@@ -1,8 +1,10 @@
-# TuneLab v0.6
+# TuneLab v0.7
 
 Extract the ZIP completely and double-click **Start-TuneLab.bat**. The app opens **portable/index.html** in your browser and works offline. No installer, .NET SDK, AI model or API key is required.
 
-Start v0.6 UAT by opening **UAT-v0.6.html** (13 cases). Keep **UAT-Guide.html** for the 34 baseline regression cases. Both use existing historical CSVs and tables, support printing and download result JSON. No new drive or vehicle connection is needed. See **RELEASE-NOTES.md** for implemented scope and limitations.
+Start v0.7 UAT by opening **UAT-v0.7.html** (12 cases). Keep **UAT-v0.6.html** for signed-off v0.6 scenarios. Keep **UAT-Guide.html** for the 34 baseline regression cases. Both use existing historical CSVs and tables, support printing and download result JSON. No new drive or vehicle connection is needed. See **RELEASE-NOTES.md** for implemented scope and limitations.
+
+See **docs/V0.7-PROPOSAL.md** and **docs/V0.7-VERIFICATION.md** for v0.7 scope and checks. Use **Edit in this window** to hand off editing between windows. Drag preview/analysis panels by **Move panel**, use half/full width and reset as needed; main and detached arrangements save independently. If the main window closes or reloads, save a recovery JSON from the detached window and reopen it in a main window.
 
 See **docs/V0.6-SCOPE.md** for approved/deferred work and **docs/V0.6-VERIFICATION.md** for fresh results and pending KTuner/UAT verification. Settings now centralizes workspace preferences. Log library stores a reviewed mapping and units per export; unknown units need explicit choices. Full workspace JSON retains raw logs, mapping provenance, proposals, history, role IDs, layout and settings.
 
@@ -55,6 +57,6 @@ npm install
 npm run test:ui
 ```
 
-46 synthetic tests and all three DOM suites pass; 47 tests pass with the supplied private Hondata fixture. Local-file headless Edge checks passed for pointer selection, edge scrolling, protection, zoom, resizing, clipboard, downloads, backup reopen and IndexedDB. User acceptance of implemented release-note scenarios is signed off in **docs/V0.6-UAT-SIGNOFF.md**. Real KTuner export/destination checks remain pending. See **docs/V0.6-VERIFICATION.md**.
+48 synthetic tests and all four DOM suites pass; 51 tests pass with the private Hondata fixture, malformed Fit/KTuner rejection checks and consistent KTuner header/import checks. Local-file headless Edge checks passed for pointer selection, edge scrolling, protection, zoom, resizing, clipboard, downloads, backup reopen and IndexedDB. User acceptance of implemented release-note scenarios is signed off in **docs/V0.6-UAT-SIGNOFF.md**. The first Fit CSV has mismatched header/data widths; the second KTuner CSV verifies 30-channel import and raw backup/reopen. Full Civic/KTuner analysis and destination checks remain pending. See **docs/V0.7-VERIFICATION.md** and **docs/V0.7-UAT-FINDINGS.md**.
 
 The retained **src/** and **tests/** Windows/Avalonia shell is older v0.2 code, not this interface; it was not compiled. **README-native-v0.2.md** describes that older shell.

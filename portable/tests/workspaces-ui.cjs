@@ -1,0 +1,20 @@
+const {JSDOM}=require('jsdom'),fs=require('node:fs'),assert=require('node:assert/strict'),vm=require('node:vm'),path=require('node:path');
+const dir=path.resolve(__dirname,'..'),dom=new JSDOM(fs.readFileSync(dir+'/index.html','utf8'),{runScripts:'outside-only',url:'http://localhost/',pretendToBeVisual:true}),w=dom.window;
+w.matchMedia=()=>({matches:true,addEventListener(){}});w.confirm=()=>true;w.prompt=()=>null;w.URL.createObjectURL=()=> 'blob:test';w.URL.revokeObjectURL=()=>{};w.open=()=>null;
+for(const file of ['tables.js','engine.js','workbench-engine.js','app.js','workbench.js','session-engine.js','sessions.js','workflow-engine.js','workflows.js','workspaces.js'])vm.runInContext(fs.readFileSync(dir+'/'+file,'utf8'),dom.getInternalVMContext());
+const run=s=>vm.runInContext(s,dom.getInternalVMContext()),$=id=>w.document.getElementById(id);
+(async()=>{try{
+assert.ok(!/\b01\b/.test(w.document.querySelector('nav').textContent));$('toggleNavigation').click();assert.ok(w.document.body.classList.contains('compact-navigation'));
+$('workspaceSelect').value='afm';$('workspaceSelect').dispatchEvent(new w.Event('change'));assert.equal(run('currentPage()'),'afm');run('goPage("boost")');
+const grid=$('boost').querySelector('.panel-grid'),first=grid.firstElementChild,id=first.dataset.gridId;
+first.querySelector('[data-grid-span]').click();first.querySelector('[data-grid-down]').click();assert.equal(grid.children[1].dataset.gridId,id);assert.equal(first.dataset.span,'1');
+first.querySelector('.panel-handle').dispatchEvent(new w.KeyboardEvent('keydown',{key:'ArrowUp',altKey:true,bubbles:true}));assert.equal(grid.firstElementChild,first);
+const saved=run('serialize()');assert.equal(saved.version,7);assert.equal(saved.panelLayouts.main.boost.cards[id].span,'1');assert.deepEqual(Object.keys(saved.panelLayouts.detached),[]);
+$('resetWorkspaceGrid').click();assert.equal(first.dataset.span,'2');run('loadProject('+JSON.stringify(saved)+')');assert.equal(first.dataset.span,'1');
+const before=run('JSON.stringify(state)'),bad=structuredClone(saved);bad.panelLayouts.main.boost.cards[id].width='calc(999px)';assert.throws(()=>run('loadProject('+JSON.stringify(bad)+')'),/panel size/);assert.equal(run('JSON.stringify(state)'),before);
+const old=structuredClone(saved);old.version=6;delete old.panelLayouts;old.workflow.panelState[first.dataset.panelId]={width:'400px',height:'333px',collapsed:false};run('loadProject('+JSON.stringify(old)+')');assert.equal(first.style.height,'333px');
+$('detachWorkspace').click();assert.match($('windowState').textContent,/Popup blocked/);
+console.log('v0.7 DOM PASS: named/compact navigation, grid order/span/keyboard/reset, independent backup layouts, malformed layout rejection, v0.6 resize migration and blocked popup');
+if(process.env.TUNELAB_KTUNER_FIT_FIXTURE){const raw=fs.readFileSync(process.env.TUNELAB_KTUNER_FIT_FIXTURE,'utf8');await run('importSession('+JSON.stringify(raw)+',"Private KTuner Fit export.csv")');assert.equal(run('sessions.at(-1).log.data.length'),189);assert.equal(run('sessions.at(-1).log.rejectedRows'),2344);assert.match($('status').textContent,/2,344 rows rejected/);const project=run('serialize()');run('loadProject('+JSON.stringify(project)+')');assert.equal(run('sessions.at(-1).text'),raw);assert.equal(run('sessions.at(-1).profile.units.map'),'mbar');assert.equal(run('sessions.at(-1).log.rejectedRows'),2344);}
+if(process.env.TUNELAB_KTUNER_HEADER_FIXTURE){const raw=fs.readFileSync(process.env.TUNELAB_KTUNER_HEADER_FIXTURE,'utf8');await run('importSession('+JSON.stringify(raw)+',"Private consistent KTuner export.csv")');assert.equal(run('sessions.at(-1).log.data.length'),2938);assert.equal(run('sessions.at(-1).log.rejectedRows'),0);const project=run('serialize()');run('loadProject('+JSON.stringify(project)+')');assert.equal(run('sessions.at(-1).text'),raw);assert.equal(run('sessions.at(-1).profile.units.time'),'s');assert.equal(run('sessions.at(-1).profile.mapping.hz'),'');}
+await new Promise(r=>setImmediate(r));}finally{dom.window.close();}})().catch(e=>{console.error(e);process.exitCode=1;});

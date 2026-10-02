@@ -7,7 +7,8 @@ Status: the user approved the scoped v0.6 build on 2026-10-02. See V0.6-SCOPE.md
 - Remove numeric sidebar prefixes; retain named navigation with a compact-layout dropdown option.
 - Open a specific workspace in its own window, showing only that workspace and necessary context.
 - Shared-state coordination, conflict handling and owner-window lifecycle are required for editable separate windows.
-- See V0.7-PROPOSAL.md for suggested prioritization and acceptance. No v0.7 implementation is approved by recording these notes.
+- Movable/resizable preview and evidence panels with grid snapping, keyboard movement, reset and separate main/detached saved layouts. Anchored controls stay fixed.
+- See V0.7-PROPOSAL.md for suggested prioritization and acceptance. Jonny approved these features and drag-and-snap panels on 2026-10-02. Table shading is deferred; a Fit/KTuner CSV was supplied but has mismatched columns; a second export verifies headers/import. Full analysis compatibility still needs appropriate turbo/Civic channels and reviewed semantics.
 
 ## New v0.6 feedback
 - Dedicated Settings tab for cross-app units, platform, complexity, appearance inheritance, calculation behavior, warning thresholds, storage and backup. Local controls stay near their tables.
