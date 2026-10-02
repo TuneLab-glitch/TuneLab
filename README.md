@@ -1,8 +1,10 @@
-# TuneLab v0.5
+# TuneLab v0.6
 
 Extract the ZIP completely and double-click **Start-TuneLab.bat**. The app opens **portable/index.html** in your browser and works offline. No installer, .NET SDK, AI model or API key is required.
 
-Start UAT by opening **UAT-Guide.html**. It uses your existing historical CSVs and tables; no new drive or vehicle connection is needed. The guide has 34 cases, print/save-PDF support, and downloadable result JSON. See **RELEASE-NOTES.md** for the exact implemented scope and limitations.
+Start v0.6 UAT by opening **UAT-v0.6.html** (13 cases). Keep **UAT-Guide.html** for the 34 baseline regression cases. Both use existing historical CSVs and tables, support printing and download result JSON. No new drive or vehicle connection is needed. See **RELEASE-NOTES.md** for implemented scope and limitations.
+
+See **docs/V0.6-SCOPE.md** for approved/deferred work and **docs/V0.6-VERIFICATION.md** for fresh results and pending KTuner/UAT verification. Settings now centralizes workspace preferences. Log library stores a reviewed mapping and units per export; unknown units need explicit choices. Full workspace JSON retains raw logs, mapping provenance, proposals, history, role IDs, layout and settings.
 
 ## Suggested first session
 
@@ -21,7 +23,7 @@ Browser session storage is optional and can vary for file URLs. Project JSON is 
 
 Source boost single click toggles protection; double click edits its value. Edit source indices explicitly and preview resampling before applying. Whole-table import uses supplied values exactly. Removing protected coordinates or adding out-of-range indices is blocked. Duplicate MPR atmospheric columns are preserved when that axis is unchanged; they are not silently merged.
 
-Proposed tables support rectangle selection, add/set/percent/interpolation/smoothing/tapered addition, protected points and undo. The AFM two-row preview is editable. Percentages use displayed values, so absolute-pressure and gauge-pressure percentages differ. Display and export precision is explicit.
+Proposed tables support pointer-drag rectangles, edge scrolling and Shift selection, coordinated zoom, add/set/percent/interpolation/smoothing/tapered addition, protected points and undo. The AFM two-row preview is editable. Percentages use displayed values, so absolute-pressure and gauge-pressure percentages differ. Display and export precision is explicit.
 
 Automatic preview updates generated boost proposals after a short pause. If a proposal has manual refinements, it pauses and requests an explicit update rather than erasing them. This choice currently applies to boost generation; AFM analysis remains explicit.
 
@@ -43,7 +45,7 @@ Node 20+ engine tests:
 
 ```
 cd portable
-node --test tests/engine.test.cjs tests/workbench.test.cjs tests/sessions.test.cjs
+npm test
 ```
 
 DOM integration (development only):
@@ -53,6 +55,6 @@ npm install
 npm run test:ui
 ```
 
-40 engine checks and both DOM suites pass. Actual browser visual rendering, resize, clipboard, storage and final tuning-software paste acceptance remain PC UAT tasks. No local rendering browser was used here.
+46 synthetic tests and all three DOM suites pass; 47 tests pass with the supplied private Hondata fixture. Local-file headless Edge checks passed for pointer selection, edge scrolling, protection, zoom, resizing, clipboard, downloads, backup reopen and IndexedDB. User v0.6 acceptance, destination paste-back and real KTuner export checks remain pending. See **docs/V0.6-VERIFICATION.md**.
 
 The retained **src/** and **tests/** Windows/Avalonia shell is older v0.2 code, not this interface; it was not compiled. **README-native-v0.2.md** describes that older shell.

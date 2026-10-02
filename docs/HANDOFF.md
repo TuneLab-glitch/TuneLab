@@ -29,3 +29,11 @@ This handoff is a requirements summary, not a verbatim chat archive. It does not
 ## Repository verification update (2026-10-02)
 
 The flattened initial upload was repaired without changing application/test bytes. Fresh synthetic tests: 39 pass; both DOM suites pass. See BASELINE-VERIFICATION.md for scope, limitations and UAT order. The optional private-log test was not run. PC UAT remains pending.
+
+## v0.6 build handoff (2026-10-02)
+
+The user approved the scoped v0.6 proposal. See V0.6-SCOPE.md; do not implement its deferred list without further scope approval. Current application is portable/ v0.6, with v0.5 calculations retained. v0.6 UAT: UAT-v0.6.html; retain the original 34-case guide for regressions.
+
+47 tests passed with the supplied private Hondata CSV, all three DOM suites passed, and local-file headless Edge interaction/storage/download checks passed. See V0.6-VERIFICATION.md. The private CSV is outside Git and deliverables. Real KTuner compatibility remains pending; do not infer it from synthetic headers. User v0.6 acceptance remains pending.
+
+Workspace JSON includes raw logs, per-log profiles, saved proposals, roles, journal, learning, settings, layout and edit undo/redo. Older projects migrate after validation; calibration confirmations clear. Browser IndexedDB still stores the library rather than a full workspace. Save/download JSON before changing origin or upgrading. Attachments are unsupported and not part of backups.

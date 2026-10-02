@@ -1,3 +1,28 @@
+# TuneLab v0.6 � editing, evidence and backup workflows
+
+Approved scope: docs/V0.6-SCOPE.md. Verification: docs/V0.6-VERIFICATION.md.
+
+## New
+
+- Drag rectangle selection with edge scrolling, Shift-click/Shift-arrow extension and protected selection indication.
+- Coordinated table zoom and readable fit width with scrolling; independent advanced sizing retained.
+- Linked AFM original/proposed and actual percentage/g/s deltas, changed-point markers, tooltips and labeled visual magnification.
+- Single baseline/optional validation library picker with adjacent import-and-assign and calibration context.
+- Dedicated Settings for platform terminology, complexity, appearance inheritance, units, preview behavior, review preferences and storage/backup.
+- v0.6 workspace JSON, versioned migration of v0.3�v0.5 files, preflight validation, restore failure reports and saved roles/undo/layout/provenance retention. Confirmation flags clear on reopen.
+- Per-export mapping/unit profiles and uncertain platform detection. Raw CSV preserved; mixed review units normalize separately per file. AFM normalizes known time/temperature/trim/MAP units and rejects incompatible evidence conventions.
+- Compact log/calibration/unit/proposal status strip and 13-case UAT-v0.6.html.
+
+## Verified and remaining
+
+46 synthetic tests pass; 47 with the supplied private Hondata fixture. All three DOM suites pass. Headless Edge checks passed for local-file launch, drag/protection, zoom, native resize, clipboard, download, backup reopen and IndexedDB library restore. Hondata fixture: 116,475 frames, 105 channels, zero malformed-width rows. Raw logs are not included.
+
+Real KTuner CSV verification is pending a fixture. User v0.6 UAT and destination paste-back checks remain pending. Header aliases and metadata are evidence candidates, not verified ECU semantics. AFM retains the commanded-AFR and Fuel Status = 2 convention; unsupported status/mixture conventions require further review. Browser storage remains a library store; workspace JSON is the portable calibration backup. Personal document attachments remain deferred.
+
+All agreed deferred features remain deferred. No AI, new coordinated alignment rules, installer, live hardware or flashing was added. Retained .NET code was not compiled.
+
+---
+
 # TuneLab v0.5 — historical-log usability and traceability
 
 ## New

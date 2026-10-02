@@ -53,7 +53,7 @@
  }
  function parseLog(text,name='Log'){
   if(text.includes('\\r\\nframe,'))text=text.replaceAll('\\r\\n','\n');
-  const rows=csvRows(text),h=rows.findIndex(r=>r.some(x=>/^(time_ms|time|time_s|time_seconds)$/i.test(x.trim()))&&r.some(x=>/^(RPM|AFM Hz)$/i.test(x.trim())));
+  const rows=csvRows(text),h=rows.findIndex(r=>r.some(x=>/^(time_ms|time|time_s|time_seconds|Time \(s\)|Time \(ms\))$/i.test(x.trim()))&&r.some(x=>/^(RPM|AFM Hz|Engine Speed|Engine Speed \(rpm\)|MAF Frequency|MAF Frequency \(Hz\))$/i.test(x.trim())));
   if(h<0)throw Error('No data header found. Expected time_ms (or time) and RPM / AFM Hz.');
   const headers=rows[h].map(x=>x.trim());if(new Set(headers.map(x=>x.toLowerCase())).size!==headers.length)throw Error('Duplicate channel headers; resolve before importing');
   let rejected=0;const data=[];for(const r of rows.slice(h+1)){if(r.length!==headers.length){rejected++;continue;}data.push(Float64Array.from(r,numeric));}
